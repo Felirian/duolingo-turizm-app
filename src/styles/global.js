@@ -19,8 +19,8 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     overflow-x: hidden;
     max-width: 100vw;
-    background-color: ${COLORS.black};
-    color: ${COLORS.white};
+    //background-color: inherit;
+    color: inherit;
   }
   
   main {
