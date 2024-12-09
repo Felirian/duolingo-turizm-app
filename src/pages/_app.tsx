@@ -1,13 +1,14 @@
 import type {AppProps} from "next/app";
 import GlobalStyles from "@/styles/globalStyles";
-import {useEffect, useState} from "react";
-import {init, miniApp, settingsButton} from "@telegram-apps/sdk";
-import {tgInit} from "@/pages/features/_tg_methods_";
+import {useEffect} from "react";
+import {tgInit} from "@/features/_tg_methods_";
 
 export default function App({Component, pageProps}: AppProps) {
+
   useEffect(() => {
     tgInit()
   }, []);
+
   return (
     <div
       // style={{

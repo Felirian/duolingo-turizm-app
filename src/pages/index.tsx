@@ -1,9 +1,8 @@
 import Head from "next/head";
-import {useEffect, useState} from "react";
-import {expandViewport, initData, parseInitData, miniAppReady, init} from "@telegram-apps/sdk";
+import useTgApp from "@/features/_tg_methods_";
 
 export default function Home() {
-
+  const {dataUser} = useTgApp()
   return (
     <>
       <Head>
@@ -18,15 +17,15 @@ export default function Home() {
           hui
 
 
-          {/*{telegramInitData ? (*/}
-          {/*  <div>*/}
-          {/*    <p><strong>Username:</strong> {telegramInitData.user?.username || 'Unknown'}</p>*/}
-          {/*    <p><strong>First Name:</strong> {telegramInitData.user?.first_name || 'Unknown'}</p>*/}
-          {/*    <p><strong>Last Name:</strong> {telegramInitData.user?.last_name || 'Unknown'}</p>*/}
-          {/*  </div>*/}
-          {/*) : (*/}
-          {/*  <p>Loading Telegram data...</p>*/}
-          {/*)}*/}
+          {dataUser ? (
+            <div>
+              <p><strong>Username:</strong> {dataUser?.username || 'Unknown'}</p>
+              <p><strong>First Name:</strong> {dataUser?.firstName || 'Unknown'}</p>
+              <p><strong>Last Name:</strong> {dataUser?.lastName || 'Unknown'}</p>
+            </div>
+          ) : (
+            <p>Loading Telegram data...</p>
+          )}
           {/*<button*/}
           {/*  style={{*/}
           {/*    marginTop: '20px',*/}

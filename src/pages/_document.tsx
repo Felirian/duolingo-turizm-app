@@ -2,9 +2,7 @@ import {AppType} from "next/app";
 import {Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps} from "next/document";
 import Document from "next/document";
 import {ServerStyleSheet} from "styled-components";
-import {tgInit} from "@/pages/features/_tg_methods_";
-import {useEffect} from "react";
-import {init, miniApp, settingsButton} from "@telegram-apps/sdk";
+import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -38,7 +36,7 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
         </Head>
         <body>
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <Script src={"https://telegram.org/js/telegram-web-app.js"}></Script>
         <Main/>
         <NextScript/>
         </body>
