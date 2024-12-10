@@ -6,7 +6,7 @@ import {
   User,
   miniApp,
   themeParams,
-  backButton
+  backButton, retrieveLaunchParams, LaunchParams, parseInitData, mockTelegramEnv
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
 
@@ -47,6 +47,7 @@ export const tgInit = (debug: boolean): void => {
    * );
    *
    */
+  let lp: LaunchParams | undefined;
   try {
     $debug.set(debug);
     init();
@@ -55,10 +56,10 @@ export const tgInit = (debug: boolean): void => {
     miniApp.mount();
     themeParams.mount();
     initData.restore();
-
   } catch (error) {
     console.log('Ошибка инициализации tg:', error);
   }
+
   debug && import('eruda')
     .then((lib) => lib.default.init())
     .catch(console.error);
