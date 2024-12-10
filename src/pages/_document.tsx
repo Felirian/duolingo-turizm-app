@@ -3,7 +3,7 @@ import {Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps} fro
 import Document from "next/document";
 import {ServerStyleSheet} from "styled-components";
 import Script from "next/script";
-
+import * as eruda from "eruda";
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
@@ -31,9 +31,9 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
-          <meta name="viewport" content="width=device-width, user-scalable=no"/>
-          <meta name="mobile-web-app-capable" content="yes"/>
-          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+          {/*<meta name="viewport" content="width=device-width, user-scalable=no"/>*/}
+          {/*<meta name="mobile-web-app-capable" content="yes"/>*/}
+          {/*<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>*/}
         </Head>
         <body>
         <Script src={"https://telegram.org/js/telegram-web-app.js"}></Script>
