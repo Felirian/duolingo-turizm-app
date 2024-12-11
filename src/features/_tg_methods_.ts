@@ -10,13 +10,14 @@ import {
   viewport
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
+import {log} from "node:util";
 
 const useTgApp = () => {
   const [dataUser, setDataUser] = useState<User | undefined | null>(null)
-
+  const [safeAreas, setSafeAreas] = useState()
   useEffect(() => {
     const initData = initDataUser();
-
+    setSafeAreas(viewport.contentSafeAreaInsets());
     if (initData) {
       console.log(initData);
       setDataUser(initData)
@@ -29,6 +30,7 @@ const useTgApp = () => {
 
   return {
     dataUser,
+    safeAreas
   };
 }
 
@@ -48,7 +50,12 @@ export function tgInit (debug: boolean): void  {
    * );
    *
    */
-
+  const setFullscreen = async () => {
+    if (viewport.requestFullscreen.isAvailable()) {
+      console.log('---set fullscreen---')
+      await viewport.requestFullscreen()
+    }
+  }
   try {
     $debug.set(debug);
     console.log('---Init Tg---');
@@ -56,18 +63,15 @@ export function tgInit (debug: boolean): void  {
 
     backButton.isSupported() && backButton.mount();
     miniApp.mount();
+
     themeParams.mount();
     initData.restore();
-    void viewport.mount().catch(e => {
-      console.error('ошибка viewport', e);
-    });
-    const gfgf = async () => {
-      if (viewport.isMounted()) {
-        console.log('dd')
-        await viewport.requestFullscreen()
-      }
-    }
-    //gfgf()
+    viewport.mount()
+      .then(() => {
+        viewport.expand();
+        setFullscreen()
+      })
+      .catch(e => console.error('Ошибка viewport', e));
 
   } catch (error) {
     console.log('Ошибка инициализации tg:', error);

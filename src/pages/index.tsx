@@ -2,12 +2,13 @@ import Head from "next/head";
 import useTgApp from "@/features/_tg_methods_";
 import Link from "next/link";
 import {Page} from "@/components/Shared/Page";
+import {viewport} from "@telegram-apps/sdk-react";
 
 
 
 export default function Home() {
-  const {dataUser} = useTgApp();
-
+  const {dataUser, safeAreas} = useTgApp();
+  console.log('safeAreas',safeAreas);
 
   return (
     <>
@@ -32,21 +33,9 @@ export default function Home() {
             <p>Loading Telegram data...</p>
           )}
           <Link href={'/courses'}>courses</Link>
-          {/*<button*/}
-          {/*  style={{*/}
-          {/*    marginTop: '20px',*/}
-          {/*    padding: '10px 20px',*/}
-          {/*    fontSize: '16px',*/}
-          {/*    backgroundColor: '#0088cc',*/}
-          {/*    color: '#fff',*/}
-          {/*    border: 'none',*/}
-          {/*    borderRadius: '5px',*/}
-          {/*    cursor: 'pointer'*/}
-          {/*  }}*/}
-          {/*  onClick={sendDataToTelegram}*/}
-          {/*>*/}
-          {/*  test*/}
-          {/*</button>*/}
+          <br/>
+          <button onClick={()=> viewport.exitFullscreen()}>exitFullscreen()</button>
+
         </main>
       </Page>
     </>
