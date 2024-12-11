@@ -10,7 +10,6 @@ import {
   viewport
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
-import {log} from "node:util";
 
 const useTgApp = () => {
   const [dataUser, setDataUser] = useState<User | undefined | null>(null)
@@ -69,7 +68,7 @@ export function tgInit (debug: boolean): void  {
     viewport.mount()
       .then(() => {
         viewport.expand();
-        setFullscreen()
+        //setFullscreen()
       })
       .catch(e => console.error('Ошибка viewport', e));
 

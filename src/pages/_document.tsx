@@ -31,7 +31,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+          {/*<meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"/>*/}
           {/*<meta name="viewport" content="width=device-width, user-scalable=no"/>*/}
           {/*<meta name="mobile-web-app-capable" content="yes"/>*/}
           {/*<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>*/}
