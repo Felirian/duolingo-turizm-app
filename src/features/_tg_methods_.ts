@@ -6,7 +6,8 @@ import {
   User,
   miniApp,
   themeParams,
-  backButton, retrieveLaunchParams, LaunchParams, parseInitData, mockTelegramEnv
+  backButton,
+  viewport
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
 
@@ -31,7 +32,7 @@ const useTgApp = () => {
   };
 }
 
-export const tgInit = (debug: boolean): void => {
+export function tgInit (debug: boolean): void  {
   /**
    * ##### _function_
    * ## Функция иницилизации
@@ -47,15 +48,27 @@ export const tgInit = (debug: boolean): void => {
    * );
    *
    */
-  let lp: LaunchParams | undefined;
+
   try {
     $debug.set(debug);
+    console.log('---Init Tg---');
     init();
 
     backButton.isSupported() && backButton.mount();
     miniApp.mount();
     themeParams.mount();
     initData.restore();
+    void viewport.mount().catch(e => {
+      console.error('ошибка viewport', e);
+    });
+    const gfgf = async () => {
+      if (viewport.isMounted()) {
+        console.log('dd')
+        await viewport.requestFullscreen()
+      }
+    }
+    //gfgf()
+
   } catch (error) {
     console.log('Ошибка инициализации tg:', error);
   }
@@ -64,8 +77,6 @@ export const tgInit = (debug: boolean): void => {
     .then((lib) => lib.default.init())
     .catch(console.error);
 
-  // settingsButton.mount();
-  // settingsButton.show();
 };
 
 export default useTgApp;

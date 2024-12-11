@@ -5,7 +5,7 @@ import {useGetAllCourses} from "@/features/_queries_/_rest_api_";
 const Index = () => {
 
   const {data, loading, error} = useGetAllCourses();
-  console.log(data);
+  console.log('courses:',data);
 
   return (
     <Page>

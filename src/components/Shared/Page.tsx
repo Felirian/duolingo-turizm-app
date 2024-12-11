@@ -1,6 +1,6 @@
 import {PropsWithChildren, useEffect} from "react";
 import {useRouter} from "next/router";
-import {backButton} from "@telegram-apps/sdk-react";
+import {backButton, useSignal} from "@telegram-apps/sdk-react";
 
 /**
  * #### Кастомный компонент
@@ -21,19 +21,24 @@ import {backButton} from "@telegram-apps/sdk-react";
  *
  */
 
-export function Page({ children, back = true }: PropsWithChildren<{back?: boolean}>) {
+export function Page({children, back = true}: PropsWithChildren<{ back?: boolean }>) {
 
   const router = useRouter();
+  const isVisible = useSignal(backButton.isSupported);
 
   useEffect(() => {
+    if (!isVisible) return
     if (back) {
       backButton.show();
     } else {
       backButton.hide();
     }
+
+
   }, [back]);
 
   useEffect(() => {
+    if (!isVisible) return
     return backButton.onClick(() => {
       router.back();
     });
