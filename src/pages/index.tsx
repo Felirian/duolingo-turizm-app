@@ -3,12 +3,14 @@ import useTgApp from "@/features/_tg_methods_";
 import Link from "next/link";
 import {Page} from "@/components/Shared/Page";
 import {viewport} from "@telegram-apps/sdk-react";
+import useAccount from "@/features/_local_storage_";
 
 
 
 export default function Home() {
   const {dataUser, safeAreas} = useTgApp();
-  console.log('safeAreas',safeAreas);
+  const { isAuth, account, addXp, setAccount } = useAccount();
+  console.log(account);
 
   return (
     <>

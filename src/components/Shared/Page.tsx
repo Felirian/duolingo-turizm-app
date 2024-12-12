@@ -1,6 +1,9 @@
 import {PropsWithChildren, useEffect} from "react";
 import {useRouter} from "next/router";
 import {backButton, useSignal} from "@telegram-apps/sdk-react";
+import useTgApp from "@/features/_tg_methods_";
+import styled from "styled-components";
+import {SafeAreaInsets} from "@telegram-apps/bridge";
 
 /**
  * #### Кастомный компонент
@@ -26,6 +29,8 @@ export function Page({children, back = true}: PropsWithChildren<{ back?: boolean
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
 
+  const {safeAreas} = useTgApp();
+
   useEffect(() => {
     if (!isVisible) return
     if (back) {
@@ -33,8 +38,6 @@ export function Page({children, back = true}: PropsWithChildren<{ back?: boolean
     } else {
       backButton.hide();
     }
-
-
   }, [back]);
 
   useEffect(() => {
@@ -44,5 +47,20 @@ export function Page({children, back = true}: PropsWithChildren<{ back?: boolean
     });
   }, [router]);
 
-  return <>{children}</>;
+  return (
+    <PageWr
+      $safeAreas={safeAreas}
+    >
+      {safeAreas?.top}
+      {children}
+    </PageWr>
+  );
 }
+
+const PageWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
+  padding-top: ${({$safeAreas}: SafeAreaInsets | null) => $safeAreas?.top}px;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(353.92deg, #FFD9B2 5.82%, #DAF8B2 50.17%, #92EECB 91.94%);
+
+`

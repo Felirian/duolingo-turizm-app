@@ -1,31 +1,37 @@
 import {
   init,
-  initDataUser,
   $debug,
   initData,
   User,
   miniApp,
   themeParams,
   backButton,
-  viewport
+  viewport, useSignal
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
+import {SafeAreaInsets} from "@telegram-apps/bridge";
 
 const useTgApp = () => {
   const [dataUser, setDataUser] = useState<User | undefined | null>(null)
-  const [safeAreas, setSafeAreas] = useState()
+  const isInitData = useSignal(initData.user);
+
+  const [safeAreas, setSafeAreas] = useState<SafeAreaInsets | null>(null);
+  const isSafeArea = useSignal(viewport.contentSafeAreaInsets);
+
   useEffect(() => {
-    const initData = initDataUser();
-    setSafeAreas(viewport.contentSafeAreaInsets());
-    if (initData) {
-      console.log(initData);
-      setDataUser(initData)
+    const initDataG = initData.user();
+    console.log('isInitData')
+    if (initDataG) {
+      setDataUser(initDataG)
     } else {
       console.log('initData error');
       setDataUser(null)
     }
-  }, []);
+  }, [isInitData]);
 
+  useEffect(() => {
+    setSafeAreas(viewport.contentSafeAreaInsets());
+  }, [isSafeArea]);
 
   return {
     dataUser,
@@ -68,7 +74,7 @@ export function tgInit (debug: boolean): void  {
     viewport.mount()
       .then(() => {
         viewport.expand();
-        //setFullscreen()
+        //setFullscreen();
       })
       .catch(e => console.error('Ошибка viewport', e));
 
@@ -79,7 +85,6 @@ export function tgInit (debug: boolean): void  {
   debug && import('eruda')
     .then((lib) => lib.default.init())
     .catch(console.error);
-
-};
+}
 
 export default useTgApp;

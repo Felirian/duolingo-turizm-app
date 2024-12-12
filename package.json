@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ngrok": "ngrok http http://localhost:3000"
+    "ngrok": "ngrok http http://localhost:3000",
+    "dev-https": "next dev --experimental-https"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "@telegram-apps/sdk-react": "^2.0.19",
     "@types/telegram-web-app": "^7.10.1",
     "axios": "^1.7.9",
@@ -17,6 +19,7 @@
     "ngrok": "^5.0.0-beta.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
