@@ -69,3 +69,15 @@ export const Body2Style = css`
 export const H1 = styled.h1`
   ${H1Style};
 `;
+
+export const H2 = styled.h2`
+  ${H2Style};
+`;
+
+export const H3 = styled.h3`
+  ${H3Style};
+`;
+
+export const Btn1 = styled.p`
+  ${Btn1Style};
+`;

@@ -4,8 +4,8 @@ import Link from "next/link";
 import {Page} from "@/components/Shared/Page";
 import {viewport} from "@telegram-apps/sdk-react";
 import useAccount from "@/features/_local_storage_";
-
-
+import {CustomBtn} from "@/components/Shared/CustomBtn";
+import {log} from "util";
 
 export default function Home() {
   const {dataUser, safeAreas} = useTgApp();
@@ -37,7 +37,9 @@ export default function Home() {
           <Link href={'/courses'}>courses</Link>
           <br/>
           <button onClick={()=> viewport.exitFullscreen()}>exitFullscreen()</button>
-
+          <CustomBtn onClick={()=> console.log('ff')}>
+            Продолжить
+          </CustomBtn>
         </main>
       </Page>
     </>

@@ -3,55 +3,6 @@ import {COLORS} from "@/styles/variables";
 //import { COLORS } from "@/styles/variables";
 
 const GlobalStyles = createGlobalStyle`
-
-  // @font-face {
-  //  font-family: 'Poppins';
-  //  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
-  //  font-weight: normal;
-  //  font-style: normal;
-  //  font-display: block;
-  //}
-
-  /* @font-face {
-    font-family: 'Raleway';
-    src: url('/fonts/Raleway-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: 'Raleway';
-    src: url('/fonts/Raleway-Medium.ttf') format('truetype');
-    font-weight: medium;
-    font-style: normal;
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: 'Raleway';
-    src: url('/fonts/Raleway-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
-
-  @font-face {
-    font-family: 'Raleway';
-    src: url('/fonts/Raleway-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-    font-display: block;
-  } */
-
-  //@font-face {
-  //  font-family: 'Comfortaa';
-  //  src: url('/fonts/Comfortaa-SemiBold.ttf') format('truetype');
-  //  font-weight: 600; 
-  //  font-style: normal;
-  //  font-display: block;
-  //} 
-
   * {
     margin: 0;
     padding: 0;
@@ -75,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
   main {
     overflow-x: hidden;
     max-width: 100vw;
+    height: 100vh;
   }
 
 
