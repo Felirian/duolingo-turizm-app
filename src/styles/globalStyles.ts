@@ -18,15 +18,16 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     width: 100%;
-    overflow-x: hidden;
     max-width: 100vw;
+    overflow: hidden;
+    
     background-color: ${COLORS.white};    
   }
   
   main {
-    overflow-x: hidden;
-    max-width: 100vw;
-    height: 100vh;
+    //overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
 
 

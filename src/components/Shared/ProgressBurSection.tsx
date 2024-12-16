@@ -65,9 +65,7 @@ const PercentLine = styled.div<{ $percent }>`
 `;
 
 const PercentBlock = styled(Btn1)`
-  color: #FFF;
-  -webkit-text-stroke-width: 0.56vw ;
-  -webkit-text-stroke-color: #FE6D2C;
+  color: #FFF;  
   font-family: Nunito;
   font-size: 5.56vw;
   font-style: normal;
