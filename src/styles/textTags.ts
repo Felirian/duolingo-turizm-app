@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { BREAKPOINTS } from './variables';
 
-export const H1Style = css` 
+export const H1Style = css`
   font-family: Montserrat;
   font-size: 7.22vw;
   font-style: normal;
@@ -9,7 +10,7 @@ export const H1Style = css`
 `;
 
 export const H2Style = css`
- font-family: Montserrat;
+  font-family: Montserrat;
   font-size: 6.11vw;
   font-style: normal;
   font-weight: 700;
@@ -40,8 +41,7 @@ export const Btn2Style = css`
   line-height: 135%; /* 24.3px */
 `;
 
-
-export const Btn3Style = css` 
+export const Btn3Style = css`
   font-family: Montserrat;
   font-size: 3.61vw;
   font-style: normal;
@@ -50,7 +50,7 @@ export const Btn3Style = css`
 `;
 
 export const Body1Style = css`
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   font-size: 3.89vw;
   font-style: normal;
   font-weight: 700;
@@ -58,13 +58,12 @@ export const Body1Style = css`
 `;
 
 export const Body2Style = css`
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
   font-size: 4.44vw;
   font-style: normal;
   font-weight: 500;
   line-height: 125%; /* 20px */
 `;
-
 
 export const H1 = styled.h1`
   ${H1Style};

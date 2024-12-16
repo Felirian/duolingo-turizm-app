@@ -1,9 +1,9 @@
-import {PropsWithChildren, useEffect} from "react";
-import {useRouter} from "next/router";
-import {backButton, useSignal} from "@telegram-apps/sdk-react";
-import useTgApp from "@/features/_tg_methods_";
-import styled from "styled-components";
-import {SafeAreaInsets} from "@telegram-apps/bridge";
+import { PropsWithChildren, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { backButton, useSignal } from '@telegram-apps/sdk-react';
+import useTgApp from '@/features/_tg_methods_';
+import styled from 'styled-components';
+import { SafeAreaInsets } from '@telegram-apps/bridge';
 
 /**
  * #### Кастомный компонент
@@ -24,15 +24,14 @@ import {SafeAreaInsets} from "@telegram-apps/bridge";
  *
  */
 
-export function Page({children, back = true}: PropsWithChildren<{ back?: boolean }>) {
-
+export function Page({ children, back = true }: PropsWithChildren<{ back?: boolean }>) {
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
 
-  const {safeAreas} = useTgApp();
+  const { safeAreas } = useTgApp();
 
   useEffect(() => {
-    if (!isVisible) return
+    if (!isVisible) return;
     if (back) {
       backButton.show();
     } else {
@@ -41,26 +40,23 @@ export function Page({children, back = true}: PropsWithChildren<{ back?: boolean
   }, [back]);
 
   useEffect(() => {
-    if (!isVisible) return
+    if (!isVisible) return;
     return backButton.onClick(() => {
       router.back();
     });
   }, [router]);
 
   return (
-    <PageWr
-      $safeAreas={safeAreas}
-    >
+    <PageWr $safeAreas={safeAreas}>
       {safeAreas?.top}
       {children}
     </PageWr>
   );
 }
 
-const PageWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
-  padding-top: ${({$safeAreas}: SafeAreaInsets | null) => $safeAreas?.top}px;
+const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
+  padding-top: ${({ $safeAreas }: SafeAreaInsets | null) => $safeAreas?.top}px;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(353.92deg, #FFD9B2 5.82%, #DAF8B2 50.17%, #92EECB 91.94%);
-
-`
+  background: linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%);
+`;

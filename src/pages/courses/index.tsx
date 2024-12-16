@@ -1,29 +1,24 @@
 import React from 'react';
-import {Page} from "@/components/Shared/Page";
-import {useGetAllCourses} from "@/features/_queries_/_rest_api_";
-import CoursesCard from "@/components/Courses/CoursesCard";
-import styled from "styled-components";
+import { Page } from '@/components/Shared/Page';
+import { useGetAllCourses } from '@/features/_queries_/_rest_api_';
+import CoursesCard from '@/components/Courses/CoursesCard';
+import styled from 'styled-components';
 
 const Index = () => {
-
-  const {data, loading, error} = useGetAllCourses();
-  console.log('courses:',data);
+  const { data, loading, error } = useGetAllCourses();
+  console.log('courses:', data);
 
   return (
     <Page>
       {loading ? (
-        <>
-          loading
-        </>
+        <>loading</>
       ) : error ? (
-        <>
-          error
-        </>
+        <>error</>
       ) : (
         <CoursesCardCon>
           {data?.map((course, index) => (
             <React.Fragment key={index}>
-              <CoursesCard data={course}/>
+              <CoursesCard data={course} />
             </React.Fragment>
           ))}
         </CoursesCardCon>
@@ -36,6 +31,6 @@ const CoursesCardCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5.13vw;
-`
+`;
 
 export default Index;
