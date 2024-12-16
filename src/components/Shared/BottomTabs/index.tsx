@@ -49,6 +49,7 @@ const BottomTabs = () => {
 const BottomTabsWr = styled.div`
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 23.71vw;
   padding: 2.29vw 4.29vw;

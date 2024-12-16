@@ -45,8 +45,8 @@ export default function Home() {
           <button onClick={() => viewport.exitFullscreen()}>exitFullscreen()</button>
           <CustomBtn onClick={() => console.log('ff')}>Продолжить</CustomBtn>
           <ProgressBurSection percent={50} />
+          <BottomTabs />
         </main>
-        <BottomTabs />
       </Page>
     </>
   );
