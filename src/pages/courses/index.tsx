@@ -36,6 +36,7 @@ const CoursesCardCon = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5.13vw;
+  align-items: center;
 `
 
 export default Index;
