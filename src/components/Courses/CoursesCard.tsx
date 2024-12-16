@@ -19,7 +19,7 @@ const CoursesCard = ({ data }) => {
 };
 
 const CoursesCardWr = styled(Link)`
-  width: 91.429vw;
+  width: 100%;
   height: 42.857vw;
   border-radius: 3.429vw;
   position: relative;
