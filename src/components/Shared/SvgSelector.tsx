@@ -9,7 +9,7 @@ const SvgSelector = ({ svg }) => {
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
-          <g clip-path='url(#clip0_6001_393)'>
+          <g clipPath='url(#clip0_6001_393)'>
             <rect width='319' height='150' fill='#8E97FD' />
             <rect width='319' height='150' fill='#8E97FD' />
             <path
@@ -69,8 +69,8 @@ const SvgSelector = ({ svg }) => {
               y2='117.285'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='white' />
-              <stop offset='1' stop-color='white' stop-opacity='0' />
+              <stop stopColor='white' />
+              <stop offset='1' stopColor='white' stopOpacity='0' />
             </linearGradient>
             <linearGradient
               id='paint1_linear_6001_393'
@@ -80,8 +80,8 @@ const SvgSelector = ({ svg }) => {
               y2='115.375'
               gradientUnits='userSpaceOnUse'
             >
-              <stop stop-color='#5B5FB3' stop-opacity='0.53' />
-              <stop offset='0.9596' stop-color='#7E5AFF' stop-opacity='0' />
+              <stop stopColor='#5B5FB3' stopOpacity='0.53' />
+              <stop offset='0.9596' stopColor='#7E5AFF' stopOpacity='0' />
             </linearGradient>
             <linearGradient
               id='paint2_linear_6001_393'
@@ -91,8 +91,8 @@ const SvgSelector = ({ svg }) => {
               y2='96.0624'
               gradientUnits='userSpaceOnUse'
             >
-              <stop offset='0.4372' stop-color='#4198F4' stop-opacity='0.53' />
-              <stop offset='0.9596' stop-color='#4AA2FF' stop-opacity='0' />
+              <stop offset='0.4372' stopColor='#4198F4' stopOpacity='0.53' />
+              <stop offset='0.9596' stopColor='#4AA2FF' stopOpacity='0' />
             </linearGradient>
             <clipPath id='clip0_6001_393'>
               <rect width='319' height='150' fill='white' />
