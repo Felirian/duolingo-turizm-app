@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL, CONFIG } from './config';
-import {Course, Point, Section} from '@/interfaces';
+import { Course, Point, Section } from '@/interfaces';
 
 export const useGetQuery = (endPoint: string) => {
   const [result, setResult] = useState<{
@@ -73,7 +73,7 @@ export const useGetAllCourses = () => {
   return result;
 };
 
-export const useGetAllSections = () => {
+export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | Section[];
@@ -85,9 +85,11 @@ export const useGetAllSections = () => {
   });
 
   useEffect(() => {
-    const fetchArtistsList = async () => {
+    const fetchSections = async () => {
+      if (!slug) return;
+
       try {
-        const response = await axios.get(BASE_URL + 'sections', CONFIG);
+        const response = await axios.get(BASE_URL + 'sections?course_slug=' + slug, CONFIG);
         setResult({
           loading: false,
           data: response.data,
@@ -102,8 +104,8 @@ export const useGetAllSections = () => {
       }
     };
 
-    fetchArtistsList();
-  }, []);
+    fetchSections();
+  }, [slug]);
 
   return result;
 };
