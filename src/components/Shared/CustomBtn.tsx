@@ -14,7 +14,7 @@ export const CustomBtn = ({ children, ...props }: CustomBtnProps) => {
   );
 };
 
-const CustomBtnWr = styled.button<React.ButtonHTMLAttributes<HTMLButtonElement>>((props) => ({
+const CustomBtnWr = styled.button.attrs<React.ButtonHTMLAttributes<HTMLButtonElement>>((props) => ({
   ...props,
 }))`
   width: 100%;

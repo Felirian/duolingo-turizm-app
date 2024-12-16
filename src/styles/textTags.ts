@@ -81,3 +81,7 @@ export const H3 = styled.h3`
 export const Btn1 = styled.p`
   ${Btn1Style};
 `;
+
+export const Btn2 = styled.p`
+  ${Btn2Style};
+`;

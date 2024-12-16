@@ -5,7 +5,7 @@ import {Page} from "@/components/Shared/Page";
 import {viewport} from "@telegram-apps/sdk-react";
 import useAccount from "@/features/_local_storage_";
 import {CustomBtn} from "@/components/Shared/CustomBtn";
-import {log} from "util";
+import {ProgressBurSection} from "@/components/Shared/ProgressBurSection";
 
 export default function Home() {
   const {dataUser, safeAreas} = useTgApp();
@@ -40,6 +40,7 @@ export default function Home() {
           <CustomBtn onClick={()=> console.log('ff')}>
             Продолжить
           </CustomBtn>
+          <ProgressBurSection percent={50}/>
         </main>
       </Page>
     </>
