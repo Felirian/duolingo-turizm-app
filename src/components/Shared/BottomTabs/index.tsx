@@ -52,7 +52,6 @@ const BottomTabsWr = styled.div`
   width: 100%;
   height: 23.71vw;
   padding: 2.29vw 4.29vw;
-  padding-bottom: 3.14vw;
 
   background-color: ${COLORS.lightGreen};
   border-radius: 5.71vw 5.71vw 0px 0px;
@@ -66,10 +65,44 @@ const BottomTabsWr = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: ${COLORS.mediumGreen};
+    box-shadow: none;
+    &:after {
+      background-color: ${COLORS.white};
+      opacity: 0.1;
+    }
+    &:before {
+      transition: 0.2s;
+      content: '';
+      /* z-index: 3; */
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(187deg, #44cf70 29.02%, #a9f09f 108.07%);
+      opacity: 0;
+      border-radius: inherit;
+    }
+
     p {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 9.14vw;
+      height: 10.29vw;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &:active {
+      transform: none;
+      background-color: ${COLORS.mediumGreen};
+      box-shadow: none;
+      &:before {
+        opacity: 1;
+      }
     }
   }
 `;
