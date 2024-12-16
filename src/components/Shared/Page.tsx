@@ -27,6 +27,7 @@ import { SafeAreaInsets } from '@telegram-apps/bridge';
 export function Page({ children, back = true }: PropsWithChildren<{ back?: boolean }>) {
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
+  //const isBtnClick = useSignal(backButton.onClick);
 
   const { safeAreas } = useTgApp();
 
@@ -40,23 +41,33 @@ export function Page({ children, back = true }: PropsWithChildren<{ back?: boole
   }, [back]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible) return
+
     return backButton.onClick(() => {
+      console.log('back')
       router.back();
     });
   }, [router]);
 
   return (
-    <PageWr $safeAreas={safeAreas}>
+    <PageWr
+      $safeAreas={safeAreas}
+    >
+      {/*{router.route}*/}
+      {/*<br/>*/}
       {safeAreas?.top}
       {children}
     </PageWr>
   );
 }
 
-const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
-  padding-top: ${({ $safeAreas }: SafeAreaInsets | null) => $safeAreas?.top}px;
+const PageWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
+  padding-top: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.top}px;
+  padding-left: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.left}px;
+  padding-right: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.right}px;
+  padding-bottom: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.bottom}px;
+  
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%);
-`;
+  
+  background: linear-gradient(353.92deg, #FFD9B2 5.82%, #DAF8B2 50.17%, #92EECB 91.94%);

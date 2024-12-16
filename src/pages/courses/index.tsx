@@ -30,7 +30,8 @@ const Index = () => {
 const CoursesCardCon = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5.13vw;
+  gap: 3.429vw;
+  align-items: center;
 `;
 
 export default Index;
