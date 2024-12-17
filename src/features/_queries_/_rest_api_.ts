@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL, CONFIG } from './config';
-import {Course, Point, Section} from '@/interfaces';
+import { Course, Point, Section } from '@/interfaces';
 
 export const useGetQuery = (endPoint: string) => {
   const [result, setResult] = useState<{
@@ -108,7 +108,7 @@ export const useGetAllSections = () => {
   return result;
 };
 
-export const useGetAllPoints = () => {
+export const useGetAllPoints = (slug: string) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | Point[];
@@ -121,8 +121,9 @@ export const useGetAllPoints = () => {
 
   useEffect(() => {
     const fetchArtistsList = async () => {
+      if (!slug) return;
       try {
-        const response = await axios.get(BASE_URL + 'points', CONFIG);
+        const response = await axios.get(BASE_URL + `points?section_slug=${slug}`, CONFIG);
         setResult({
           loading: false,
           data: response.data,
@@ -138,7 +139,7 @@ export const useGetAllPoints = () => {
     };
 
     fetchArtistsList();
-  }, []);
+  }, [slug]);
 
   return result;
 };

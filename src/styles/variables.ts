@@ -1,8 +1,9 @@
 export const COLORS = {
-  lightGreen: '#CBF6B7',
-  mediumGreen: '#95EA96',
   black: '#000000',
   white: '#FFFFFF',
+  lightGreen: '#CBF6B7',
+  mediumGreen: '#95EA96',
+  textGreen: '#0F8359',
 };
 
 const breakpoints = {

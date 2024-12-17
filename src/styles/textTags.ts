@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { BREAKPOINTS } from './variables';
 
 export const H1Style = css`
   font-family: Montserrat;
