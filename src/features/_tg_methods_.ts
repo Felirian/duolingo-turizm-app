@@ -68,10 +68,11 @@ export function tgInit (debug: boolean): void  {
 
     backButton.isSupported() && backButton.mount();
     miniApp.mount();
-
     themeParams.mount();
     initData.restore();
-    viewport.mount()
+
+    viewport
+      .mount()
       .then(() => {
         viewport.expand();
         //setFullscreen();

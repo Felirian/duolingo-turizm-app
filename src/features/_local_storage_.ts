@@ -1,34 +1,31 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import {accountActions, selectAccount} from "@/features/redux/accountSlice";
+import {accountActions, selectRedux} from "@/features/redux/slice";
+import {initData, User, useSignal} from "@telegram-apps/sdk-react";
+import {useEffect, useState} from "react";
 
 const useAccount = () => {
   const dispatch = useDispatch();
-  const account = useSelector(selectAccount);
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const localState = useSelector(selectRedux);
+  const isInitData = useSignal(initData.user);
+
+  const [account, setAccount] = useState(null)
 
   useEffect(() => {
-    if (account.name) {
-      setIsAuth(true);
-    } else {
-      setIsAuth(false);
-    }
-  }, [account]);
+    const initDataUser: User = initData.user();
+
+    dispatch(accountActions.setAccount({
+      id: initDataUser.id | 0,
+      name: initDataUser.username,
+    }));
+  }, [isInitData]);
 
   const addXp = (xp: number) => {
     dispatch(accountActions.addXp(xp));
   };
 
-  const setAccount = (name: string, characterName: string) => {
-    dispatch(accountActions.setAccount({ name, characterName }));
-  };
-
   return {
-    isAuth,
     account,
     addXp,
-    setAccount,
   };
 };
 

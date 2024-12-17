@@ -9,9 +9,9 @@ import {ProgressBurSection} from "@/components/Shared/ProgressBurSection";
 
 export default function Home() {
   const {dataUser, safeAreas} = useTgApp();
-  const { isAuth, account, addXp, setAccount } = useAccount();
-  console.log(account);
-
+  const { account, addXp } = useAccount();
+  console.log('dataUser: ',dataUser);
+  console.log('account: ',account);
   return (
     <>
       <Head>
@@ -23,17 +23,7 @@ export default function Home() {
 
       <Page back={false}>
         <main>
-          huidd
-
-          {dataUser ? (
-            <div>
-              <p><strong>Username:</strong> {dataUser?.username || 'Unknown'}</p>
-              <p><strong>First Name:</strong> {dataUser?.firstName || 'Unknown'}</p>
-              <p><strong>Last Name:</strong> {dataUser?.lastName || 'Unknown'}</p>
-            </div>
-          ) : (
-            <p>Loading Telegram data...</p>
-          )}
+          {account?.id}
           <Link href={'/courses'}>courses</Link>
           <br/>
           <button onClick={()=> viewport.exitFullscreen()}>exitFullscreen()</button>
