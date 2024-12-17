@@ -1,17 +1,41 @@
 import React from 'react';
-import {useRouter} from "next/router";
-import {Page} from "@/components/Shared/Page";
+import { useRouter } from "next/router";
+import { Page } from "@/components/Shared/Page";
+import SectionsCard from '@/components/Sections/SectionsCard';
+import { useGetSectionsByCourseSlug } from "@/features/_queries_/_rest_api_";
+import styled from "styled-components";
 
 const Index = () => {
   const router = useRouter();
-  const id = router.query.courses_id;
-  console.log(router);
+  const { slug } = router.query;
+
+  const { data, loading, error } = useGetSectionsByCourseSlug(slug);
+  console.log('sections:',data);
+
   return (
     <Page>
-      course
-      {id}
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error.message}</div>
+      ) : (
+        <SectionsCardCon>
+          {data?.map((section, index) => (
+            <React.Fragment key={index}>
+              <SectionsCard data={section} />
+            </React.Fragment>
+          ))}
+        </SectionsCardCon>
+      )}
     </Page>
   );
 };
+
+const SectionsCardCon = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.429vw;
+  align-items: center;
+`;
 
 export default Index;
