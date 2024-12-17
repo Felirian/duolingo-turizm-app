@@ -9,9 +9,10 @@ import {ProgressBurSection} from "@/components/Shared/ProgressBurSection";
 
 export default function Home() {
   const {dataUser, safeAreas} = useTgApp();
-  const { account, addXp } = useAccount();
+  const { account, addXp, localState } = useAccount();
   console.log('dataUser: ',dataUser);
   console.log('account: ',account);
+  console.log('localState: ', localState);
   return (
     <>
       <Head>

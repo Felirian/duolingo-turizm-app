@@ -8,7 +8,7 @@ const useAccount = () => {
   const localState = useSelector(selectRedux);
   const isInitData = useSignal(initData.user);
 
-  const [account, setAccount] = useState(null)
+  const [account, setAccount] = useState<any>(null)
 
   useEffect(() => {
     const initDataUser: User = initData.user();
@@ -17,6 +17,8 @@ const useAccount = () => {
       id: initDataUser.id | 0,
       name: initDataUser.username,
     }));
+
+    setAccount(initDataUser)
   }, [isInitData]);
 
   const addXp = (xp: number) => {
@@ -25,6 +27,7 @@ const useAccount = () => {
 
   return {
     account,
+    localState,
     addXp,
   };
 };
