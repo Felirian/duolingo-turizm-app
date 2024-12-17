@@ -76,7 +76,6 @@ const BottomTabsWr = styled.div`
     &:before {
       transition: 0.2s;
       content: '';
-      /* z-index: 3; */
       position: absolute;
       width: 100%;
       height: 100%;
@@ -91,6 +90,7 @@ const BottomTabsWr = styled.div`
       align-items: center;
       width: 9.14vw;
       height: 10.29vw;
+      transition: transform 0.2s;
       svg {
         width: 100%;
         height: 100%;
@@ -101,6 +101,9 @@ const BottomTabsWr = styled.div`
       transform: none;
       background-color: ${COLORS.mediumGreen};
       box-shadow: none;
+      p {
+        transform: scale(0.9);
+      }
       &:before {
         opacity: 1;
       }
