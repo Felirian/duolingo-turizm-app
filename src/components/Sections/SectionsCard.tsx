@@ -12,8 +12,8 @@ const SectionsCard = ({ data }) => {
         <B2>{data.descr}</B2>
       </CardText>
       <ImageWr>
-        <Image
-          src={data.imagebg}
+        <img
+          src={data.bgimage}
           alt={data.name}
           layout="fill"
           objectFit="cover"

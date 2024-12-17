@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const Index = () => {
   const router = useRouter();
-  const { slug } = router.query;
+  const slug = router.query.courses_id;
 
   const { data, loading, error } = useGetSectionsByCourseSlug(slug);
   console.log('sections:',data);

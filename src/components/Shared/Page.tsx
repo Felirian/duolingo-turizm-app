@@ -56,7 +56,7 @@ export function Page({children, back = true}: PropsWithChildren<{ back?: boolean
     >
       {/*{router.route}*/}
       {/*<br/>*/}
-      {safeAreas?.top}
+      {/*{safeAreas?.top}*/}
       {children}
     </PageWr>
   );
@@ -72,5 +72,6 @@ const PageWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
   height: 100vh;
   
   background: linear-gradient(353.92deg, #FFD9B2 5.82%, #DAF8B2 50.17%, #92EECB 91.94%);
-
+  
+  overflow-y: scroll;
 `

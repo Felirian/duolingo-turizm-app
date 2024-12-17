@@ -10,16 +10,16 @@ const useAccount = () => {
 
   const [account, setAccount] = useState<any>(null)
 
-  useEffect(() => {
-    const initDataUser: User = initData.user();
-
-    dispatch(accountActions.setAccount({
-      id: initDataUser.id | 0,
-      name: initDataUser.username,
-    }));
-
-    setAccount(initDataUser)
-  }, [isInitData]);
+  // useEffect(() => {
+  //   const initDataUser: User = initData.user();
+  //
+  //   dispatch(accountActions.setAccount({
+  //     id: initDataUser.id | 0,
+  //     name: initDataUser.username,
+  //   }));
+  //
+  //   setAccount(initDataUser)
+  // }, [isInitData]);
 
   const addXp = (xp: number) => {
     dispatch(accountActions.addXp(xp));
