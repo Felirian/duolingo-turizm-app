@@ -34,10 +34,22 @@ const Points = ({ data }: PointsProps) => {
   );
 };
 
+//TODO КАРОЧЕ СВГ ЗАМЕНИТЬ И НАКИНУТЬ ДРОП ШЭДОУ, ПАДДИНГ ДЛЯ СКРОЛА СНИЗУ, ФИКС ТАЙТЛ,
+
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 80vw;
 `;
 
 const PointsTitleBlock = styled.div`

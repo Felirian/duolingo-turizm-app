@@ -13,7 +13,7 @@ const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
-          <g filter='url(#filter0_d_171_1218)'>
+          <g filter='url(#filter0_d_171_1199)'>
             <ellipse cx='39.5' cy='31' rx='39.5' ry='31' fill='#FF8F04' />
           </g>
           <path
@@ -26,7 +26,7 @@ const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
           />
           <defs>
             <filter
-              id='filter0_d_171_1218'
+              id='filter0_d_171_1199'
               x='0'
               y='0'
               width='79'
@@ -50,12 +50,12 @@ const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               <feBlend
                 mode='normal'
                 in2='BackgroundImageFix'
-                result='effect1_dropShadow_171_1218'
+                result='effect1_dropShadow_171_1199'
               />
               <feBlend
                 mode='normal'
                 in='SourceGraphic'
-                in2='effect1_dropShadow_171_1218'
+                in2='effect1_dropShadow_171_1199'
                 result='shape'
               />
             </filter>

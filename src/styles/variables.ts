@@ -4,6 +4,7 @@ export const COLORS = {
   lightGreen: '#CBF6B7',
   mediumGreen: '#95EA96',
   textGreen: '#0F8359',
+  heavyOrange: '#FF8500',
 };
 
 const breakpoints = {

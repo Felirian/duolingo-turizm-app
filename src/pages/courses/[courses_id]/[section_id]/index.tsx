@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Page } from '@/components/Shared/Page';
 import Points from '@/components/Points';
 import { useGetAllPoints } from '@/features/_queries_/_rest_api_';
+import BottomTabs from '@/components/Shared/BottomTabs';
 
 const Index = () => {
   const router = useRouter();
@@ -19,6 +20,7 @@ const Index = () => {
   return (
     <Page>
       {loading ? <div>загрузка</div> : error ? <div>ошибка</div> : data && <Points data={data} />}
+      <BottomTabs />
     </Page>
   );
 };
