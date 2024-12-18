@@ -4,14 +4,14 @@ import {Page} from "@/components/Shared/Page";
 
 const Index = () => {
   const router = useRouter();
-  const id= router.query.point_id
+  //const id= router.query.point_id
 
   console.log(router);
   return (
     <Page>
       point
       <br/>
-      {id}
+      {/*{id}*/}
     </Page>
   );
 };

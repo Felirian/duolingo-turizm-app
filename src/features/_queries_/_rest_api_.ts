@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string) => {
+export const useGetAllPoints = (slug: string | string[] | undefined) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | Point[];
@@ -131,7 +131,7 @@ export const useGetAllPoints = (slug: string) => {
     const fetchArtistsList = async () => {
       if (!slug) return;
       try {
-        const response = await axios.get(BASE_URL + `points?section_slug=${slug}`, CONFIG);
+        const response = await axios.get(BASE_URL + `points/front?section_slug=${slug}`, CONFIG);
         setResult({
           loading: false,
           data: response.data,

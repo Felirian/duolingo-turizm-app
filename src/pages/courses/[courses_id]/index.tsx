@@ -11,7 +11,6 @@ const Index = () => {
   const slug = router.query.courses_id;
 
   const { data, loading, error } = useGetSectionsByCourseSlug(slug);
-  console.log('sections:',data);
 
   return (
     <Page>

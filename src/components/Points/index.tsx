@@ -17,15 +17,18 @@ const PONTS_COORDS = [
   { top: '143.71vw', left: '50.29vw' },
 ];
 
-const Points = ({ data }: PointsProps) => {
+const Points = ({ data }) => {
+
+  console.log('data', data); //todo дата объектом. имя вставить. заменить массив на имя объекта.
+
   return (
     <PointsWr>
       <PointsTitleBlock>
-        <Btn1>страна</Btn1>
+        <Btn1>{}</Btn1>
         <B1>уровень</B1>
       </PointsTitleBlock>
 
-      {data.map((point, index) => {
+      {data[2].Points.map((point, index) => {
         return (
           <PointItem key={`${index}-point-item`} data={point} coordinates={PONTS_COORDS[index]} />
         );
