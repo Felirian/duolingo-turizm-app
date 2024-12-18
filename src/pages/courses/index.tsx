@@ -3,6 +3,7 @@ import { Page } from '@/components/Shared/Page';
 import { useGetAllCourses } from '@/features/_queries_/_rest_api_';
 import CoursesCard from '@/components/Courses/CoursesCard';
 import styled from 'styled-components';
+import BottomTabs from "@/components/Shared/BottomTabs";
 
 const Index = () => {
   const { data, loading, error } = useGetAllCourses();
@@ -23,6 +24,7 @@ const Index = () => {
           ))}
         </CoursesCardCon>
       )}
+      <BottomTabs />
     </Page>
   );
 };

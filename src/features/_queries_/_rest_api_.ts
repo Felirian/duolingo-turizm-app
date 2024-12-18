@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL, CONFIG } from './config';
 import { Course, Point, Section } from '@/interfaces';
+import useTgApp from "@/features/_tg_methods_";
 
 export const useGetQuery = (endPoint: string) => {
   const [result, setResult] = useState<{
@@ -84,12 +85,17 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
     error: null,
   });
 
+  const {userId} = useTgApp();
+
   useEffect(() => {
     const fetchSections = async () => {
       if (!slug) return;
 
       try {
-        const response = await axios.get(BASE_URL + 'sections?course_slug=' + slug, CONFIG);
+        const response = await axios.get(
+          BASE_URL + 'sections/front?course_slug=' + slug + '&tg_id=' + userId,
+          CONFIG
+        );
         setResult({
           loading: false,
           data: response.data,
