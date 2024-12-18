@@ -238,3 +238,30 @@ export const useGetUser = () => {
 
   return result;
 };
+
+export const useCreateUser = async (petName: string, userId: number) => {
+
+  const data = {
+    id: userId.toString(),
+    character: petName,
+  };
+
+  try {
+    const response = await fetch('https://kvaks-backend.pushkeen.ru/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      return response
+      console.log('Данные успешно отправлены');
+    } else {
+      console.error('Ошибка при отправке данных');
+    }
+  } catch (error) {
+    console.error('Ошибка сети:', error);
+  }
+};
