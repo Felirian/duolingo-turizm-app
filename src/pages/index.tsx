@@ -4,6 +4,7 @@ import {useGetUser} from "@/features/_queries_/_rest_api_";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
 import Main from "@/components/Main";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function Home() {
               <Main data={data} />
             </>
           )}
-          {/*<Link href={'/courses'}>courses</Link>*/}
+          <Link href={'/courses'}>courses</Link>
           {/*<br />*/}
           {/*<button onClick={() => viewport.exitFullscreen()}>exitFullscreen()</button>*/}
           {/*<CustomBtn onClick={() => console.log('ff')}>Продолжить</CustomBtn>*/}

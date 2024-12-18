@@ -32,7 +32,7 @@ const NewPerson = () => {
   const handleSubmit = async () => {
     try {
       const response = await useCreateUser(petName, userId);
-      if (!response.ok) {
+      if (response?.ok) {
 
       }
       console.log(response);
