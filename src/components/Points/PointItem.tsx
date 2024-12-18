@@ -1,5 +1,5 @@
 import { Point } from '@/interfaces';
-import { Btn1, Btn1Style } from '@/styles/textTags';
+import { Btn1Style } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
 import styled from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
