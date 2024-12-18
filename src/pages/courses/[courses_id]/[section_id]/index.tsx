@@ -10,8 +10,6 @@ const Index = () => {
   const id = router.query.section_id;
   const { loading, data, error } = useGetAllPoints(id);
 
-  console.log(data, 'datadatadatadata section');
-
   if (!router.isReady) {
     return <div>загрузка</div>;
   }

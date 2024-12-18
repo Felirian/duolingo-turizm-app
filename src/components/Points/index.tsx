@@ -5,27 +5,26 @@ import styled from 'styled-components';
 import PointItem from './PointItem';
 
 const PONTS_COORDS = [
-  { top: '27.71vw', left: '22vw' },
-  { top: '51.71vw', left: '44.5vw' },
-  { top: '84.29vw', left: '32vw' },
-  { top: '116.86vw', left: '23vw' },
-  { top: '143.71vw', left: '44.8vw' },
+  { top: '29.71vw', left: '22vw' },
+  { top: '53.71vw', left: '44.5vw' },
+  { top: '86.29vw', left: '32vw' },
+  { top: '118.86vw', left: '23vw' },
+  { top: '145.71vw', left: '44.8vw' },
 ];
 
 const IMG_COORSDS = [
-  { top: '31.71vw', left: '0' },
-  { top: '76.57vw', left: '61.71vw' },
-  { top: '121.43vw', left: '0' },
+  { top: '32vw', left: '-5vw' },
+  { top: '77vw', left: '57vw' },
+  { top: '122vw', left: '-5vw' },
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
-  console.log(data, ' pointsdata');
   return (
     <PointsWr>
       <PointsTitleBlock>
         <Btn1 data-aos='zoom-in'>{data.section.name}</Btn1>
         <B1 data-aos='zoom-in' data-aos-duration='600'>
-          уровень
+          {`уровень ${data.progress.point + 1}`}
         </B1>
       </PointsTitleBlock>
 
@@ -34,7 +33,12 @@ const Points = ({ data }: { data: PointsData }) => {
         .slice(0, 5)
         .map((point, index) => {
           return (
-            <PointItem key={`${index}-point-item`} data={point} coordinates={PONTS_COORDS[index]} />
+            <PointItem
+              key={`${index}-point-item`}
+              data={point}
+              currentPoint={data.progress.point + 1}
+              coordinates={PONTS_COORDS[index]}
+            />
           );
         })}
 
@@ -42,7 +46,7 @@ const Points = ({ data }: { data: PointsData }) => {
         return (
           <MascotImg
             key={`${index}-point-img`}
-            data-aos={IMG_COORSDS[index].left === '0' ? 'fade-right' : 'fade-left'}
+            data-aos={index % 2 ? 'fade-left' : 'fade-right'}
             src={img}
             style={IMG_COORSDS[index]}
           />
@@ -55,7 +59,7 @@ const Points = ({ data }: { data: PointsData }) => {
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
-  height: 192vw;
+  height: 187vw;
 
   overflow-y: none;
 

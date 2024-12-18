@@ -6,6 +6,7 @@ export const COLORS = {
   textGreen: '#0F8359',
   heavyOrange: '#FF8500',
   mediumOrange: '#fe6d2c',
+  darkOrange: '#FE562C',
 };
 
 const breakpoints = {

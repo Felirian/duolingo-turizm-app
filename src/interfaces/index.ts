@@ -33,7 +33,7 @@ export interface PointsData {
     images: string[];
   };
   points: Point[];
-  progress: null | { point: number };
+  progress: { point: number };
 }
 
 export interface Question {
