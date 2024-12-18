@@ -6,8 +6,6 @@ export const useQuizFunctions = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answered, setAnswered] = useState(false);
 
-  // const location = useLocation();
-  // const currentRoom = location.pathname.split('/')[2];
 
   const nextQuestion = (isCorrect) => {
     setAnswered(false);
