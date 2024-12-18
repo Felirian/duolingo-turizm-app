@@ -2,11 +2,15 @@ import React from 'react';
 import { H1, B2 } from '@/styles/textTags';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
+import {useRouter} from "next/router";
 
 const SectionsCard = ({ data }) => {
+  const router = useRouter();
+  const handlePointClick = () => {
+    router.push(router.asPath +'/'+ data.slug);
+  };
   return (
-    <SectionsCardWr href={`/courses/${data.slug}`}>
+    <SectionsCardWr onClick={handlePointClick}>
       <CardText>
         <H1>{data.name}</H1>
         <B2>{data.descr}</B2>
@@ -24,7 +28,7 @@ const SectionsCard = ({ data }) => {
   );
 };
 
-const SectionsCardWr = styled(Link)`
+const SectionsCardWr = styled.div`
   width: 100%;
   height: 42.857vw;
   border-radius: 3.429vw;
@@ -39,6 +43,11 @@ const ImageWr = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const CardText = styled.div`

@@ -4,13 +4,13 @@ import { Page } from "@/components/Shared/Page";
 import SectionsCard from '@/components/Sections/SectionsCard';
 import { useGetSectionsByCourseSlug } from "@/features/_queries_/_rest_api_";
 import styled from "styled-components";
+import BottomTabs from "@/components/Shared/BottomTabs";
 
 const Index = () => {
   const router = useRouter();
   const slug = router.query.courses_id;
 
   const { data, loading, error } = useGetSectionsByCourseSlug(slug);
-  console.log('sections:',data);
 
   return (
     <Page>
@@ -27,6 +27,7 @@ const Index = () => {
           ))}
         </SectionsCardCon>
       )}
+      <BottomTabs />
     </Page>
   );
 };

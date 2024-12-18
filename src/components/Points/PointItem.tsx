@@ -13,11 +13,9 @@ interface PointItemProps {
 
 const PointItem = ({ data, coordinates }: PointItemProps) => {
   const router = useRouter();
-
-  console.log(data, 'point item data');
-
+  console.log(router);
   const handlePointClick = () => {
-    router.push(data.id!);
+    router.push(router.asPath +'/'+ data.number);
   };
 
   return (

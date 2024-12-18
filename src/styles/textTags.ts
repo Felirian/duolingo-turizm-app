@@ -84,6 +84,10 @@ export const Btn2 = styled.p`
   ${Btn2Style};
 `;
 
+export const Btn3 = styled.p`
+  ${Btn3Style};
+`;
+
 export const B1 = styled.p`
   ${Body1Style};
 `;

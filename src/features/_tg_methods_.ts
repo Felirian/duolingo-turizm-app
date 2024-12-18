@@ -13,6 +13,7 @@ import {SafeAreaInsets} from "@telegram-apps/bridge";
 
 const useTgApp = () => {
   const [dataUser, setDataUser] = useState<User | undefined | null>(null)
+  const [userId, setUserId] = useState(0)
   const isInitData = useSignal(initData.user);
 
   const [safeAreas, setSafeAreas] = useState<SafeAreaInsets | null>(null);
@@ -23,6 +24,7 @@ const useTgApp = () => {
     console.log('isInitData')
     if (initDataG) {
       setDataUser(initDataG)
+      setUserId(initDataG.id)
     } else {
       console.log('initData error');
       setDataUser(null)
@@ -34,6 +36,7 @@ const useTgApp = () => {
   }, [isSafeArea]);
 
   return {
+    userId,
     dataUser,
     safeAreas
   };
