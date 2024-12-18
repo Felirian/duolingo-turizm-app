@@ -187,3 +187,41 @@ export const useGetQuestions = (slug: string | string[] | undefined, point: stri
 
   return result;
 };
+
+export const useGetUser = () => {
+  const [result, setResult] = useState<{
+    loading: boolean;
+    data: null | Point[];
+    error: Error | null;
+  }>({
+    loading: true,
+    data: null,
+    error: null,
+  });
+
+  const {userId} = useTgApp();
+
+  useEffect(() => {
+    const fetchArtistsList = async () => {
+      if (!userId) return;
+      try {
+        const response = await axios.get(BASE_URL + `users?tg_id=${userId}`, CONFIG);
+        setResult({
+          loading: false,
+          data: response.data,
+          error: null,
+        });
+      } catch (error) {
+        setResult({
+          loading: false,
+          data: null,
+          error: error as Error,
+        });
+      }
+    };
+
+    fetchArtistsList();
+  }, [userId]);
+
+  return result;
+};
