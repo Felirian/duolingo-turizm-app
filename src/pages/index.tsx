@@ -19,7 +19,7 @@ export default function Home() {
     error && console.log('navigate')
     error && router.push('/new_person')
   }, [error]);
-
+  console.log(data);
   return (
     <>
       <Head>

@@ -24,11 +24,11 @@ const Points = ({ data }: { data: PointsData }) => {
       <PointsTitleBlock>
         <Btn1 data-aos='zoom-in'>{data.section.name}</Btn1>
         <B1 data-aos='zoom-in' data-aos-duration='600'>
-          {`уровень ${data.progress.point + 1}`}
+          {`уровень ${data.progress?.point + 1}`}
         </B1>
       </PointsTitleBlock>
 
-      {data.points
+      {data?.points
         .sort((a, b) => a.number - b.number)
         .slice(0, 5)
         .map((point, index) => {
@@ -36,7 +36,7 @@ const Points = ({ data }: { data: PointsData }) => {
             <PointItem
               key={`${index}-point-item`}
               data={point}
-              currentPoint={data.progress.point + 1}
+              currentPoint={data.progress?.point + 1}
               coordinates={PONTS_COORDS[index]}
             />
           );
