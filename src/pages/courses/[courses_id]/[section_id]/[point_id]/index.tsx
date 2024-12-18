@@ -12,7 +12,6 @@ const Index = () => {
 
   return (
     <Page>
-      point
       {loading ? <div>загрузка</div> : error ? <div>ошибка</div> : data && <Quiz data={data}/>}
     </Page>
   );
