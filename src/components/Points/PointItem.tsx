@@ -19,8 +19,6 @@ const PointItem = ({ data, coordinates, currentPoint }: PointItemProps) => {
   };
 
   const isLockedPoint = data.number > currentPoint;
-  console.log(data, 'itemdata');
-  console.log(isLockedPoint);
 
   return (
     <PointItemWr
@@ -66,7 +64,8 @@ const PointItemWr = styled.button`
   }
 `;
 
-const PointBtn1 = styled(Btn1)<{ $islocked: boolean }>`
+const PointBtn1 = styled.div<{ $islocked: boolean }>`
+  ${Btn1Style}
   position: relative;
 
   width: 100%;

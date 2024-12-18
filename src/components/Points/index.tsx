@@ -3,6 +3,7 @@ import { B1, Btn1 } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
 import styled from 'styled-components';
 import PointItem from './PointItem';
+import React from 'react';
 
 const PONTS_COORDS = [
   { top: '29.71vw', left: '22vw' },
@@ -22,10 +23,12 @@ const Points = ({ data }: { data: PointsData }) => {
   return (
     <PointsWr>
       <PointsTitleBlock>
-        <Btn1 data-aos='zoom-in'>{data.section.name}</Btn1>
-        <B1 data-aos='zoom-in' data-aos-duration='600'>
-          {`уровень ${data.progress?.point + 1}`}
-        </B1>
+        <div data-aos='zoom-in'>
+          <Btn1>{data.section.name}</Btn1>
+        </div>
+        <div data-aos='zoom-in' data-aos-duration='600'>
+          <B1>{`уровень ${data.progress?.point + 1}`}</B1>
+        </div>
       </PointsTitleBlock>
 
       {data?.points
@@ -33,23 +36,25 @@ const Points = ({ data }: { data: PointsData }) => {
         .slice(0, 5)
         .map((point, index) => {
           return (
-            <PointItem
-              key={`${index}-point-item`}
-              data={point}
-              currentPoint={data.progress?.point + 1}
-              coordinates={PONTS_COORDS[index]}
-            />
+            <React.Fragment key={`${index}-point-item`}>
+              <PointItem
+                data={point}
+                currentPoint={data.progress?.point + 1}
+                coordinates={PONTS_COORDS[index]}
+              />
+            </React.Fragment>
           );
         })}
 
       {data.section.images.slice(0, 3).map((img, index) => {
         return (
-          <MascotImg
+          <div
             key={`${index}-point-img`}
             data-aos={index % 2 ? 'fade-left' : 'fade-right'}
-            src={img}
-            style={IMG_COORSDS[index]}
-          />
+            style={{ position: 'absolute', ...IMG_COORSDS[index] }}
+          >
+            <MascotImg src={img} />
+          </div>
         );
       })}
     </PointsWr>
@@ -62,13 +67,6 @@ const PointsWr = styled.div`
   height: 187vw;
 
   overflow-y: none;
-
-  /* &::-webkit-scrollbar {
-    display: none;
-  }
-
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  */
 `;
 
 const PointsTitleBlock = styled.div`
@@ -88,9 +86,6 @@ const PointsTitleBlock = styled.div`
 `;
 
 const MascotImg = styled.img`
-  position: absolute;
-  z-index: 1;
-
   width: 38.29vw;
   height: 38.29vw;
 
