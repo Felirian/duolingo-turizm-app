@@ -50,9 +50,7 @@ export function Page({ children, back = true }: PropsWithChildren<{ back?: boole
   }, [router]);
 
   return (
-    <PageWr
-      $safeAreas={safeAreas}
-    >
+    <PageWr $safeAreas={safeAreas}>
       {/*{router.route}*/}
       {/*<br/>*/}
       {/*{safeAreas?.top}*/}
@@ -72,4 +70,12 @@ const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
 
   background: linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%);
   overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;

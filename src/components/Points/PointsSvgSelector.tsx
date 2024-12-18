@@ -24,42 +24,42 @@ const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
             d='M40.5 6L13.5009 42.5C6.00019 37 6.62154 27 9.00103 22C14.712 9.99967 32 6 40.5 6Z'
             fill='#FF9B1F'
           />
-          <defs>
-            <filter
-              id='filter0_d_171_1199'
-              x='0'
-              y='0'
-              width='79'
-              height='67'
-              filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
-            >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
-              <feColorMatrix
-                in='SourceAlpha'
-                type='matrix'
-                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                result='hardAlpha'
-              />
-              <feOffset dy='5' />
-              <feComposite in2='hardAlpha' operator='out' />
-              <feColorMatrix
-                type='matrix'
-                values='0 0 0 0 0.996078 0 0 0 0 0.427451 0 0 0 0 0.172549 0 0 0 1 0'
-              />
-              <feBlend
-                mode='normal'
-                in2='BackgroundImageFix'
-                result='effect1_dropShadow_171_1199'
-              />
-              <feBlend
-                mode='normal'
-                in='SourceGraphic'
-                in2='effect1_dropShadow_171_1199'
-                result='shape'
-              />
-            </filter>
-          </defs>
+        </svg>
+      );
+    case 'cloud':
+      return (
+        <svg
+          width='73'
+          height='36'
+          viewBox='0 0 73 36'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            fillRule='evenodd'
+            clipRule='evenodd'
+            d='M10 0C4.47715 0 0 4.47715 0 10V21C0 26.5228 4.47715 31 10 31H33.3246L36.5 36L39.6754 31H63C68.5229 31 73 26.5228 73 21V10C73 4.47715 68.5229 0 63 0H10Z'
+            fill='white'
+          />
+        </svg>
+      );
+
+    case 'locked':
+      return (
+        <svg
+          width='26'
+          height='33'
+          viewBox='0 0 26 33'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            fillRule='evenodd'
+            clipRule='evenodd'
+            d='M26 27.7791C26 30.6358 23.6717 33 20.8582 33H5.23877C2.32832 33 0 30.6358 0 27.7791C0 27.7791 0.582066 13.0029 0.582066 12.6089C1.06714 5.51635 6.49997 0 13 0C19.597 0 25.0299 5.61495 25.5149 12.7075C25.5149 13.003 26 27.7791 26 27.7791ZM17.1716 20.8835C17.1716 18.6179 15.3283 16.7463 13 16.7463C10.7686 16.7463 8.82834 18.6179 8.82834 20.8835C8.82834 22.4597 9.70149 23.8388 10.9627 24.5284C10.9627 24.5941 10.9627 24.6925 10.9627 24.8238V27.5821C10.9627 28.5672 11.7388 29.3552 12.7089 29.3552H13.3881C14.3582 29.3552 15.1343 28.5672 15.1343 27.5821V24.8238C15.1343 24.6925 15.102 24.5941 15.0373 24.5284C16.2985 23.8388 17.1716 22.4597 17.1716 20.8835ZM19.9851 10.8358C18.9179 6.40299 16.2985 4.82687 13 4.92537C9.89549 4.92537 7.08205 6.40299 6.01488 10.8358C5.82085 11.7224 6.49998 12.5104 7.37311 12.5104C10.7686 12.5104 14.9403 12.5104 18.6268 12.5104C19.5 12.5104 20.1791 11.7224 19.9851 10.8358Z'
+            fill='white'
+            fillOpacity='0.6'
+          />
         </svg>
       );
 

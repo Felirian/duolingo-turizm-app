@@ -27,6 +27,15 @@ export interface Point {
   money: number;
 }
 
+export interface PointsData {
+  section: {
+    name: string;
+    images: string[];
+  };
+  points: Point[];
+  progress: { point: number };
+}
+
 export interface Question {
   id?: string;
   text: string;
@@ -43,6 +52,6 @@ export interface Answer {
 }
 
 export interface useGetQueryProps {
-  endPoint: string,
-  options: any,
+  endPoint: string;
+  options: any;
 }

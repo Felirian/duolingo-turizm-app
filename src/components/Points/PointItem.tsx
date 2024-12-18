@@ -1,7 +1,6 @@
 import { Point } from '@/interfaces';
-import { Btn1 } from '@/styles/textTags';
+import { Btn1, Btn1Style } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
-import React from 'react';
 import styled from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
 import { useRouter } from 'next/router';
@@ -9,20 +8,37 @@ import { useRouter } from 'next/router';
 interface PointItemProps {
   data: Point;
   coordinates: { top: string; left: string };
+  currentPoint: number;
 }
 
-const PointItem = ({ data, coordinates }: PointItemProps) => {
+const PointItem = ({ data, coordinates, currentPoint }: PointItemProps) => {
   const router = useRouter();
-  console.log(router);
+
   const handlePointClick = () => {
-    router.push(router.asPath +'/'+ data.number);
+    router.push(router.asPath + '/' + data.number);
   };
 
+  const isLockedPoint = data.number > currentPoint;
+
   return (
-    <PointItemWr style={coordinates} onClick={handlePointClick}>
+    <PointItemWr
+      style={coordinates}
+      onClick={handlePointClick}
+      data-aos='flip-right'
+      data-aos-delay={data.number * 100}
+      data-aos-duration='700'
+      disabled={isLockedPoint}
+    >
       <PointBtn1>
-        <span> {data.number}</span>
+        <span>{isLockedPoint ? <PointsSvgSelector name='locked' /> : data.number}</span>
         <PointsSvgSelector name='point' />
+
+        {currentPoint === data.number && (
+          <CurrentPointCloud data-aos='fade-down' data-aos-delay='700' data-aos-duration='400'>
+            <span>Начать</span>
+            <PointsSvgSelector name='cloud' />
+          </CurrentPointCloud>
+        )}
       </PointBtn1>
     </PointItemWr>
   );
@@ -30,16 +46,26 @@ const PointItem = ({ data, coordinates }: PointItemProps) => {
 
 const PointItemWr = styled.button`
   position: absolute;
-  width: 22.57vw;
-  height: 19.14vw;
-  svg {
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-  }
+  width: 23vw;
+  height: 20vw;
+
+  z-index: 2;
+
   &:active {
     svg {
       ellipse {
         transition: 0.2s;
         fill: ${COLORS.heavyOrange};
+      }
+    }
+  }
+
+  &:disabled {
+    svg {
+      ellipse {
+        fill: ${COLORS.mediumOrange};
+        filter: drop-shadow(0px 1.7vw 0px ${COLORS.heavyOrange})
+          drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
       }
     }
   }
@@ -55,19 +81,65 @@ const PointBtn1 = styled(Btn1)`
   justify-content: center;
   align-items: center;
 
-  span {
+  & > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1;
     color: ${COLORS.white};
     font-size: 11.14vw;
     font-weight: inherit;
     font-family: inherit;
+
+    svg {
+      width: 7.43vw;
+      height: 9.43vw;
+    }
   }
+
+  & > svg {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    z-index: 0;
+
+    filter: drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange})
+      drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
+  }
+`;
+
+const CurrentPointCloud = styled.div`
+  position: absolute;
+
+  top: -60%;
+  left: 5%;
+
+  width: 20.86vw;
+  height: 10.29vw;
 
   svg {
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+  }
+
+  span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 1vw;
+
+    ${Btn1Style};
+    font-size: 4.57vw;
+    color: ${COLORS.textGreen};
+    z-index: 2;
   }
 `;
 

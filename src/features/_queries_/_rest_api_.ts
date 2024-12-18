@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL, CONFIG } from './config';
-import { Course, Point, Section } from '@/interfaces';
-import useTgApp from "@/features/_tg_methods_";
+import { Course, Point, PointsData, Section } from '@/interfaces';
+import useTgApp from '@/features/_tg_methods_';
 
 export const useGetQuery = (endPoint: string) => {
   const [result, setResult] = useState<{
@@ -85,7 +85,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
     error: null,
   });
 
-  const {userId} = useTgApp();
+  const { userId } = useTgApp();
 
   useEffect(() => {
     const fetchSections = async () => {
@@ -119,7 +119,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
 export const useGetAllPoints = (slug: string | string[] | undefined) => {
   const [result, setResult] = useState<{
     loading: boolean;
-    data: null | Point[];
+    data: null | PointsData;
     error: Error | null;
   }>({
     loading: true,
@@ -127,11 +127,18 @@ export const useGetAllPoints = (slug: string | string[] | undefined) => {
     error: null,
   });
 
+  const { userId } = useTgApp();
+
+  // console.log(userId, 'user');
+
   useEffect(() => {
     const fetchArtistsList = async () => {
       if (!slug) return;
       try {
-        const response = await axios.get(BASE_URL + `points/front?section_slug=${slug}`, CONFIG);
+        const response = await axios.get(
+          BASE_URL + 'points/front?section_slug=' + slug + '&tg_id=' + userId,
+          CONFIG
+        );
         setResult({
           loading: false,
           data: response.data,
@@ -152,7 +159,10 @@ export const useGetAllPoints = (slug: string | string[] | undefined) => {
   return result;
 };
 
-export const useGetQuestions = (slug: string | string[] | undefined, point: string | string[] | undefined) => {
+export const useGetQuestions = (
+  slug: string | string[] | undefined,
+  point: string | string[] | undefined
+) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | Point[];
@@ -167,7 +177,10 @@ export const useGetQuestions = (slug: string | string[] | undefined, point: stri
     const fetchArtistsList = async () => {
       if (!slug) return;
       try {
-        const response = await axios.get(BASE_URL + `questions?section_slug=${slug}&point=${point}`, CONFIG);
+        const response = await axios.get(
+          BASE_URL + `questions?section_slug=${slug}&point=${point}`,
+          CONFIG
+        );
         setResult({
           loading: false,
           data: response.data,

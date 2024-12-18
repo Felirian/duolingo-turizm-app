@@ -1,22 +1,36 @@
-import type {AppProps} from "next/app";
-import GlobalStyles from "@/styles/globalStyles";
-import {tgInit} from "@/features/_tg_methods_";
-import {useDidMount} from "@/features/_index_";
-import {useSukaOdinRaz} from "@/features/useSukaOdinRaz";
-import {Provider} from "react-redux";
-import store from "@/features/redux";
+import type { AppProps } from 'next/app';
+import GlobalStyles from '@/styles/globalStyles';
+import { tgInit } from '@/features/_tg_methods_';
+import { useDidMount } from '@/features/_index_';
+import { useSukaOdinRaz } from '@/features/useSukaOdinRaz';
+import { Provider } from 'react-redux';
+import store from '@/features/redux';
+import { useEffect } from 'react';
 
-export default function App({Component, pageProps}: AppProps) {
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+export default function App({ Component, pageProps }: AppProps) {
   const didMount = useDidMount();
 
   useSukaOdinRaz(() => {
-    tgInit(true)
+    tgInit(true);
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 400,
+      offset: -9999,
+      easing: 'ease',
+      delay: 50,
+    });
   }, []);
 
   return (
     <Provider store={store}>
-      <GlobalStyles/>
+      <GlobalStyles />
       {didMount && <Component {...pageProps} />}
     </Provider>
-  )
+  );
 }
