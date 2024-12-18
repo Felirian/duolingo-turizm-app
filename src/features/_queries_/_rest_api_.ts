@@ -151,3 +151,39 @@ export const useGetAllPoints = (slug: string | string[] | undefined) => {
 
   return result;
 };
+
+export const useGetQuestions = (slug: string | string[] | undefined, point: string | string[] | undefined) => {
+  const [result, setResult] = useState<{
+    loading: boolean;
+    data: null | Point[];
+    error: Error | null;
+  }>({
+    loading: true,
+    data: null,
+    error: null,
+  });
+
+  useEffect(() => {
+    const fetchArtistsList = async () => {
+      if (!slug) return;
+      try {
+        const response = await axios.get(BASE_URL + `questions?section_slug=${slug}&point=${point}`, CONFIG);
+        setResult({
+          loading: false,
+          data: response.data,
+          error: null,
+        });
+      } catch (error) {
+        setResult({
+          loading: false,
+          data: null,
+          error: error as Error,
+        });
+      }
+    };
+
+    fetchArtistsList();
+  }, [slug]);
+
+  return result;
+};
