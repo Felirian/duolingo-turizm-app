@@ -22,9 +22,9 @@ const PointItem = ({ data, coordinates }: PointItemProps) => {
     <PointItemWr
       style={coordinates}
       onClick={handlePointClick}
-      data-aos='flip-up'
+      data-aos='flip-right'
       data-aos-delay={data.number * 100}
-      data-aos-duration='1000'
+      data-aos-duration='700'
     >
       <PointBtn1>
         <span>{data.number}</span>

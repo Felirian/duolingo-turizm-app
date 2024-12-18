@@ -23,13 +23,14 @@ const Points = ({ data }: { data: PointsData }) => {
   return (
     <PointsWr>
       <PointsTitleBlock>
-        <Btn1 data-aos='zoom-in'>{data[0]['Section name']}</Btn1>
+        <Btn1 data-aos='zoom-in'>{data.section.name}</Btn1>
         <B1 data-aos='zoom-in' data-aos-duration='600'>
           уровень
         </B1>
       </PointsTitleBlock>
 
-      {data[2].Points.sort((a, b) => a.number - b.number)
+      {data.points
+        .sort((a, b) => a.number - b.number)
         .slice(0, 5)
         .map((point, index) => {
           return (
@@ -37,7 +38,7 @@ const Points = ({ data }: { data: PointsData }) => {
           );
         })}
 
-      {data[1]['Section images'].slice(0, 3).map((img, index) => {
+      {data.section.images.slice(0, 3).map((img, index) => {
         return (
           <MascotImg
             key={`${index}-point-img`}

@@ -27,17 +27,14 @@ export interface Point {
   money: number;
 }
 
-export type PointsData = [
-  {
-    'Section name': string;
-  },
-  {
-    'Section images': string[];
-  },
-  {
-    Points: Point[];
-  }
-];
+export interface PointsData {
+  section: {
+    name: string;
+    images: string[];
+  };
+  points: Point[];
+  progress: null | { point: number };
+}
 
 export interface Question {
   id?: string;
