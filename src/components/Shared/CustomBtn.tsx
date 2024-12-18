@@ -56,6 +56,12 @@ const CustomBtnWr = styled.button.attrs<React.ButtonHTMLAttributes<HTMLButtonEle
       opacity: 0;
     }
   }
+
+  &:disabled {
+    opacity: 0.5; 
+    cursor: not-allowed; 
+    background-color: #02c77f; 
+  }
 `;
 
 const TextCon = styled(Btn1)`

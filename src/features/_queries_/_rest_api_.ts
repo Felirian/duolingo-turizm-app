@@ -187,3 +187,32 @@ export const useGetQuestions = (slug: string | string[] | undefined, point: stri
 
   return result;
 };
+
+
+export const useCreateUser = async (petName: string) => {
+  if (!petName.trim()) return; // Если имя пустое, ничего не делаем
+
+  const data = {
+    id: '8',
+    character: petName,
+    // xp: 0,
+  };
+
+  try {
+    const response = await fetch('https://kvaks-backend.pushkeen.ru/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      console.log('Данные успешно отправлены');
+    } else {
+      console.error('Ошибка при отправке данных');
+    }
+  } catch (error) {
+    console.error('Ошибка сети:', error);
+  }
+};
