@@ -7,6 +7,9 @@ export const COLORS = {
   heavyOrange: '#FF8500',
   mediumOrange: '#fe6d2c',
   darkOrange: '#FE562C',
+  lightOrange: '#FF7B40',
+  softOrange: '#FF9B1F',
+  orange: '#FF8F04',
 };
 
 const breakpoints = {
