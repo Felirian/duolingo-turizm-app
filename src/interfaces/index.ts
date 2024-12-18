@@ -27,6 +27,18 @@ export interface Point {
   money: number;
 }
 
+export type PointsData = [
+  {
+    'Section name': string;
+  },
+  {
+    'Section images': string[];
+  },
+  {
+    Points: Point[];
+  }
+];
+
 export interface Question {
   id?: string;
   text: string;
@@ -43,6 +55,6 @@ export interface Answer {
 }
 
 export interface useGetQueryProps {
-  endPoint: string,
-  options: any,
+  endPoint: string;
+  options: any;
 }

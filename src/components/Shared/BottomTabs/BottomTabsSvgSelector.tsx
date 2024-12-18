@@ -16,8 +16,8 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
           <g id='Frame 10128'>
             <g id='Path 17' filter='url(#filter0_d_6001_165)'>
               <path
-                fill-rule='evenodd'
-                clip-rule='evenodd'
+                fillRule='evenodd'
+                clipRule='evenodd'
                 d='M10.3631 2.93586C8.50321 1.68436 6 3.01713 6 5.25892L6 26.7952C6 29.026 8.48157 30.361 10.3431 29.1316L26.4953 18.4638C28.1625 17.3627 28.173 14.9198 26.5153 13.8043L10.3631 2.93586Z'
                 fill='white'
               />
@@ -31,9 +31,9 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               width='22.752'
               height='29.1458'
               filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
+              colorInterpolationFilters='sRGB'
             >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feFlood floodOpacity='0' result='BackgroundImageFix' />
               <feColorMatrix
                 in='SourceAlpha'
                 type='matrix'
@@ -83,9 +83,9 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               width='26.334'
               height='28.6667'
               filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
+              colorInterpolationFilters='sRGB'
             >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feFlood floodOpacity='0' result='BackgroundImageFix' />
               <feColorMatrix
                 in='SourceAlpha'
                 type='matrix'
@@ -145,9 +145,9 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               width='26.5996'
               height='7.51514'
               filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
+              colorInterpolationFilters='sRGB'
             >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feFlood floodOpacity='0' result='BackgroundImageFix' />
               <feColorMatrix
                 in='SourceAlpha'
                 type='matrix'
@@ -176,9 +176,9 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               width='33'
               height='7.51514'
               filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
+              colorInterpolationFilters='sRGB'
             >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feFlood floodOpacity='0' result='BackgroundImageFix' />
               <feColorMatrix
                 in='SourceAlpha'
                 type='matrix'
@@ -207,9 +207,9 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
               width='26.5996'
               height='7.51514'
               filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
+              colorInterpolationFilters='sRGB'
             >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feFlood floodOpacity='0' result='BackgroundImageFix' />
               <feColorMatrix
                 in='SourceAlpha'
                 type='matrix'

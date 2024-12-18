@@ -7,8 +7,10 @@ import BottomTabs from '@/components/Shared/BottomTabs';
 
 const Index = () => {
   const router = useRouter();
-  const id= router.query.section_id;
+  const id = router.query.section_id;
   const { loading, data, error } = useGetAllPoints(id);
+
+  console.log(id, 'sectionId');
 
   if (!router.isReady) {
     return <div>загрузка</div>;

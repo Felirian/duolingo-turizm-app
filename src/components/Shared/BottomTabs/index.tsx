@@ -29,7 +29,7 @@ const BottomTabs = () => {
   };
 
   return (
-    <BottomTabsWr>
+    <BottomTabsWr data-aos='fade-up'>
       {TAB_BUTTONS.map((button, index) => {
         return (
           <CustomBtn

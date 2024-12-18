@@ -1,7 +1,7 @@
 import { Point } from '@/interfaces';
 import { Btn1 } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
 import { useRouter } from 'next/router';
@@ -13,15 +13,21 @@ interface PointItemProps {
 
 const PointItem = ({ data, coordinates }: PointItemProps) => {
   const router = useRouter();
-  console.log(router);
+
   const handlePointClick = () => {
-    router.push(router.asPath +'/'+ data.number);
+    router.push(router.asPath + '/' + data.number);
   };
 
   return (
-    <PointItemWr style={coordinates} onClick={handlePointClick}>
+    <PointItemWr
+      style={coordinates}
+      onClick={handlePointClick}
+      data-aos='flip-up'
+      data-aos-delay={data.number * 100}
+      data-aos-duration='1000'
+    >
       <PointBtn1>
-        <span> {data.number}</span>
+        <span>{data.number}</span>
         <PointsSvgSelector name='point' />
       </PointBtn1>
     </PointItemWr>
@@ -30,11 +36,11 @@ const PointItem = ({ data, coordinates }: PointItemProps) => {
 
 const PointItemWr = styled.button`
   position: absolute;
-  width: 22.57vw;
-  height: 19.14vw;
-  svg {
-    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-  }
+  width: 23vw;
+  height: 20vw;
+
+  z-index: 2;
+
   &:active {
     svg {
       ellipse {
@@ -65,9 +71,12 @@ const PointBtn1 = styled(Btn1)`
 
   svg {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 99%;
     z-index: 0;
+
+    filter: drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange})
+      drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
   }
 `;
 
