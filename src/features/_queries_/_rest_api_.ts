@@ -239,13 +239,11 @@ export const useGetUser = () => {
   return result;
 };
 
-export const useCreateUser = async (petName: string) => {
-  if (!petName.trim()) return; // Если имя пустое, ничего не делаем
-  const {userId} = useTgApp();
+export const useCreateUser = async (petName: string, userId: number) => {
+
   const data = {
-    id: userId,
+    id: userId.toString(),
     character: petName,
-    // xp: 0,
   };
 
   try {
@@ -258,6 +256,7 @@ export const useCreateUser = async (petName: string) => {
     });
 
     if (response.ok) {
+      return response
       console.log('Данные успешно отправлены');
     } else {
       console.error('Ошибка при отправке данных');

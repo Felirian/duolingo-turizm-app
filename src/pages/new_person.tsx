@@ -17,8 +17,8 @@ import { useRouter } from 'next/router';
 const NewPerson = () => {
   const [petName, setPetName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
-  const [isUserCreated, setIsUserCreated] = useState(false); 
-  const { dataUser } = useTgApp(); 
+  const [isUserCreated, setIsUserCreated] = useState(false);
+  const {userId} = useTgApp();
   const router = useRouter(); 
 
   // Обработчик изменения значения инпута
@@ -31,10 +31,11 @@ const NewPerson = () => {
   // Обработчик отправки данных на сервер
   const handleSubmit = async () => {
     try {
-      const response = await useCreateUser(petName);
-      if (response && response.status === 200) {
-        setIsUserCreated(true); 
+      const response = await useCreateUser(petName, userId);
+      if (!response.ok) {
+
       }
+      console.log(response);
     } catch (error) {
       console.error('Ошибка при создании пользователя:', error);
     }
@@ -57,7 +58,7 @@ const NewPerson = () => {
             />
           )}
           <CustomBtn
-            onClick={isUserCreated ? () => router.push('/') : handleSubmit}
+            onClick={handleSubmit}
             disabled={isDisabled && !isUserCreated}
           >
             {isUserCreated ? 'К доступным курсам' : 'Продолжить'}
