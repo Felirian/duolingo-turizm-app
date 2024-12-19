@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useQuizFunctions} from "@/features/_quiz_";
 import EndPage from "@/components/Questions/EndPage";
 import QuestionPage from "@/components/Questions/QuestionPage";

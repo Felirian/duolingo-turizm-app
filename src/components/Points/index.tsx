@@ -20,6 +20,7 @@ const IMG_COORSDS = [
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
+  console.log(data.progress);
   return (
     <PointsWr>
       <PointsTitleBlock>
@@ -27,7 +28,7 @@ const Points = ({ data }: { data: PointsData }) => {
           <Btn1>{data.section.name}</Btn1>
         </div>
         <div data-aos='zoom-in' data-aos-duration='600'>
-          <B1>{`уровень ${data.progress?.point + 1}`}</B1>
+          <B1>{`уровень ${(data.progress?.point + 1) | 1}`}</B1>
         </div>
       </PointsTitleBlock>
 
