@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const H1Style = css`
   font-family: Montserrat;
-  font-size: 7.22vw;
+  font-size: 7.14vw;
   font-style: normal;
   font-weight: 700;
   line-height: 135%; /* 35.1px */
@@ -18,7 +18,7 @@ export const H2Style = css`
 
 export const H3Style = css`
   font-family: Montserrat;
-  font-size: 5.28vw;
+  font-size: 5.14vw;
   font-style: normal;
   font-weight: 700;
   line-height: 125.011%; /* 23.752px */

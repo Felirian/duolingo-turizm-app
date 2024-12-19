@@ -11,6 +11,9 @@ export const COLORS = {
   softOrange: '#FF9B1F',
   orange: '#FF8F04',
   bubbleGreen: '#A6D881',
+  seaGreen: '#02C77F',
+  red: '#EF3349',
+  textGray: '#272727',
 };
 
 const breakpoints = {

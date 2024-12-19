@@ -34,6 +34,7 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   }
 
   const currentQuestion = questions[currentIndex];
+  console.log(currentQuestion);
   const isFinished = currentIndex >= questions.length;
   // const isFinished = true;
 
