@@ -273,7 +273,7 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
   };
   console.log(point);
 
-  const METHOD = point == '1' ? 'POST' : 'PUT'
+  const METHOD: string = point == '1' ? 'POST' : 'PUT'
 
   try {
     const response = await fetch(BASE_URL + 'progress', {
