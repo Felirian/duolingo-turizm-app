@@ -23,7 +23,6 @@ const LevelWr = styled.div`
   top: 0;
   left: 0;
   z-index: 3;
-  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,11 +48,12 @@ const LevelWr = styled.div`
 
     z-index: -1;
   }
+  
 `
 
 const FrameParentRoot = styled.div`
-  width: 100%;
-  height: 9.44vw;
+  width: 50%;
+  height: 8.33vw;
   position: relative;
   border-radius: 3.31vw;
   background-color: #167351;
@@ -109,7 +109,7 @@ const PercentLine = styled.div<{ $percent }>`
 const PercentBlock = styled(Btn1)`
   color: #FFF;  
   font-family: Nunito;
-  font-size: 5.56vw;
+  font-size: 3.89vw;
   font-style: normal;
   font-weight: 800;
   line-height: normal;

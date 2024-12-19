@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import Main from "@/components/Main";
 import Link from "next/link";
+import BottomTabs from "@/components/Shared/BottomTabs";
 
 export default function Home() {
   const router = useRouter();
@@ -40,7 +41,7 @@ export default function Home() {
           {/*<button onClick={() => viewport.exitFullscreen()}>exitFullscreen()</button>*/}
           {/*<CustomBtn onClick={() => console.log('ff')}>Продолжить</CustomBtn>*/}
           {/*<ProgressBurSection percent={50} />*/}
-          {/*<BottomTabs />*/}
+          <BottomTabs />
         </main>
       </Page>
     </>
