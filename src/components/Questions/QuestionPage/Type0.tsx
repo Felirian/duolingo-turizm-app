@@ -1,38 +1,39 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Btn3, H3 } from '@/styles/textTags';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 
-const Type0 = ({ data , setIsCorrect}) => {
+const Type0 = ({ data, setIsCorrect }) => {
   // Состояние для отслеживания выбранных индексов
-  const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
+  const [selectedIndexes, setSelectedIndexes] = useState([]);
 
   useEffect(() => {
-    setIsCorrect(JSON.stringify(data.true_type0) === JSON.stringify(selectedIndexes))
-  }, [selectedIndexes]);
+    // Сортируем выбранные индексы по возрастанию
+    const sortedSelectedIndexes = [...selectedIndexes].sort((a, b) => a - b);
+    setIsCorrect(JSON.stringify(data.true_type0) === JSON.stringify(sortedSelectedIndexes));
+  }, [selectedIndexes, data.true_type0, setIsCorrect]);
 
   useEffect(() => {
-    setSelectedIndexes([])
+    setSelectedIndexes([]);
   }, [data]);
 
-
   // Обработчик клика на кнопку
-  const handleButtonClick = (index: number) => {
-    if (data.true_type0.length > 1) {
-      // Множественный выбор
-      setSelectedIndexes((prevIndexes) => {
+  const handleButtonClick = (index) => {
+    setSelectedIndexes((prevIndexes) => {
+      if (data.true_type0.length === 1) {
+        // Если длина true_type0 равна 1, то можно выбрать только один ответ
+        return prevIndexes.includes(index) ? [] : [index];
+      } else {
+        // Если длина true_type0 больше 1, то можно выбрать несколько ответов
         if (prevIndexes.includes(index)) {
-          // Если кнопка уже выбрана, удаляем ее из списка
+          // Если кнопка уже выбрана, удаляем её из списка
           return prevIndexes.filter((i) => i !== index);
         } else {
-          // Если кнопка не выбрана, добавляем ее в список
+          // Если кнопка не выбрана, добавляем её в список
           return [...prevIndexes, index];
         }
-      });
-    } else {
-      // Одиночный выбор
-      setSelectedIndexes([index]);
-    }
+      }
+    });
   };
 
   return (
