@@ -171,39 +171,6 @@ const SvgSelector = ({ svg }) => {
               fill='#02C77F'
             />
           </g>
-          <defs>
-            <filter
-              id='filter0_d_4193_345'
-              x='0.720703'
-              y='0.662842'
-              width='33.5586'
-              height='29.6743'
-              filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
-            >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
-              <feColorMatrix
-                in='SourceAlpha'
-                type='matrix'
-                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                result='hardAlpha'
-              />
-              <feOffset dx='1' dy='2' />
-              <feComposite in2='hardAlpha' operator='out' />
-              <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
-              <feBlend
-                mode='normal'
-                in2='BackgroundImageFix'
-                result='effect1_dropShadow_4193_345'
-              />
-              <feBlend
-                mode='normal'
-                in='SourceGraphic'
-                in2='effect1_dropShadow_4193_345'
-                result='shape'
-              />
-            </filter>
-          </defs>
         </svg>
       );
     case 'cross':
@@ -223,39 +190,7 @@ const SvgSelector = ({ svg }) => {
               fill='#EF3349'
             />
           </g>
-          <defs>
-            <filter
-              id='filter0_d_4193_538'
-              x='0.162109'
-              y='0.662842'
-              width='28.6738'
-              height='29.6743'
-              filterUnits='userSpaceOnUse'
-              color-interpolation-filters='sRGB'
-            >
-              <feFlood flood-opacity='0' result='BackgroundImageFix' />
-              <feColorMatrix
-                in='SourceAlpha'
-                type='matrix'
-                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-                result='hardAlpha'
-              />
-              <feOffset dx='1' dy='2' />
-              <feComposite in2='hardAlpha' operator='out' />
-              <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
-              <feBlend
-                mode='normal'
-                in2='BackgroundImageFix'
-                result='effect1_dropShadow_4193_538'
-              />
-              <feBlend
-                mode='normal'
-                in='SourceGraphic'
-                in2='effect1_dropShadow_4193_538'
-                result='shape'
-              />
-            </filter>
-          </defs>
+         
         </svg>
       );
     default:
