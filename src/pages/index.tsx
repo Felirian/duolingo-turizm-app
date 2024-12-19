@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     if (error) {
       console.log(error);
-      router.push('/new_person');
+      //router.push('/new_person');
     }
   }, [error]);
 
