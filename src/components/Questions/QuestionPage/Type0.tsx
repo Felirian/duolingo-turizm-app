@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { SelectorButton } from '@/components/Shared/SelectorBtn';
-
-const Type0 = ({ data, setIsCorrect }) => {
+import {SelectorButton} from '@/components/Shared/SelectorBtn';
+// eslint-disable-next-line
+const Type0 = ({data, setIsCorrect}: any) => {
   // Состояние для отслеживания выбранных индексов
   const [selectedIndexes, setSelectedIndexes] = useState([]);
 
@@ -16,9 +16,10 @@ const Type0 = ({ data, setIsCorrect }) => {
     setSelectedIndexes([]);
   }, [data]);
 
-  // Обработчик клика на кнопку
-  const handleButtonClick = (index) => {
-    setSelectedIndexes((prevIndexes) => {
+  // eslint-disable-next-line
+  const handleButtonClick = (index: any) => {
+    // eslint-disable-next-line
+    setSelectedIndexes((prevIndexes: any[]): any => {
       if (data.true_type0.length === 1) {
         // Если длина true_type0 равна 1, то можно выбрать только один ответ
         return prevIndexes.includes(index) ? [] : [index];
@@ -37,15 +38,17 @@ const Type0 = ({ data, setIsCorrect }) => {
 
   return (
     <SelectorWr>
-      {data.cont_type0.map((answer, i) => (
-        <SelectorButton
-          key={i}
-          isPressed={selectedIndexes.includes(i)} // Проверяем, выбрана ли кнопка
-          onClick={() => handleButtonClick(i)} // Обработчик клика
-        >
-          {answer}
-        </SelectorButton>
-      ))}
+      {
+        // eslint-disable-next-line
+        data.cont_type0.map((answer: any, i: never): any => (
+          <SelectorButton
+            key={i}
+            isPressed={selectedIndexes.includes(i)} // Проверяем, выбрана ли кнопка
+            onClick={() => handleButtonClick(i)} // Обработчик клика
+          >
+            {answer}
+          </SelectorButton>
+        ))}
     </SelectorWr>
   );
 };

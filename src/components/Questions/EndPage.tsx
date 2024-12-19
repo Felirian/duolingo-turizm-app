@@ -10,6 +10,7 @@ import frogImg from '@/assets/img/frog.png';
 import { useRouter } from 'next/router';
 
 interface EndPageProps {
+  // eslint-disable-next-line
   QuizFunc: any;
 }
 

@@ -3,8 +3,8 @@ import { H1, B2 } from '@/styles/textTags';
 import styled from 'styled-components';
 import Link from 'next/link';
 import SvgSelector from '../Shared/SvgSelector';
-
-const CoursesCard = ({ data }) => {
+// eslint-disable-next-line
+const CoursesCard = ({ data }: any) => {
   return (
     <CoursesCardWr href={`/courses/${data.slug}`}>
       <CardText>

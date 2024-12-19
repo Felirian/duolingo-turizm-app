@@ -2,9 +2,8 @@ import React from 'react';
 import { useQuizFunctions } from '@/features/_quiz_';
 import EndPage from '@/components/Questions/EndPage';
 import QuestionPage from '@/components/Questions/QuestionPage';
-import StartPage from '@/components/Questions/StartPage';
-
-const Quiz = ({ data }) => {
+// eslint-disable-next-line
+const Quiz = ({ data }: any) => {
   const QuizFunc = useQuizFunctions({ initialQuestions: data });
   return (
     <>

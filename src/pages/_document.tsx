@@ -32,7 +32,8 @@ class MyDocument extends Document {
       <Html lang="ru">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
+          {/*//@ts-ignore*/}
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='true'/>
           <link
             href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
             rel="stylesheet"/>

@@ -76,10 +76,11 @@ const PageWr = styled.div<{
   $navBar: boolean | undefined,
 
 }>`
-  padding-top: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.top}px;
-  padding-left: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.left}px;
-  padding-right: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.right}px;
-  padding-bottom: ${({$safeAreas, $navBar}: SafeAreaInsets | null) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
+  // eslint-disable-next-line 
+  padding-top: ${({$safeAreas}: any) => 20 + $safeAreas?.top}px; // eslint-disable-line no-explicit-any
+  padding-left: ${({$safeAreas}: any) => 20 + $safeAreas?.left}px;
+  padding-right: ${({$safeAreas}: any) => 20 + $safeAreas?.right}px;
+  padding-bottom: ${({$safeAreas, $navBar}: any) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
   
   width: 100vw;
   height: 100vh;

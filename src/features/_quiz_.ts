@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Question } from '@/interfaces';
 
-export const useQuizFunctions = ({ initialQuestions }) => {
+export const useQuizFunctions = ({ initialQuestions }: any) => {
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHintOpen, setIsHintOpen] = useState(false);
@@ -15,7 +15,7 @@ export const useQuizFunctions = ({ initialQuestions }) => {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  const giveAnswers = (isCorrect) => {
+  const giveAnswers = (isCorrect: any) => {
     console.log(isCorrect);
     setIsHintOpen(true);
     if (!isCorrect) {

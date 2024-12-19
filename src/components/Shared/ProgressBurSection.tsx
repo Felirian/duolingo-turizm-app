@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Btn1} from "@/styles/textTags";
 
-export const ProgressBurSection = ({percent}) => {
+export const ProgressBurSection = ({percent}: any) => {
   return (
     <FrameParentRoot>
       <PercentLine $percent={percent}/>
@@ -39,7 +39,7 @@ const FrameParentRoot = styled.div`
   }
 `;
 
-const PercentLine = styled.div<{ $percent }>`
+const PercentLine = styled.div<{ $percent: any }>`
   width: ${({$percent}) => $percent}%;
   height: 100%;
   position: absolute;

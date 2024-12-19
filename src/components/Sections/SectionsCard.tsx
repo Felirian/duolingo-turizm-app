@@ -2,8 +2,8 @@ import React from 'react';
 import { H1, B2 } from '@/styles/textTags';
 import styled from 'styled-components';
 import {useRouter} from "next/router";
-
-const SectionsCard = ({ data }) => {
+// eslint-disable-next-line
+const SectionsCard = ({ data }: any) => {
   const router = useRouter();
   const handlePointClick = () => {
     router.push(router.asPath +'/'+ data.slug);
@@ -18,9 +18,6 @@ const SectionsCard = ({ data }) => {
         <img
           src={data.bgimage}
           alt={data.name}
-          layout="fill"
-          objectFit="cover"
-          quality={100}
         />
       </ImageWr>
     </SectionsCardWr>

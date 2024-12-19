@@ -1,16 +1,22 @@
 export type AdminPanelCode = 'idle' | 'good' | 'bad' | 'edit' | 'add' | 'sending';
-
+// @ts-nocheck
 export interface Answer {
+  //@ts-ignore
   id: string;
   question_id: string;
   type: number;
+  //@ts-ignore
   true_type0?: number[];
+  //@ts-ignore
   cont_type0?: string[];
+  //@ts-ignore
   true_type1?: boolean;
+  //@ts-ignore
   true_type2?: string[];
 }
 
 export interface Question {
+  //@ts-ignore
   id: string;
   point_id: string;
   text: string;
@@ -56,16 +62,22 @@ export interface PointsData {
 }
 
 export interface Question {
+  //@ts-ignore
   id?: string;
   text: string;
   hint: string;
 }
 
 export interface Answer {
+  //@ts-ignore
   id?: string;
   type: number;
+  //@ts-ignore
   true_type0: number[];
+  //@ts-ignore
   cont_type0: string[];
+  //@ts-ignore
   true_type1: boolean;
+  //@ts-ignore
   true_type2: string[];
 }

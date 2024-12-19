@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 import { COLORS } from '@/styles/variables';
-import { B1, Btn2 } from '@/styles/textTags';
+import {Btn2 } from '@/styles/textTags';
 
-// Функция для перемешивания массива
-const shuffleArray = (array) => {
+// eslint-disable-next-line
+const shuffleArray = (array: any) => {
   const shuffledArray = [...array];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -13,13 +13,13 @@ const shuffleArray = (array) => {
   }
   return shuffledArray;
 };
-
-const Type2 = ({ data, setIsCorrect }) => {
+// eslint-disable-next-line
+const Type2 = ({ data, setIsCorrect }: any) => {
   const [answers, setAnswers] = useState(shuffleArray(data.true_type2));
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [dragging, setDragging] = useState(false);
   const [touchTargetIndex, setTouchTargetIndex] = useState(null); // Индекс элемента, над которым находится палец
-  const touchMoveTimeout = useRef(null); // Таймер для задержки переключения
+  const touchMoveTimeout = useRef(undefined); // Таймер для задержки переключения
 
   // Проверка правильности ответа
   useEffect(() => {
@@ -28,20 +28,20 @@ const Type2 = ({ data, setIsCorrect }) => {
     setIsCorrect(isCorrectOrder);
   }, [answers, data.true_type2, setIsCorrect]);
 
-  // Обработчик для начала перетаскивания (для мыши)
-  const handleDragStart = (e, index) => {
+  // eslint-disable-next-line
+  const handleDragStart = (e: any, index: any) => {
     e.dataTransfer.setData('index', index);
     setDraggedIndex(index);
     setDragging(true);
   };
 
-  // Обработчик для перемещения элемента (для мыши)
-  const handleDragOver = (e) => {
+  // eslint-disable-next-line
+  const handleDragOver = (e:any) => {
     e.preventDefault();
   };
 
-  // Обработчик для окончания перетаскивания (для мыши)
-  const handleDrop = (e, targetIndex) => {
+  // eslint-disable-next-line
+  const handleDrop = (e: any, targetIndex: any) => {
     e.preventDefault();
     const sourceIndex = e.dataTransfer.getData('index');
     const newAnswers = [...answers];
@@ -52,20 +52,21 @@ const Type2 = ({ data, setIsCorrect }) => {
     setDragging(false);
   };
 
-  // Обработчик для начала перетаскивания (для пальца)
-  const handleTouchStart = (e, index) => {
+  // eslint-disable-next-line
+  const handleTouchStart = (e: any, index: any) => {
     setDraggedIndex(index);
     setDragging(true);
     setTouchTargetIndex(index); // Изначально палец находится над текущим элементом
   };
 
-  // Обработчик для перемещения элемента (для пальца)
-  const handleTouchMove = (e) => {
+  // eslint-disable-next-line
+  const handleTouchMove = (e: any) => {
     e.preventDefault();
     if (draggedIndex !== null) {
       const touch = e.touches[0];
       const elements = document.querySelectorAll('.selector-con'); // Получаем все элементы списка
-      let newTargetIndex = null;
+      // eslint-disable-next-line
+      let newTargetIndex: any = null;
 
       // Определяем, над каким элементом находится палец
       elements.forEach((element, index) => {
@@ -80,8 +81,8 @@ const Type2 = ({ data, setIsCorrect }) => {
         setTouchTargetIndex(newTargetIndex);
 
         // Задержка переключения
-        clearTimeout(touchMoveTimeout.current);
-        touchMoveTimeout.current = setTimeout(() => {
+
+        const gg = ():void => {
           if (newTargetIndex !== draggedIndex) {
             const newAnswers = [...answers];
             const [removed] = newAnswers.splice(draggedIndex, 1);
@@ -89,7 +90,11 @@ const Type2 = ({ data, setIsCorrect }) => {
             setAnswers(newAnswers);
             setDraggedIndex(newTargetIndex);
           }
-        }, 100); // Задержка в 100 мс
+        }
+        clearTimeout(touchMoveTimeout.current);
+        // eslint-disable-next-line
+        //@ts-ignore
+        touchMoveTimeout.current = setTimeout( gg, 100); // Задержка в 100 мс
       }
     }
   };

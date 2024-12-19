@@ -1,4 +1,4 @@
-const SvgSelector = ({ svg }) => {
+const SvgSelector = ({ svg }: any) => {
   switch (svg) {
     case 'courseCardBg':
       return (

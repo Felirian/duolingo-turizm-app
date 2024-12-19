@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import {CustomBtn} from "@/components/Shared/CustomBtn";
-
-const Popup = ({QuizFunc, isCorrect}) => {
+// eslint-disable-next-line
+const Popup = ({QuizFunc, isCorrect}: any) => {
 
   return (
     <PopupWr $isOpen={QuizFunc.isHintOpen}>

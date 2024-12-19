@@ -6,8 +6,8 @@ import { B2, H3 } from '@/styles/textTags';
 import { CustomBtn } from '@/components/Shared/CustomBtn';
 import styled from 'styled-components';
 import Popup from '@/components/Questions/QuestionPage/Popup';
-
-const Index = ({ QuizFunc }) => {
+// eslint-disable-next-line
+const Index = ({ QuizFunc }: any) => {
   const [isCorrect, setIsCorrect] = useState(null);
 
   return (

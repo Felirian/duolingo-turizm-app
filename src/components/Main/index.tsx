@@ -7,8 +7,8 @@ import frog2 from '@/assets/img/frogLevel/2.png';
 import frog3 from '@/assets/img/frogLevel/3.png';
 import styled from "styled-components";
 
-
-const Index = ({data}) => {
+// eslint-disable-next-line
+const Index = ({data}: any) => {
   const FrogLevel = Math.round(data.xp / 100) < 5 ? frog1 : Math.round(data.xp / 100) > 10 ? frog3 : frog2
   console.log(Math.round(data.xp / 100), data.xp % 100);
 

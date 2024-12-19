@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 import SvgSelector from '@/components/Shared/SvgSelector';
 import styled from 'styled-components';
-// eslint-disable-next-line
 
-const Type1 = ({ data, setIsCorrect }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState(null); // Состояние для отслеживания выбранного ответа
+// eslint-disable-next-line
+const Type1 = ({ data, setIsCorrect }: any) => {
+  const [selectedAnswer, setSelectedAnswer] = useState<boolean | null>(null); // Состояние для отслеживания выбранного ответа
 
   useEffect(() => {
     // Проверяем, совпадает ли выбранный ответ с true_type1
@@ -16,7 +16,7 @@ const Type1 = ({ data, setIsCorrect }) => {
     setSelectedAnswer(null); // Сбрасываем выбранный ответ при изменении данных
   }, [data]);
 
-  const handleButtonClick = (answer) => {
+  const handleButtonClick = (answer: boolean) => {
     setSelectedAnswer(answer); // Устанавливаем выбранный ответ
   };
 
