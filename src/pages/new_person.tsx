@@ -52,6 +52,7 @@ const NewPerson = () => {
     <>
       <Page back={false} navBar={false}>
         <NewPersonWr>
+          {userId}
           <TopContainer>
             {!isUserCreated ? (
               <SvgSelector svg={'textLogo'} />
