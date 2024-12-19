@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 
 const Type0 = ({ data }) => {
-  console.log(data);
+
   return (
     <SelectorWr>
-      {data.cont_type0.map((answer, i) => (
-        <SelectorCon key={i}>
-          <SelectorNum>{i + 1}</SelectorNum>
-          <SelectorButton>{answer}</SelectorButton>
-        </SelectorCon>
-      ))}
+      {/*{data.cont_type0.map((answer, i) => (*/}
+      {/*  <SelectorCon key={i}>*/}
+      {/*    <SelectorNum>{i + 1}</SelectorNum>*/}
+      {/*    <SelectorButton>{answer}</SelectorButton>*/}
+      {/*  </SelectorCon>*/}
+      {/*))}*/}
     </SelectorWr>
   );
 };

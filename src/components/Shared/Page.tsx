@@ -27,11 +27,13 @@ import {SafeAreaInsets} from '@telegram-apps/bridge';
 export function Page({
                        children,
                        back = true,
-                       background = true
+                       background = true,
+                       navBar = true
                      }:
                        PropsWithChildren<{
                          back?: boolean,
-                         background?: boolean
+                         background?: boolean,
+                         navBar?: boolean
                        }>) {
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
@@ -60,18 +62,24 @@ export function Page({
   return (
     <PageWr
       $safeAreas={safeAreas}
-      $background={background || true}
+      $background={background }
+      $navBar={navBar}
     >
       {children}
     </PageWr>
   );
 }
 
-const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null, $background: boolean }>`
+const PageWr = styled.div<{
+  $safeAreas: SafeAreaInsets | null,
+  $background: boolean | undefined,
+  $navBar: boolean | undefined,
+
+}>`
   padding-top: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.top}px;
   padding-left: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.left}px;
   padding-right: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.right}px;
-  padding-bottom: ${({$safeAreas}: SafeAreaInsets | null) => 120 + $safeAreas?.bottom}px;
+  padding-bottom: ${({$safeAreas, $navBar}: SafeAreaInsets | null) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
   
   width: 100vw;
   height: 100vh;

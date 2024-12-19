@@ -50,7 +50,7 @@ const NewPerson = () => {
 
   return (
     <>
-      <Page back={false}>
+      <Page back={false} navBar={false}>
         <NewPersonWr>
           <TopContainer>
             {!isUserCreated ? (

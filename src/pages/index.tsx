@@ -36,7 +36,7 @@ export default function Home() {
               <Main data={data} />
             </>
           )}
-          <Link href={'/courses'}>courses</Link>
+          {/*<Link href={'/courses'}>courses</Link>*/}
           {/*<br />*/}
           {/*<button onClick={() => viewport.exitFullscreen()}>exitFullscreen()</button>*/}
           {/*<CustomBtn onClick={() => console.log('ff')}>Продолжить</CustomBtn>*/}

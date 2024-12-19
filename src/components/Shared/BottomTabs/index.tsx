@@ -9,15 +9,15 @@ import { useRouter } from 'next/router';
 const TAB_BUTTONS = [
   {
     icon: <BottomTabsSvgSelector name='play' />,
-    link: '',
+    link: '/',
   },
   {
     icon: <BottomTabsSvgSelector name='home' />,
-    link: '',
+    link: '/',
   },
   {
     icon: <BottomTabsSvgSelector name='burger' />,
-    link: '',
+    link: '/courses',
   },
 ];
 
@@ -29,7 +29,7 @@ const BottomTabs = () => {
   };
 
   return (
-    <BottomTabsWr data-aos='fade-up'>
+    <BottomTabsWr>
       {TAB_BUTTONS.map((button, index) => {
         return (
           <CustomBtn
