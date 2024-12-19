@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
+import { COLORS } from '@/styles/variables';
+import { Btn1 } from '@/styles/textTags';
 
 // Функция для перемешивания массива
 const shuffleArray = (array) => {
@@ -112,7 +114,7 @@ const Type2 = ({ data }) => {
             transition: 'transform 0.2s ease',
           }}
         >
-          <SelectorNum>{index + 1}</SelectorNum>
+          <SelectorNum><Btn1>{index + 1}</Btn1></SelectorNum>
           <SelectorButton>{answer}</SelectorButton>
         </SelectorCon>
       ))}
@@ -142,7 +144,7 @@ const SelectorNum = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%; 
-  background-color: green; 
+  background-color: ${COLORS.textGreen}; 
   color: white; 
   display: flex;
   align-items: center;
