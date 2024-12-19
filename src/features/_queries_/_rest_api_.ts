@@ -178,7 +178,7 @@ export const useGetQuestions = (
       if (!slug) return;
       try {
         const response = await axios.get(
-          BASE_URL + `questions?section_slug=${slug}&point=${point}`,
+          BASE_URL + `questions/?section_slug=${slug}&point_number=${point}`,
           CONFIG
         );
         setResult({
@@ -265,3 +265,32 @@ export const CreateUser = async (petName: string, userId: number) => {
     console.error('Ошибка сети:', error);
   }
 };
+
+export const putPoint = async (section_slug: string,point: number,  userId: any) => {
+
+  const data = {
+    user_id : userId,
+    section_slug : section_slug,
+    point: point
+  };
+
+  try {
+    const response = await fetch(BASE_URL + 'progress', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      return response
+      console.log('Данные успешно отправлены');
+    } else {
+      console.error('Ошибка при отправке данных');
+    }
+  } catch (error) {
+    console.error('Ошибка сети:', error);
+  }
+};
+

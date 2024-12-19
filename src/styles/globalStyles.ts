@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     scroll-padding: 0;
+    touch-action: none;
   }
 
   body {

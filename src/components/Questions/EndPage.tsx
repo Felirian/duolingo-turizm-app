@@ -16,16 +16,16 @@ interface EndPageProps {
 
 const EndPage = ({ QuizFunc }: EndPageProps) => {
   const router = useRouter();
-  const id = router.query.point_id;
+  const point_id = router.query.point_id;
+  const section_slug = router.query.section_id;
 
-  console.log(QuizFunc, 'QuizFunc');
-
+  console.log(section_slug);
   return (
     <EndPageWr>
       <EndPageContentBlock>
         <CrownBlock>
           <Title>Поздравляем!</Title>
-          <Level>уровень {id}</Level>
+          <Level>уровень {point_id}</Level>
           <Image src={crownImg.src} alt='вы прошли уровень' width={300} height={200} />
         </CrownBlock>
         <ExpBlock>
@@ -35,7 +35,7 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
             <span>+70</span>
           </PointRollBlock>
         </ExpBlock>
-        <CustomBtn>Продолжить</CustomBtn>
+        <CustomBtn onClick={() => QuizFunc.gameOver(section_slug, point_id)}>Продолжить</CustomBtn>
       </EndPageContentBlock>
       <MascotImg src={frogImg.src} alt='Квакс' width={310} height={289} />
     </EndPageWr>

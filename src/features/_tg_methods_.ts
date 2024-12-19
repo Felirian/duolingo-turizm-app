@@ -81,7 +81,7 @@ export function tgInit (debug: boolean): void  {
       .mount()
       .then(() => {
         viewport.expand();
-        setFullscreen();
+        //setFullscreen();
       })
       .catch(e => console.error('Ошибка viewport', e));
     //@ts-ignore
