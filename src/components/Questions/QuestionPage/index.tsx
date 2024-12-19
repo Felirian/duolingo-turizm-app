@@ -52,6 +52,7 @@ const QuestionPageWr = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  gap: 6vw;
 `;
 
 const QuestionPageCon = styled.div`
