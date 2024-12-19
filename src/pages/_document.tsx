@@ -2,7 +2,6 @@ import {AppType} from "next/app";
 import {Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps} from "next/document";
 import Document from "next/document";
 import {ServerStyleSheet} from "styled-components";
-import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {

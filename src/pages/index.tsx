@@ -4,7 +4,6 @@ import {useGetUser} from "@/features/_queries_/_rest_api_";
 import {useEffect} from "react";
 import {useRouter} from "next/router";
 import Main from "@/components/Main";
-import Link from "next/link";
 import BottomTabs from "@/components/Shared/BottomTabs";
 
 export default function Home() {
@@ -36,11 +35,6 @@ export default function Home() {
               <Main data={data} />
             </>
           )}
-          {/*<Link href={'/courses'}>courses</Link>*/}
-          {/*<br />*/}
-          {/*<button onClick={() => viewport.exitFullscreen()}>exitFullscreen()</button>*/}
-          {/*<CustomBtn onClick={() => console.log('ff')}>Продолжить</CustomBtn>*/}
-          {/*<ProgressBurSection percent={50} />*/}
           <BottomTabs />
         </main>
       </Page>

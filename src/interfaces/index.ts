@@ -69,8 +69,3 @@ export interface Answer {
   true_type1: boolean;
   true_type2: string[];
 }
-
-export interface useGetQueryProps {
-  endPoint: string;
-  options: any;
-}
