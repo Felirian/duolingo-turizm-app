@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 import SvgSelector from '@/components/Shared/SvgSelector';
 import styled from 'styled-components';
-
+// eslint-disable-next-line
 const Type1 = ({ data }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // Состояние для отслеживания выбранной кнопки
 

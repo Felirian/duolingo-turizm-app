@@ -58,6 +58,8 @@ export function tgInit (debug: boolean): void  {
    * );
    *
    */
+
+    // eslint-disable-next-line
   const setFullscreen = async () => {
     if (viewport.requestFullscreen.isAvailable()) {
       console.log('---set fullscreen---')
