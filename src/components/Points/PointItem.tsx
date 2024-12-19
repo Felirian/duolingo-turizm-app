@@ -100,6 +100,10 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
       $islocked
         ? `drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
         : `drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
+    filter: ${({ $islocked }) =>
+      $islocked
+        ? `-webkit-drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) -webkit-drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
+        : `-webkit-drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange}) -webkit-drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
     path {
       fill: ${({ $islocked }) => ($islocked ? COLORS.lightOrange : COLORS.softOrange)};
     }

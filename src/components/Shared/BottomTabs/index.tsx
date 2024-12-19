@@ -52,8 +52,8 @@ const BottomTabsWr = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 23.71vw;
-  padding: 2.29vw 4.29vw;
+  height: 26vw;
+  padding: 2.29vw 4.29vw 5vw;
 
   background-color: ${COLORS.lightGreen};
   border-radius: 5.71vw 5.71vw 0px 0px;
