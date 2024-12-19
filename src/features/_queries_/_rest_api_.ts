@@ -239,7 +239,7 @@ export const useGetUser = () => {
   return result;
 };
 
-export const useCreateUser = async (petName: string, userId: number) => {
+export const CreateUser = async (petName: string, userId: number) => {
 
   const data = {
     id: userId.toString(),

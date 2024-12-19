@@ -3,13 +3,13 @@ import SvgSelector from '@/components/Shared/SvgSelector';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import charImg from '@/assets/img/frog.png';
-import { B1, Btn1, H3 } from '@/styles/textTags';
+import { B1, H3 } from '@/styles/textTags';
 import styled from 'styled-components';
 import { COLORS } from '@/styles/variables';
 import { CustomBtn } from '@/components/Shared/CustomBtn';
 import { CustomInput } from '@/components/Shared/CustomInput';
 import useTgApp from '@/features/_tg_methods_';
-import { useCreateUser, useGetUser } from '@/features/_queries_/_rest_api_';
+import { CreateUser, useGetUser } from '@/features/_queries_/_rest_api_';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -20,7 +20,7 @@ const NewPerson = () => {
   const { userId } = useTgApp();
   const router = useRouter();
 
-  const { loading, data, error } = useGetUser();
+  const { data } = useGetUser();
   useEffect(() => {
     if (data) {
       console.log('Already exists');
@@ -38,7 +38,7 @@ const NewPerson = () => {
   // Обработчик отправки данных на сервер
   const handleSubmit = async () => {
     try {
-      const response = await useCreateUser(petName, userId);
+      const response = await CreateUser(petName, userId);
       if (response?.ok) {
         setIsUserCreated(true);
         console.log(response);
@@ -116,21 +116,6 @@ const TopContainer = styled.div`
 
   svg {
     width: 100%;
-  }
-`;
-
-const MiddleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5vw;
-
-  img {
-    width: auto;
-    height: 100%;
-    max-height: 40vh;
-    object-fit: contain;
-    flex-shrink: 0;
   }
 `;
 
