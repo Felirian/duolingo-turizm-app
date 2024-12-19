@@ -6,9 +6,9 @@ export const ProgressBurLevel = ({percent, level}) => {
   return (
     <FrameParentRoot>
       <LevelWr>
-        <Btn1>
+        <StyledBtn1>
           {level}
-        </Btn1>
+        </StyledBtn1>
 
       </LevelWr>
 
@@ -21,18 +21,19 @@ export const ProgressBurLevel = ({percent, level}) => {
 const LevelWr = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  left: -0.20vw;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 8vw;
   height: 100%;
+  font-size: 2vw;
   
   color: ${COLORS.white};
-  border-radius: 2.31vw;
+  border-radius: 1.5vw;
   background-color: #167351;
-  border: 0.83vw solid #167351;
+  border: 1vw solid #167351;
   &:after {
     content: "";
 
@@ -53,9 +54,9 @@ const LevelWr = styled.div`
 
 const FrameParentRoot = styled.div`
   width: 50%;
-  height: 8.33vw;
+  height: 8.5vw;
   position: relative;
-  border-radius: 3.31vw;
+  border-radius: 1.714vw;
   background-color: #167351;
   border: 0.83vw solid #167351;
   
@@ -73,7 +74,7 @@ const FrameParentRoot = styled.div`
     bottom: 0;
     left: 0;
     
-    border-radius: 0px 0px 1.67vw 1.67vw;
+    border-radius: 1.714vw;
     background-color: #0F8359;
     height: 4.44vw;    
     
@@ -88,7 +89,7 @@ const PercentLine = styled.div<{ $percent }>`
   left: 0;
   top: 0;
   
-  border-radius: 3.31vw;
+  border-radius: 1.714vw;
   background-color: #4EE1AB;
   z-index: 2;
   
@@ -98,7 +99,7 @@ const PercentLine = styled.div<{ $percent }>`
     position: absolute;
     bottom: 0;
     left: 0;
-    border-radius: 0 3.31vw 3.31vw;
+    border-radius: 1.714vw;
     background-color: #16D38E;
     width: 100%;
     height: 4.44vw;
@@ -109,7 +110,7 @@ const PercentLine = styled.div<{ $percent }>`
 const PercentBlock = styled(Btn1)`
   color: #FFF;  
   font-family: Nunito;
-  font-size: 3.89vw;
+  font-size: 3vw;
   font-style: normal;
   font-weight: 800;
   line-height: normal;
@@ -117,4 +118,13 @@ const PercentBlock = styled(Btn1)`
   z-index: 2;
 `;
 
-
+const StyledBtn1 = styled(Btn1)`
+  color: #FFF;  
+  font-family: Nunito;
+  font-size: 4vw;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  
+  z-index: 2;
+`;
