@@ -81,7 +81,7 @@ const Type2 = ({ data }) => {
             setAnswers(newAnswers);
             setDraggedIndex(newTargetIndex);
           }
-        }, 300); // Задержка в 300 мс
+        }, 100); // Задержка в 300 мс
       }
     }
   };
