@@ -56,13 +56,10 @@ const NewPerson = () => {
             <SvgSelector svg={'textLogo'} />
             <StyledH3>Кругосветное приключение</StyledH3>
           </TopContainer>
-        
-            <Image src={charImg} alt='' />
-            <StyledB1>
-              Вперед! В познавательное путешествие! А это ваш новый друг, он будет учиться вместе с
-              вами.
-            </StyledB1>
-        
+
+          <Image src={charImg} alt='' />
+          <StyledB1>Образовательное путешествие по земному шару вместе с новым другом!</StyledB1>
+
           {!isUserCreated && (
             <CustomInput
               placeholder='Назовите питомца'
