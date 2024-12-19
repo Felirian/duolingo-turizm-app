@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+//@ts-ignore
 import welcomeVid from '@/assets/video/welcome.mp4';
 
 const WelcomeVideo = () => {

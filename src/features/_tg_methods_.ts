@@ -84,13 +84,9 @@ export function tgInit (debug: boolean): void  {
         setFullscreen();
       })
       .catch(e => console.error('Ошибка viewport', e));
-
-    swipeBehavior
-      .mount()
-      .then(()=> {
-        swipeBehavior.disableVertical();
-      })
-      .catch(e => console.error('Ошибка viewport', e));
+    //@ts-ignore
+    swipeBehavior.mount()
+    swipeBehavior.disableVertical();
 
   } catch (error) {
     console.log('Ошибка инициализации tg:', error);
