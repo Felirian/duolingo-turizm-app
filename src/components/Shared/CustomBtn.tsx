@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Btn1 } from '@/styles/textTags';
-//@typescript-eslint/no-empty-object-type
+// eslint-disable-next-line
 interface CustomBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-//@typescript-eslint/no-empty-object-type
+// eslint-disable-next-line
 export const CustomBtn = ({ children, ...props }: CustomBtnProps) => {
   return (
     <>
