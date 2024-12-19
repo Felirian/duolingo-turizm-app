@@ -1,17 +1,17 @@
 import React from 'react';
-import {useQuizFunctions} from "@/features/_quiz_";
-import EndPage from "@/components/Questions/EndPage";
-import QuestionPage from "@/components/Questions/QuestionPage";
-import StartPage from "@/components/Questions/StartPage";
+import { useQuizFunctions } from '@/features/_quiz_';
+import EndPage from '@/components/Questions/EndPage';
+import QuestionPage from '@/components/Questions/QuestionPage';
+import StartPage from '@/components/Questions/StartPage';
 
-const Quiz = ({data}) => {
-  const QuizFunc = useQuizFunctions({initialQuestions: data});
+const Quiz = ({ data }) => {
+  const QuizFunc = useQuizFunctions({ initialQuestions: data });
   return (
     <>
       {QuizFunc.isFinished ? (
-        <EndPage />
+        <EndPage QuizFunc={QuizFunc} />
       ) : (
-        <QuestionPage data={QuizFunc.currentQuestion} QuizFunc={QuizFunc}/>
+        <QuestionPage data={QuizFunc.currentQuestion} QuizFunc={QuizFunc} />
       )}
     </>
   );
