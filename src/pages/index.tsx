@@ -11,8 +11,10 @@ export default function Home() {
   const {loading, data, error} = useGetUser();
 
   useEffect(() => {
-    error && console.log('navigate');
-    error && router.push('/new_person');
+    if (error) {
+      console.log('navigate');
+      router.push('/new_person');
+    }
   }, [error]);
 
   return (

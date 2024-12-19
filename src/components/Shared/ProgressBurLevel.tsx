@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Btn1, Btn2} from "@/styles/textTags";
+import {Btn1} from "@/styles/textTags";
 import {COLORS} from "@/styles/variables";
 
 export const ProgressBurLevel = ({percent, level}) => {

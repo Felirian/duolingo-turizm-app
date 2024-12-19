@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Btn1 } from '@/styles/textTags';
-import { ButtonHTMLAttributes } from 'react';
 
 interface CustomBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
+//@typescript-eslint/no-empty-object-type
 export const CustomBtn = ({ children, ...props }: CustomBtnProps) => {
   return (
     <>

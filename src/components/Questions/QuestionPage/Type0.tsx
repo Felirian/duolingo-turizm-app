@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { Btn3, H3 } from '@/styles/textTags';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 
