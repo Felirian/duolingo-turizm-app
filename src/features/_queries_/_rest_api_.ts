@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string | string[] | undefined) => {
+export const useGetAllPoints = (slug: string | string[] | undefined, ) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | PointsData;
@@ -126,14 +126,12 @@ export const useGetAllPoints = (slug: string | string[] | undefined) => {
     data: null,
     error: null,
   });
-
   const { userId } = useTgApp();
-
   // console.log(userId, 'user');
 
   useEffect(() => {
     const fetchArtistsList = async () => {
-      if (!slug) return;
+      if (!slug || !userId || userId === 0) return;
       try {
         const response = await axios.get(
           BASE_URL + 'points/front?section_slug=' + slug + '&tg_id=' + userId,
@@ -154,7 +152,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined) => {
     };
 
     fetchArtistsList();
-  }, [slug]);
+  }, [slug, userId]);
 
   return result;
 };
@@ -266,17 +264,20 @@ export const CreateUser = async (petName: string, userId: number) => {
   }
 };
 
-export const putPoint = async (section_slug: string,point: number,  userId: any) => {
+export const putPoint = async (section_slug: string, point: number,  userId: any) => {
 
   const data = {
     user_id : userId,
     section_slug : section_slug,
     point: point
   };
+  console.log(point);
+
+  const METHOD = point == '1' ? 'POST' : 'PUT'
 
   try {
     const response = await fetch(BASE_URL + 'progress', {
-      method: 'POST',
+      method: METHOD,
       headers: {
         'Content-Type': 'application/json',
       },

@@ -18,8 +18,8 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
   const router = useRouter();
   const point_id = router.query.point_id;
   const section_slug = router.query.section_id;
+  const course_slug = router.query.courses_id;
 
-  console.log(section_slug);
   return (
     <EndPageWr>
       <EndPageContentBlock>
@@ -35,7 +35,7 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
             <span>+70</span>
           </PointRollBlock>
         </ExpBlock>
-        <CustomBtn onClick={() => QuizFunc.gameOver(section_slug, point_id)}>Продолжить</CustomBtn>
+        <CustomBtn onClick={() => QuizFunc.gameOver(section_slug, point_id, course_slug)}>Продолжить</CustomBtn>
       </EndPageContentBlock>
       <MascotImg src={frogImg.src} alt='Квакс' width={310} height={289} />
     </EndPageWr>

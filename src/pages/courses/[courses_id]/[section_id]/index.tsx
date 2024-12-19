@@ -5,12 +5,15 @@ import Points from '@/components/Points';
 import { useGetAllPoints } from '@/features/_queries_/_rest_api_';
 import BottomTabs from '@/components/Shared/BottomTabs';
 import Loader from '@/components/Shared/Loader';
+import useTgApp from "@/features/_tg_methods_";
 
 const Index = () => {
   const router = useRouter();
   const id = router.query.section_id;
-  const { loading, data, error } = useGetAllPoints(id);
+  const { userId } = useTgApp();
 
+  const { loading, data, error } = useGetAllPoints(id);
+  // console.log(userId,id, data);
   if (!router.isReady) {
     return <Loader />;
   }

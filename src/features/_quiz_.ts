@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Question } from '@/interfaces';
 import useTgApp from "@/features/_tg_methods_";
 import {putPoint} from "@/features/_queries_/_rest_api_";
+import {useRouter} from "next/router";
 
 export const useQuizFunctions = ({ initialQuestions }: any) => {
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHintOpen, setIsHintOpen] = useState(false);
-
+  const router = useRouter()
   const addQuestionToEnd = (question: Question) => {
     setQuestions((prev) => [...prev, question]);
   };
@@ -26,9 +27,10 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   };
   const { userId } = useTgApp();
 
-  const gameOver = (section_slug, point) => {
-
+  const gameOver = (section_slug, point, course_slug) => {
+    console.log(section_slug, point, userId,course_slug);
     putPoint(section_slug, point, userId)
+    router.push(`/courses/${course_slug}/${section_slug}`)
   }
 
   const currentQuestion = questions[currentIndex];
