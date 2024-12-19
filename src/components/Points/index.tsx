@@ -76,7 +76,7 @@ const PointsTitleBlock = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 3.71vw;
+  top: 5.5vw;
   left: 50%;
   transform: translateX(-50%);
 
