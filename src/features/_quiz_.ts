@@ -4,40 +4,43 @@ export const useQuizFunctions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [answered, setAnswered] = useState(false);
+  const [isHintOpen, setIsHintOpen] = useState(false)
 
-
-  const nextQuestion = (isCorrect) => {
-    setAnswered(false);
+  const nextQuestion = () => {
+    setIsHintOpen(false)
     setSelectedAnswer(null);
     setCurrentQuestion(currentQuestion + 1);
-    if (isCorrect) {
-      setScore(score + 1);
-    }
+    // if (isCorrect) {
+    //   setScore(score + 1);
+    // }
   };
 
-  const startOver = () => {
+  const giveAnswers = (isCorrect) => {
+    if (selectedAnswer) {
+      setIsHintOpen(true)
+    }
+  }
+
+  const endGame = () => {
     if (score >= 4) {
       //localStorage.setItem(currentRoom, true);
     }
-    //navigate('/museum');
-    setCurrentQuestion(-1);
+    setCurrentQuestion(0);
     setScore(0);
-    console.log('fff');
   };
 
   return {
     variables: {
       currentQuestion,
       score,
-      answered,
       selectedAnswer,
+      isHintOpen
     },
     fun: {
       nextQuestion,
-      startOver,
-      setAnswered,
+      endGame,
       setSelectedAnswer,
+      setIsHintOpen
     },
   };
 };

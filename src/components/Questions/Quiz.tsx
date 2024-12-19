@@ -14,7 +14,7 @@ const Quiz = ({data}) => {
       ) : QuizFunc.variables.currentQuestion >= data.length ? (
         <EndPage/>
       ) : (
-        <QuestionPage data={data[QuizFunc.variables.currentQuestion]}/>
+        <QuestionPage data={data[QuizFunc.variables.currentQuestion]} QuizFunc={QuizFunc}/>
       )
       }
     </>
