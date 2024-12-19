@@ -3,7 +3,8 @@ import { Page } from '@/components/Shared/Page';
 import { useGetAllCourses } from '@/features/_queries_/_rest_api_';
 import CoursesCard from '@/components/Courses/CoursesCard';
 import styled from 'styled-components';
-import BottomTabs from "@/components/Shared/BottomTabs";
+import BottomTabs from '@/components/Shared/BottomTabs';
+import SkeletonCard from '@/components/Shared/SkeletonCard';
 
 const Index = () => {
   const { data, loading, error } = useGetAllCourses();
@@ -12,7 +13,15 @@ const Index = () => {
   return (
     <Page>
       {loading ? (
-        <>loading</>
+        <CoursesCardCon>
+          {Array(5)
+            .fill('')
+            .map((_, index) => (
+              <React.Fragment key={`${index}-skeleton`}>
+                <SkeletonCard />
+              </React.Fragment>
+            ))}
+        </CoursesCardCon>
       ) : error ? (
         <>error</>
       ) : (
