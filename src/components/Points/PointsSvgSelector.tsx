@@ -2,7 +2,7 @@ interface SvgSelectorProps {
   name: string;
 }
 
-const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
+const PointsSvgSelector: React.FC<SvgSelectorProps> = ({name}) => {
   switch (name) {
     case 'point':
       return (
@@ -13,9 +13,9 @@ const PointsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
         >
-          <g filter='url(#filter0_d_171_1199)'>
-            <ellipse cx='39.5' cy='31' rx='39.5' ry='31' fill='#FF8F04' />
-          </g>
+
+          <ellipse cx='39.5' cy='31' rx='39.5' ry='31' fill='#FF8F04'/>
+
           <path
             d='M51.5 8.5L22.5 49.5C27 52.5 35 54 40 54L65 15.5C61.4 11.1 54.5 9 51.5 8.5Z'
             fill='#FF9B1F'
