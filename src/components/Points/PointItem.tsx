@@ -96,6 +96,9 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
     width: 99%;
     height: 99%;
     z-index: 0;
+    will-change: filter;
+    transform: translateZ(0);
+    backdrop-filter: blur(0);
     filter: ${({ $islocked }) =>
       $islocked
         ? `drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
