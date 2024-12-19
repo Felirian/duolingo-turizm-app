@@ -1,9 +1,9 @@
-import { PropsWithChildren, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { backButton, useSignal } from '@telegram-apps/sdk-react';
+import {PropsWithChildren, useEffect} from 'react';
+import {useRouter} from 'next/router';
+import {backButton, useSignal} from '@telegram-apps/sdk-react';
 import useTgApp from '@/features/_tg_methods_';
 import styled from 'styled-components';
-import { SafeAreaInsets } from '@telegram-apps/bridge';
+import {SafeAreaInsets} from '@telegram-apps/bridge';
 
 /**
  * #### Кастомный компонент
@@ -24,12 +24,20 @@ import { SafeAreaInsets } from '@telegram-apps/bridge';
  *
  */
 
-export function Page({ children, back = true }: PropsWithChildren<{ back?: boolean }>) {
+export function Page({
+                       children,
+                       back = true,
+                       background = true
+                     }:
+                       PropsWithChildren<{
+                         back?: boolean,
+                         background?: boolean
+                       }>) {
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
   //const isBtnClick = useSignal(backButton.onClick);
 
-  const { safeAreas } = useTgApp();
+  const {safeAreas} = useTgApp();
 
   useEffect(() => {
     if (!isVisible) return;
@@ -50,25 +58,28 @@ export function Page({ children, back = true }: PropsWithChildren<{ back?: boole
   }, [router]);
 
   return (
-    <PageWr $safeAreas={safeAreas}>
-      {/*{router.route}*/}
-      {/*<br/>*/}
-      {/*{safeAreas?.top}*/}
+    <PageWr
+      $safeAreas={safeAreas}
+      $background={background}
+    >
       {children}
     </PageWr>
   );
 }
 
-const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
-  padding-top: ${({ $safeAreas }: SafeAreaInsets | null) => 20 + $safeAreas?.top}px;
-  padding-left: ${({ $safeAreas }: SafeAreaInsets | null) => 20 + $safeAreas?.left}px;
-  padding-right: ${({ $safeAreas }: SafeAreaInsets | null) => 20 + $safeAreas?.right}px;
-  padding-bottom: ${({ $safeAreas }: SafeAreaInsets | null) => 20 + $safeAreas?.bottom}px;
+const PageWr = styled.div<{ $safeAreas: SafeAreaInsets | null, $background: boolean }>`
+  padding-top: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.top}px;
+  padding-left: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.left}px;
+  padding-right: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.right}px;
+  padding-bottom: ${({$safeAreas}: SafeAreaInsets | null) => 20 + $safeAreas?.bottom}px;
 
   width: 100vw;
   height: 100vh;
 
-  background: linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%);
+  background: ${({$background}) => $background
+    ? 'linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%)'
+    : '#FFF'
+  };
   overflow-y: scroll;
   scroll-behavior: smooth;
 

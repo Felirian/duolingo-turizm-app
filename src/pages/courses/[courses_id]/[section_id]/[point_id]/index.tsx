@@ -11,7 +11,7 @@ const Index = () => {
   const { loading, data, error } = useGetQuestions(section, point);
 
   return (
-    <Page>
+    <Page background={false}>
       {loading ? <div>загрузка</div> : error ? <div>ошибка</div> : data && <Quiz data={data}/>}
     </Page>
   );
