@@ -6,17 +6,17 @@ import PointItem from './PointItem';
 import React from 'react';
 
 const PONTS_COORDS = [
-  { top: '29.71vw', left: '22vw' },
-  { top: '53.71vw', left: '44.5vw' },
-  { top: '86.29vw', left: '32vw' },
-  { top: '118.86vw', left: '23vw' },
-  { top: '145.71vw', left: '44.8vw' },
+  { top: '46vw', left: '22vw' },
+  { top: '71vw', left: '44.5vw' },
+  { top: '100vw', left: '32vw' },
+  { top: '132vw', left: '23vw' },
+  { top: '162vw', left: '44.8vw' },
 ];
 
 const IMG_COORSDS = [
-  { top: '32vw', left: '-5vw' },
-  { top: '77vw', left: '57vw' },
-  { top: '122vw', left: '-5vw' },
+  { top: '56vw', left: '-5vw' },
+  { top: '96vw', left: '57vw' },
+  { top: '146vw', left: '-5vw' },
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
@@ -25,7 +25,7 @@ const Points = ({ data }: { data: PointsData }) => {
     <PointsWr>
       <PointsTitleBlock>
         <div data-aos='zoom-in'>
-          <Btn1>{data.section.name}</Btn1>
+          <PointsTitle>{data.section.name}</PointsTitle>
         </div>
         <div data-aos='zoom-in' data-aos-duration='600'>
           <B1>{`уровень ${(data.progress?.point + 1) | 1}`}</B1>
@@ -40,7 +40,7 @@ const Points = ({ data }: { data: PointsData }) => {
             <React.Fragment key={`${index}-point-item`}>
               <PointItem
                 data={point}
-                currentPoint={data.progress?.point + 1}
+                currentPoint={data.progress?.point + 1 || 1}
                 coordinates={PONTS_COORDS[index]}
               />
             </React.Fragment>
@@ -65,7 +65,9 @@ const Points = ({ data }: { data: PointsData }) => {
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
-  height: 187vw;
+  height: 206vw;
+
+  text-align: center;
 
   overflow-y: none;
 `;
@@ -74,7 +76,7 @@ const PointsTitleBlock = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 5.71vw;
+  top: 3.71vw;
   left: 50%;
   transform: translateX(-50%);
 
@@ -85,6 +87,8 @@ const PointsTitleBlock = styled.div`
 
   color: ${COLORS.textGreen};
 `;
+
+const PointsTitle = styled(Btn1)``;
 
 const MascotImg = styled.img`
   width: 38.29vw;
