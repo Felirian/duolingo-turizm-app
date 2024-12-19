@@ -12,7 +12,7 @@ export const SelectorButton = styled.button<SelectorButtonProps>`
   height: 16vw;
   padding: 1.5vw 2vw;
   border: ${({ round, isPressed }) =>
-    round ? 'none' : `0.571vw solid ${isPressed ? '#02c77f' : '#fff'}`}; // Обводка только для некруглых кнопок
+    round ? `0.571vw solid ${isPressed ? '#02c77f' : '#fff'}` : `0.571vw solid ${isPressed ? '#02c77f' : '#fff'}`};
   border-radius: ${({ round }) => (round ? '50%' : '3.143vw')}; // Круглая или обычная форма
   background-color: #fff;
   color: #000;

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 import { COLORS } from '@/styles/variables';
@@ -14,13 +14,19 @@ const shuffleArray = (array) => {
   return shuffledArray;
 };
 
-const Type2 = ({ data }) => {
-  // Перемешиваем массив true_type2
+const Type2 = ({ data, setIsCorrect }) => {
   const [answers, setAnswers] = useState(shuffleArray(data.true_type2));
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [dragging, setDragging] = useState(false);
   const [touchTargetIndex, setTouchTargetIndex] = useState(null); // Индекс элемента, над которым находится палец
   const touchMoveTimeout = useRef(null); // Таймер для задержки переключения
+
+  // Проверка правильности ответа
+  useEffect(() => {
+    // Сравниваем текущий порядок с true_type2
+    const isCorrectOrder = answers.every((answer, index) => answer === data.true_type2[index]);
+    setIsCorrect(isCorrectOrder);
+  }, [answers, data.true_type2, setIsCorrect]);
 
   // Обработчик для начала перетаскивания (для мыши)
   const handleDragStart = (e, index) => {
@@ -83,11 +89,12 @@ const Type2 = ({ data }) => {
             setAnswers(newAnswers);
             setDraggedIndex(newTargetIndex);
           }
-        }, 100); // Задержка в 300 мс
+        }, 100); // Задержка в 100 мс
       }
     }
   };
 
+  // Обработчик для окончания перетаскивания (для пальца)
   const handleTouchEnd = () => {
     setDraggedIndex(null);
     setDragging(false);
@@ -95,8 +102,26 @@ const Type2 = ({ data }) => {
     clearTimeout(touchMoveTimeout.current);
   };
 
+  // Обработчик для события, когда курсор/палец покидает окно браузера
+  const handleMouseLeave = () => {
+    if (dragging) {
+      setDraggedIndex(null);
+      setDragging(false);
+    }
+  };
+
+  // Обработчик для события, когда палец покидает окно браузера
+  const handleTouchLeave = () => {
+    if (dragging) {
+      setDraggedIndex(null);
+      setDragging(false);
+      setTouchTargetIndex(null);
+      clearTimeout(touchMoveTimeout.current);
+    }
+  };
+
   return (
-    <SelectorWr>
+    <SelectorWr onMouseLeave={handleMouseLeave} onTouchCancel={handleTouchLeave}>
       {answers.map((answer, index) => (
         <SelectorCon
           key={index}
@@ -139,7 +164,6 @@ const SelectorCon = styled.div`
     cursor: grabbing;
   }
 `;
-
 
 const SelectorNum = styled.div`
   width: 10vw;
