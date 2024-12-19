@@ -6,7 +6,7 @@ import {
   miniApp,
   themeParams,
   backButton,
-  viewport, useSignal
+  viewport, useSignal, swipeBehavior
 } from "@telegram-apps/sdk-react";
 import {useEffect, useState} from "react";
 import {SafeAreaInsets} from "@telegram-apps/bridge";
@@ -82,6 +82,13 @@ export function tgInit (debug: boolean): void  {
       .then(() => {
         viewport.expand();
         setFullscreen();
+      })
+      .catch(e => console.error('Ошибка viewport', e));
+
+    swipeBehavior
+      .mount()
+      .then(()=> {
+        swipeBehavior.disableVertical();
       })
       .catch(e => console.error('Ошибка viewport', e));
 
