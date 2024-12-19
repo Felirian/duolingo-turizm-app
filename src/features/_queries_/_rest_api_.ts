@@ -271,8 +271,7 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
     section_slug : section_slug,
     point: point
   };
-  console.log(point);
-
+  //@ts-ignore
   const METHOD: string = point == '1' ? 'POST' : 'PUT'
 
   try {

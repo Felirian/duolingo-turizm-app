@@ -27,7 +27,7 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   };
   const { userId } = useTgApp();
 
-  const gameOver = (section_slug, point, course_slug) => {
+  const gameOver = (section_slug: any, point: any, course_slug: any) => {
     console.log(section_slug, point, userId,course_slug);
     putPoint(section_slug, point, userId)
     router.push(`/courses/${course_slug}/${section_slug}`)
