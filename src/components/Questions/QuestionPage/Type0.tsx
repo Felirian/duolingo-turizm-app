@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Btn3, H3 } from '@/styles/textTags';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 
-const Type0 = ({ data }) => {
+const Type0 = ({ data , setIsCorrect}) => {
   // Состояние для отслеживания выбранных индексов
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
+
+  useEffect(() => {
+    setIsCorrect(JSON.stringify(data.true_type0) === JSON.stringify(selectedIndexes))
+  }, [selectedIndexes]);
+
 
   // Обработчик клика на кнопку
   const handleButtonClick = (index: number) => {
@@ -28,7 +33,6 @@ const Type0 = ({ data }) => {
 
   return (
     <SelectorWr>
-      {/* <H3>{data.true_type0.length > 1 ? 'Несколько вариантов ответа' : 'Один вариант ответа'}</H3> */}
       {data.cont_type0.map((answer, i) => (
         <SelectorButton
           key={i}

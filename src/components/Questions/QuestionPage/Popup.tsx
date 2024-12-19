@@ -3,11 +3,12 @@ import styled from "styled-components";
 import {CustomBtn} from "@/components/Shared/CustomBtn";
 import {useQuizFunctions} from "@/features/_quiz_";
 
-const Popup = ({QuizFunc}) => {
+const Popup = ({QuizFunc, isCorrect}) => {
 
   return (
-    <PopupWr $isOpen={QuizFunc.variables.isHintOpen}>
-      <CustomBtn onClick={() => QuizFunc.fun.nextQuestion(true)}>Продолжить</CustomBtn>
+    <PopupWr $isOpen={QuizFunc.isHintOpen}>
+      {isCorrect ? 'yes' : 'no'}
+      <CustomBtn onClick={() => QuizFunc.nextQuestion()}>Продолжить</CustomBtn>
     </PopupWr>
   );
 };

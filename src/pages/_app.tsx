@@ -17,7 +17,7 @@ const WelcomeVideo = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 3000);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, []);

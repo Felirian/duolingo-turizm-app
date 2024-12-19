@@ -1,46 +1,38 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
+import {Question} from "@/interfaces";
 
-export const useQuizFunctions = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [isHintOpen, setIsHintOpen] = useState(false)
+export const useQuizFunctions = ({initialQuestions}) => {
+  const [questions, setQuestions] = useState<Question[]>(initialQuestions);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHintOpen, setIsHintOpen] = useState(false);
+
+
+  const addQuestionToEnd = (question: Question) => {
+    setQuestions((prev) => [...prev, question]);
+  };
 
   const nextQuestion = () => {
-    setIsHintOpen(false)
-    setSelectedAnswer(null);
-    setCurrentQuestion(currentQuestion + 1);
-    // if (isCorrect) {
-    //   setScore(score + 1);
-    // }
+    setCurrentIndex((prev) => prev + 1);
   };
 
   const giveAnswers = (isCorrect) => {
-    if (selectedAnswer) {
-      setIsHintOpen(true)
+
+    console.log(isCorrect);
+    setIsHintOpen(true)
+    if (!isCorrect) {
+      addQuestionToEnd(questions[currentIndex])
     }
   }
 
-  const endGame = () => {
-    if (score >= 4) {
-      //localStorage.setItem(currentRoom, true);
-    }
-    setCurrentQuestion(0);
-    setScore(0);
-  };
+  const currentQuestion = questions[currentIndex];
+  const isFinished = currentIndex >= questions.length;
 
   return {
-    variables: {
-      currentQuestion,
-      score,
-      selectedAnswer,
-      isHintOpen
-    },
-    fun: {
-      nextQuestion,
-      endGame,
-      setSelectedAnswer,
-      setIsHintOpen
-    },
+    currentQuestion,
+    isHintOpen,
+    giveAnswers,
+    isFinished,
+    currentIndex,
+    nextQuestion,
   };
 };

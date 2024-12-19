@@ -7,50 +7,42 @@ import {CustomBtn} from "@/components/Shared/CustomBtn";
 import styled from "styled-components";
 import Popup from "@/components/Questions/QuestionPage/Popup";
 
-const Index = ({data, QuizFunc}) => {
+const Index = ({QuizFunc}) => {
+  const [isCorrect, setIsCorrect] = useState(null)
 
   return (
     <>
-      <Popup QuizFunc={QuizFunc}/>
-      <H3>{data.text}</H3>
-      <B2>{data.hint}</B2>
-    <QuestionPageWr>
-      <QuestionPageCon>
-        {data.answer.type === 0 ? (
-          data.answer.true_type0.length === 1 ? (
-            <H3>Один вариант ответа</H3>
-          ) : (
-            <H3>Несколько вариантов ответа</H3>
-          )
-        ) : data.answer.type === 1 ? (
-          <H3>Правда или ложь?</H3>
-        ) : data.answer.type === 2 ? (
-          <H3>Расположите в правильном порядке</H3>
-        ) : null}
+      <Popup QuizFunc={QuizFunc} isCorrect={isCorrect}/>
+      <H3>{QuizFunc.currentQuestion.text}</H3>
+      <B2>{QuizFunc.currentQuestion.hint}</B2>
 
-      {data.answer.type === 0 ? (
-        <Type0 data={data.answer}/>
-      ) : data.answer.type === 1 ? (
-        <Type1 data={data.answer}/>
-      ) : data.answer.type === 2 && (
-        <Type2 data={data.answer}/>
-      )}
-      <CustomBtn onClick={() => QuizFunc.fun.setIsHintOpen(true)}>Продолжить</CustomBtn>
+      <QuestionPageWr>
+        <QuestionPageCon>
+          {QuizFunc.currentQuestion.answer.type === 0 ? (
+            QuizFunc.currentQuestion.answer.true_type0.length === 1 ? (
+              <H3>Один вариант ответа</H3>
+            ) : (
+              <H3>Несколько вариантов ответа</H3>
+            )
+          ) : QuizFunc.currentQuestion.answer.type === 1 ? (
+            <H3>Правда или ложь?</H3>
+          ) : QuizFunc.currentQuestion.answer.type === 2 ? (
+            <H3>Расположите в правильном порядке</H3>
+          ) : null}
+
+          {QuizFunc.currentQuestion.answer.type === 0 ? (
+            <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect}/>
+          ) : QuizFunc.currentQuestion.answer.type === 1 ? (
+            <Type1 data={QuizFunc.currentQuestion.answer}/>
+          ) : QuizFunc.currentQuestion.answer.type === 2 && (
+            <Type2 data={QuizFunc.currentQuestion.answer}/>
+          )}
+
+          <CustomBtn onClick={() => QuizFunc.giveAnswers(isCorrect)}>Продолжить</CustomBtn>
+
+        </QuestionPageCon>
+      </QuestionPageWr>
     </>
-        <B2>{data.text}</B2>
-      </QuestionPageCon>
-      <QuestionPageCon>
-        {data.answer.type === 0 ? (
-          <Type0 data={data.answer} />
-        ) : data.answer.type === 1 ? (
-          <Type1 data={data.answer} />
-        ) : data.answer.type === 2 ? (
-          <Type2 data={data.answer} />
-        ) : null}
-
-        {data.answer.type !== 1 && <CustomBtn onClick={handleClickHintOpen}>Продолжить</CustomBtn>}
-      </QuestionPageCon>
-    </QuestionPageWr>
   );
 };
 

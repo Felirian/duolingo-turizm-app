@@ -1,5 +1,24 @@
 export type AdminPanelCode = 'idle' | 'good' | 'bad' | 'edit' | 'add' | 'sending';
 
+export interface Answer {
+  id: string;
+  question_id: string;
+  type: number;
+  true_type0?: number[];
+  cont_type0?: string[];
+  true_type1?: boolean;
+  true_type2?: string[];
+}
+
+export interface Question {
+  id: string;
+  point_id: string;
+  text: string;
+  hint: string;
+  image?: string;
+  answer: Answer;
+}
+
 export interface Course {
   id?: string;
   name: string;
