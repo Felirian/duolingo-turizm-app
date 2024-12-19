@@ -1,5 +1,5 @@
 import { Point } from '@/interfaces';
-import { Btn1, Btn1Style } from '@/styles/textTags';
+import { Btn1Style } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
 import styled from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
@@ -29,7 +29,7 @@ const PointItem = ({ data, coordinates, currentPoint }: PointItemProps) => {
       data-aos-duration='700'
       disabled={isLockedPoint}
     >
-      <PointBtn1>
+      <PointBtn1 $islocked={isLockedPoint}>
         <span>{isLockedPoint ? <PointsSvgSelector name='locked' /> : data.number}</span>
         <PointsSvgSelector name='point' />
 
@@ -59,19 +59,13 @@ const PointItemWr = styled.button`
       }
     }
   }
-
   &:disabled {
-    svg {
-      ellipse {
-        fill: ${COLORS.mediumOrange};
-        filter: drop-shadow(0px 1.7vw 0px ${COLORS.heavyOrange})
-          drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
-      }
-    }
+    pointer-events: none;
   }
 `;
 
-const PointBtn1 = styled(Btn1)`
+const PointBtn1 = styled.div<{ $islocked: boolean }>`
+  ${Btn1Style}
   position: relative;
 
   width: 100%;
@@ -102,9 +96,16 @@ const PointBtn1 = styled(Btn1)`
     width: 99%;
     height: 99%;
     z-index: 0;
-
-    filter: drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange})
-      drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
+    filter: ${({ $islocked }) =>
+      $islocked
+        ? `drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
+        : `drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
+    path {
+      fill: ${({ $islocked }) => ($islocked ? COLORS.lightOrange : COLORS.softOrange)};
+    }
+    ellipse {
+      fill: ${({ $islocked }) => ($islocked ? COLORS.mediumOrange : COLORS.orange)};
+    }
   }
 `;
 
