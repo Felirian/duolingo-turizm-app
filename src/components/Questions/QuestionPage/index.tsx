@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Popup from "@/components/Questions/QuestionPage/Popup";
 
 const Index = ({QuizFunc}) => {
-  const [isCorrect, setIsCorrect] = useState(null)
+  const [isCorrect, setIsCorrect] = useState(null);
 
   return (
     <>
@@ -38,7 +38,9 @@ const Index = ({QuizFunc}) => {
             <Type2 data={QuizFunc.currentQuestion.answer}/>
           )}
 
+
           <CustomBtn onClick={() => QuizFunc.giveAnswers(isCorrect)}>Продолжить</CustomBtn>
+
 
         </QuestionPageCon>
       </QuestionPageWr>

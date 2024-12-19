@@ -11,6 +11,10 @@ const Type0 = ({ data , setIsCorrect}) => {
     setIsCorrect(JSON.stringify(data.true_type0) === JSON.stringify(selectedIndexes))
   }, [selectedIndexes]);
 
+  useEffect(() => {
+    setSelectedIndexes([])
+  }, [data]);
+
 
   // Обработчик клика на кнопку
   const handleButtonClick = (index: number) => {

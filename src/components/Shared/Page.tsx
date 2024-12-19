@@ -86,7 +86,7 @@ const PageWr = styled.div<{
 
   background: ${({$background}) => $background
     ? 'linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%)'
-    : '#FFF'
+    : '#F1F4EA'
   };
   overflow-y: scroll;
   scroll-behavior: smooth;

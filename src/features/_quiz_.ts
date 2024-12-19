@@ -12,6 +12,7 @@ export const useQuizFunctions = ({initialQuestions}) => {
   };
 
   const nextQuestion = () => {
+    setIsHintOpen(false)
     setCurrentIndex((prev) => prev + 1);
   };
 
