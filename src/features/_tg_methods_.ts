@@ -68,7 +68,7 @@ export function tgInit (debug: boolean): void  {
     $debug.set(debug);
     console.log('---Init Tg---');
     init();
-
+    //@typescript-eslint/no-unused-expressions
     backButton.isSupported() && backButton.mount();
     miniApp.mount();
     themeParams.mount();
@@ -85,7 +85,7 @@ export function tgInit (debug: boolean): void  {
   } catch (error) {
     console.log('Ошибка инициализации tg:', error);
   }
-
+  //@typescript-eslint/no-unused-expressions
   debug && import('eruda')
     .then((lib) => lib.default.init())
     .catch(console.error);
