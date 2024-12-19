@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// Импортируем видеофайл
 import welcomeVid from '@/assets/video/welcome.mp4';
 
 const WelcomeVideo = () => {
@@ -34,7 +33,6 @@ const WelcomeVideo = () => {
         style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: visible ? 1 : 0, transition: 'opacity 1s ease-in-out' }}
       >
         <source src={welcomeVid} type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
     </div>
   );

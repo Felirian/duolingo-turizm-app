@@ -42,7 +42,7 @@ const SectionsCardWr = styled.div`
     display: block;
     position: relative;
     overflow: hidden;
-
+    border-radius: 1.67vw;
     &::before {
       content: '';
       position: absolute;
