@@ -4,6 +4,7 @@ import { Page } from '@/components/Shared/Page';
 import Points from '@/components/Points';
 import { useGetAllPoints } from '@/features/_queries_/_rest_api_';
 import BottomTabs from '@/components/Shared/BottomTabs';
+import Loader from '@/components/Shared/Loader';
 
 const Index = () => {
   const router = useRouter();
@@ -11,12 +12,12 @@ const Index = () => {
   const { loading, data, error } = useGetAllPoints(id);
 
   if (!router.isReady) {
-    return <div>загрузка</div>;
+    return <Loader />;
   }
 
   return (
     <Page>
-      {loading ? <div>загрузка</div> : error ? <div>ошибка</div> : data && <Points data={data} />}
+      {loading ? <Loader /> : error ? <div>ошибка</div> : data && <Points data={data} />}
       <BottomTabs />
     </Page>
   );
