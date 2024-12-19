@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Page } from '@/components/Shared/Page';
 import { useGetQuestions } from '@/features/_queries_/_rest_api_';
 import Quiz from '@/components/Questions/Quiz';
+import Loader from '@/components/Shared/Loader';
 
 const Index = () => {
   const router = useRouter();
@@ -11,9 +12,7 @@ const Index = () => {
   const { loading, data, error } = useGetQuestions(section, point);
   console.log(data, section, point);
   return (
-    <Page>
-      {loading ? <div>загрузка</div> : error ? <div>ошибка</div> : data && <Quiz data={data} />}
-    </Page>
+    <Page>{loading ? <Loader /> : error ? <div>ошибка</div> : data && <Quiz data={data} />}</Page>
   );
 };
 

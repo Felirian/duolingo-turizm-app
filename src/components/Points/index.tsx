@@ -6,17 +6,17 @@ import PointItem from './PointItem';
 import React from 'react';
 
 const PONTS_COORDS = [
-  { top: '46vw', left: '22vw' },
-  { top: '71vw', left: '44.5vw' },
-  { top: '100vw', left: '32vw' },
-  { top: '132vw', left: '23vw' },
-  { top: '160vw', left: '44.8vw' },
+  { top: '48vw', left: '22vw' },
+  { top: '73vw', left: '44.5vw' },
+  { top: '102vw', left: '32vw' },
+  { top: '134vw', left: '23vw' },
+  { top: '162vw', left: '44.8vw' },
 ];
 
 const IMG_COORSDS = [
-  { top: '56vw', left: '-5vw' },
-  { top: '96vw', left: '57vw' },
-  { top: '146vw', left: '-5vw' },
+  { top: '58vw', left: '-5vw' },
+  { top: '98vw', left: '57vw' },
+  { top: '148vw', left: '-5vw' },
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
@@ -65,7 +65,7 @@ const Points = ({ data }: { data: PointsData }) => {
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
-  height: 206vw;
+  height: 208vw;
 
   text-align: center;
 
@@ -76,7 +76,7 @@ const PointsTitleBlock = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 5.5vw;
+  top: 7.5vw;
   left: 50%;
   transform: translateX(-50%);
 
@@ -84,11 +84,14 @@ const PointsTitleBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1vw;
 
   color: ${COLORS.textGreen};
 `;
 
-const PointsTitle = styled(Btn1)``;
+const PointsTitle = styled(Btn1)`
+  line-height: 105%;
+`;
 
 const MascotImg = styled.img`
   width: 38.29vw;
