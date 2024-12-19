@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { SelectorButton } from '@/components/Shared/SelectorBtn';
 import { COLORS } from '@/styles/variables';
-import { B1, Btn1 } from '@/styles/textTags';
+import { B1 } from '@/styles/textTags';
 
 // Функция для перемешивания массива
 const shuffleArray = (array) => {

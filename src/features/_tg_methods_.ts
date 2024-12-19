@@ -68,8 +68,8 @@ export function tgInit (debug: boolean): void  {
     $debug.set(debug);
     console.log('---Init Tg---');
     init();
-    //@typescript-eslint/no-unused-expressions
-    backButton.isSupported() && backButton.mount();
+
+    backButton.isSupported() && backButton.mount(); //@typescript-eslint/no-unused-expressions
     miniApp.mount();
     themeParams.mount();
     initData.restore();

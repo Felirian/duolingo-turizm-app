@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import {CustomBtn} from "@/components/Shared/CustomBtn";
-import {useQuizFunctions} from "@/features/_quiz_";
 
 const Popup = ({QuizFunc, isCorrect}) => {
 
