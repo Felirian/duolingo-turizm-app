@@ -3,7 +3,7 @@ import React from 'react';
 const StartPage = () => {
   return (
     <div>
-      zdarova zaebal
+      zdarova 
     </div>
   );
 };

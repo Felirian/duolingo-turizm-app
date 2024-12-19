@@ -2,13 +2,25 @@ import styled from 'styled-components';
 import { InputHTMLAttributes } from 'react';
 import { Btn1Style } from '@/styles/textTags';
 
-interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  capitalizeFirstLetter?: boolean; // Добавляем новый проп
+}
 
-export const CustomInput = ({ ...props }: CustomInputProps) => {
-  return <CustomInputnWr {...props} />;
+export const CustomInput = ({ capitalizeFirstLetter = false, value, onChange, ...props }: CustomInputProps) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    if (capitalizeFirstLetter) {
+      // Капитализация первой буквы
+      const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+      e.target.value = capitalizedValue; 
+    }
+    onChange?.(e); 
+  };
+
+  return <CustomInputnWr value={value} onChange={handleInputChange} {...props} />;
 };
 
-const CustomInputnWr = styled.input.attrs<React.InputHTMLAttributes<HTMLInputElement>>((props) => ({
+const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>((props) => ({
   ...props,
 }))`
   width: 100%;

@@ -3,7 +3,7 @@ import SvgSelector from '@/components/Shared/SvgSelector';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import charImg from '@/assets/img/frog.png';
-import { B1, H3 } from '@/styles/textTags';
+import { B1, Btn1, H3 } from '@/styles/textTags';
 import styled from 'styled-components';
 import { COLORS } from '@/styles/variables';
 import { CustomBtn } from '@/components/Shared/CustomBtn';
@@ -53,18 +53,24 @@ const NewPerson = () => {
       <Page back={false}>
         <NewPersonWr>
           <TopContainer>
-            <SvgSelector svg={'textLogo'} />
-            <StyledH3>Кругосветное приключение</StyledH3>
+            {!isUserCreated ? (
+              <SvgSelector svg={'textLogo'} />
+            ) : (
+              <StyledH3>{petName} теперь с вами!</StyledH3>
+            )}
           </TopContainer>
 
           <Image src={charImg} alt='' />
-          <StyledB1>Образовательное путешествие по земному шару вместе с новым другом!</StyledB1>
+          {!isUserCreated && (
+            <StyledB1>Образовательное путешествие по земному шару вместе с новым другом!</StyledB1>
+          )}
 
           {!isUserCreated && (
             <CustomInput
               placeholder='Назовите питомца'
               value={petName}
               onChange={handleInputChange}
+              capitalizeFirstLetter={true}
             />
           )}
 
@@ -73,9 +79,12 @@ const NewPerson = () => {
               Продолжить
             </CustomBtn>
           ) : (
-            <Link href={'/courses'}>
-              <CustomBtn onClick={handleSubmit}>К доступным курсам</CustomBtn>
-            </Link>
+            <>
+              <StyledH3>Осталось выбрать курс</StyledH3>
+              <Link href={'/courses'}>
+                <CustomBtn onClick={handleSubmit}>Доступные курсы</CustomBtn>
+              </Link>
+            </>
           )}
         </NewPersonWr>
       </Page>

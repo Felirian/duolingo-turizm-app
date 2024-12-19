@@ -155,6 +155,109 @@ const SvgSelector = ({ svg }) => {
           />
         </svg>
       );
+
+    case 'check':
+      return (
+        <svg
+          width='35'
+          height='31'
+          viewBox='0 0 35 31'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <g filter='url(#filter0_d_4193_345)'>
+            <path
+              d='M32.2926 1.79106C30.8421 0.286771 28.4849 0.286771 27.0344 1.79106L11.1691 18.1612L11.0785 18.0728L6.99881 13.7368C5.54827 12.2326 3.19116 12.2326 1.74061 13.7368C0.380733 15.0642 0.380733 17.1879 1.74061 18.5152L11.0785 28.2488L11.1691 28.3373L32.2926 6.65786C33.5619 5.33055 33.6525 3.20694 32.2926 1.87963V1.79106Z'
+              fill='#02C77F'
+            />
+          </g>
+          <defs>
+            <filter
+              id='filter0_d_4193_345'
+              x='0.720703'
+              y='0.662842'
+              width='33.5586'
+              height='29.6743'
+              filterUnits='userSpaceOnUse'
+              color-interpolation-filters='sRGB'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feColorMatrix
+                in='SourceAlpha'
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+                result='hardAlpha'
+              />
+              <feOffset dx='1' dy='2' />
+              <feComposite in2='hardAlpha' operator='out' />
+              <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
+              <feBlend
+                mode='normal'
+                in2='BackgroundImageFix'
+                result='effect1_dropShadow_4193_345'
+              />
+              <feBlend
+                mode='normal'
+                in='SourceGraphic'
+                in2='effect1_dropShadow_4193_345'
+                result='shape'
+              />
+            </filter>
+          </defs>
+        </svg>
+      );
+    case 'cross':
+      return (
+        <svg
+          width='29'
+          height='31'
+          viewBox='0 0 29 31'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <g filter='url(#filter0_d_4193_538)'>
+            <path
+              fill-rule='evenodd'
+              clip-rule='evenodd'
+              d='M20.1368 14.5058L26.5755 8.07079H26.5707C27.3825 7.24768 27.8365 6.14645 27.8365 5.00024C27.8365 3.85402 27.3825 2.75279 26.5707 1.92968C26.1709 1.52861 25.6936 1.20996 25.1669 0.992427C24.6402 0.774891 24.0746 0.662842 23.5032 0.662842C22.9318 0.662842 22.3662 0.774891 21.8395 0.992427C21.3127 1.20996 20.8355 1.52861 20.4357 1.92968L13.9968 8.36653L7.56609 1.93664V1.9272C7.1659 1.52685 6.68847 1.20883 6.1617 0.991742C5.63492 0.774653 5.06937 0.662842 4.49809 0.662842C3.92681 0.662842 3.36125 0.774653 2.83448 0.991742C2.30771 1.20883 1.83027 1.52685 1.43009 1.9272C0.616949 2.74943 0.162109 3.85047 0.162109 4.99663C0.162109 6.14278 0.616949 7.24382 1.43009 8.06606L7.86307 14.4982L1.42987 20.9293C0.616871 21.7518 0.162109 22.8533 0.162109 23.9999C0.162109 25.1464 0.616871 26.2479 1.42987 27.0704C1.82965 27.4715 2.30689 27.7901 2.83362 28.0077C3.36035 28.2252 3.92597 28.3373 4.49734 28.3373C5.06871 28.3373 5.63434 28.2252 6.16107 28.0077C6.6878 27.7901 7.16504 27.4715 7.56482 27.0704L14.0023 20.6367L20.4488 27.0823C20.5484 27.1832 20.6544 27.2779 20.7662 27.3657C21.5945 28.0411 22.6512 28.3859 23.7265 28.3317C24.8017 28.2775 25.8169 27.8281 26.5704 27.0729C27.3289 26.3057 27.777 25.2935 27.831 24.2254C27.885 23.1574 27.5411 22.1066 26.8637 21.2693C26.7761 21.1565 26.6814 21.0493 26.58 20.9482L20.1368 14.5058Z'
+              fill='#EF3349'
+            />
+          </g>
+          <defs>
+            <filter
+              id='filter0_d_4193_538'
+              x='0.162109'
+              y='0.662842'
+              width='28.6738'
+              height='29.6743'
+              filterUnits='userSpaceOnUse'
+              color-interpolation-filters='sRGB'
+            >
+              <feFlood flood-opacity='0' result='BackgroundImageFix' />
+              <feColorMatrix
+                in='SourceAlpha'
+                type='matrix'
+                values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
+                result='hardAlpha'
+              />
+              <feOffset dx='1' dy='2' />
+              <feComposite in2='hardAlpha' operator='out' />
+              <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
+              <feBlend
+                mode='normal'
+                in2='BackgroundImageFix'
+                result='effect1_dropShadow_4193_538'
+              />
+              <feBlend
+                mode='normal'
+                in='SourceGraphic'
+                in2='effect1_dropShadow_4193_538'
+                result='shape'
+              />
+            </filter>
+          </defs>
+        </svg>
+      );
     default:
       return <></>;
   }
