@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [showVideo, setShowVideo] = useState(true);
 
   useSukaOdinRaz(() => {
-    tgInit(true);
+    tgInit(false);
   }, []);
 
   useEffect(() => {
