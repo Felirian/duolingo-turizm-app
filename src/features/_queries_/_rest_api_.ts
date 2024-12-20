@@ -89,7 +89,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
 
   useEffect(() => {
     const fetchSections = async () => {
-      if (!slug) return;
+      if (!slug || !userId || userId == 0) return;
 
       try {
         const response = await axios.get(
@@ -111,7 +111,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
     };
 
     fetchSections();
-  }, [slug]);
+  }, [slug, userId]);
 
   return result;
 };

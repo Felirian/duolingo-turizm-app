@@ -1,25 +1,35 @@
 import React from 'react';
-import { H1, B2 } from '@/styles/textTags';
+import {Btn1, B2, H2, Btn2} from '@/styles/textTags';
 import styled from 'styled-components';
 import {useRouter} from "next/router";
+import {ProgressBur} from "@/components/Shared/ProgressBur";
 // eslint-disable-next-line
 const SectionsCard = ({ data }: any) => {
   const router = useRouter();
   const handlePointClick = () => {
     router.push(router.asPath +'/'+ data.slug);
   };
+
+  console.log(data);
   return (
-    <SectionsCardWr onClick={handlePointClick}>
+    <SectionsCardWr
+      onClick={handlePointClick}
+      style={{
+        backgroundImage: `url(${data.bgimage})`,
+      }}
+    >
+      {data.progress && <ProgressBur percent={Math.round((data.progress/7)*100)}/>}
+
+
       <CardText>
-        <H1>{data.name}</H1>
+        {data.name.length < 20 ? (
+          <H2>{data.name}</H2>
+        ) : (
+          <Btn2>{data.name}</Btn2>
+        )}
         <B2>{data.descr}</B2>
       </CardText>
-      <ImageWr>
-        <img
-          src={data.bgimage}
-          alt={data.name}
-        />
-      </ImageWr>
+
     </SectionsCardWr>
   );
 };
@@ -28,30 +38,25 @@ const SectionsCardWr = styled.div`
   width: 100%;
   height: 42.857vw;
   border-radius: 3.429vw;
+  padding: 4.571vw;
   position: relative;
-  display: block;
-  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  
+  //box-sizing: border-box;
   overflow: hidden;
+  background-size: cover;
 `;
 
-const ImageWr = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const CardText = styled.div`
-  position: absolute;
-  bottom: 4.571vw;
-  left: 4.571vw;
+const CardText = styled.div`  
   color: white;
-  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.08vw;
 `;
 
 export default SectionsCard;
