@@ -72,9 +72,9 @@ const PointItemWr = styled.button`
 const PointBtn1 = styled.div<{ $islocked: boolean }>`
   ${Btn1Style}
   position: relative;
-
   width: 100%;
   height: 100%;
+  overflow: visible;
 
   display: flex;
   justify-content: center;
@@ -102,16 +102,10 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
     height: 19.1vw;
     z-index: 0;
     will-change: filter;
-    transform: translateZ(0);
-    backdrop-filter: blur(0);
-    filter: ${({ $islocked }) =>
-      $islocked
-        ? `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
-        : `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
-    -webkit-filter: ${({ $islocked }) =>
-      $islocked
-        ? `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
-        : `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
+
+    -webkit-filter: drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
+    filter: drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
+
     path {
       fill: ${({ $islocked }) => ($islocked ? COLORS.lightOrange : COLORS.softOrange)};
     }
