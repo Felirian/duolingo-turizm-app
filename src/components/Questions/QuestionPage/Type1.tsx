@@ -58,11 +58,11 @@ const SelectorWr = styled.div`
 const StyledSvg = styled.div`
   width: 8vw;
   height: 8vw;
+  -webkit-filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
 
   svg {
     width: 100%;
     height: 100%;
-    -webkit-filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
-    filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
   }
 `;
