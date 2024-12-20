@@ -82,7 +82,7 @@ const NewPerson = () => {
             <>
               <StyledH3>Осталось выбрать курс</StyledH3>
               <Link href={'/courses'}>
-                <CustomBtn onClick={handleSubmit}>Доступные курсы</CustomBtn>
+                <CustomBtn onClick={handleSubmit}>Доступные⠀курсы</CustomBtn>
               </Link>
             </>
           )}
