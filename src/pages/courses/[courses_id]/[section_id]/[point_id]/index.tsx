@@ -10,7 +10,6 @@ const Index = () => {
   const point = router.query.point_id;
   const section = router.query.section_id;
   const { loading, data, error } = useGetQuestions(section, point);
-  console.log(data, section, point);
   return (
     <Page>{loading ? <Loader /> : error ? <div>ошибка</div> : data && <Quiz data={data} />}</Page>
   );

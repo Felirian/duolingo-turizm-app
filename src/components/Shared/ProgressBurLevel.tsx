@@ -20,16 +20,16 @@ export const ProgressBurLevel = ({percent, level}: any) => {
 
 const LevelWr = styled.div`
   position: absolute;
-  top: 0;
-  left: -0.20vw;
+  top: -0.83vw;
+  left: 0;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 8vw;
-  height: 100%;
+  height: inherit;
+  transform: translateX(-50%);
   font-size: 2vw;
-  
   color: ${COLORS.white};
   border-radius: 1.5vw;
   background-color: #167351;
@@ -55,6 +55,8 @@ const LevelWr = styled.div`
 const FrameParentRoot = styled.div`
   width: 50%;
   height: 8.5vw;
+  flex-shrink: 0;
+  transform: translateX(2vw);
   position: relative;
   border-radius: 1.714vw;
   background-color: #167351;

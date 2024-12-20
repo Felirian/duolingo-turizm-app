@@ -1,6 +1,6 @@
 import React from 'react';
 import {ProgressBurSection} from "@/components/Shared/ProgressBurSection";
-import {Btn1} from "@/styles/textTags";
+import {Btn1, H3} from "@/styles/textTags";
 import {ProgressBurLevel} from "@/components/Shared/ProgressBurLevel";
 import frog1 from '@/assets/img/frogLevel/1.png';
 import frog2 from '@/assets/img/frogLevel/2.png';
@@ -18,7 +18,7 @@ const Index = ({data}: any) => {
       <ProgressBurLevel percent={data.xp % 100} level={Math.round(data.xp / 100)}/>
 
       <img src={FrogLevel.src}/>
-
+      <H3>Российское гостеприимство</H3>
       <ProgressBurSection percent={data.total_progress * 2.8571428571}/>
     </MainWr>
   );
