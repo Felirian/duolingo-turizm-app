@@ -33,6 +33,7 @@ const WelcomeVideo = () => {
         left: 0,
         width: '100%',
         height: '100%',
+        objectPosition: 'top',
         background: 'white',
         zIndex: 1000,
       }}
