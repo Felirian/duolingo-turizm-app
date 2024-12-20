@@ -11,13 +11,10 @@ const Index = () => {
   const router = useRouter();
   const id = router.query.section_id;
   const { userId } = useTgApp();
-  const [gg, setGg] = useState(false)
 
-  const { loading, data, error } = useGetAllPoints(id, gg);
+  const { loading, data, error } = useGetAllPoints(id);
+
   console.log(userId);
-  useEffect(() => {
-    setGg(!gg)
-  }, [router]);
 
   console.log(userId,id, data);
 

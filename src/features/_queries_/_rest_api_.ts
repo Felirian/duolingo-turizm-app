@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string | string[] | undefined, gg: any) => {
+export const useGetAllPoints = (slug: string | string[] | undefined) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | PointsData;
@@ -152,7 +152,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined, gg: any) =>
     };
 
     fetchArtistsList();
-  }, [slug, userId, gg]);
+  }, [slug, userId]);
 
   return result;
 };
