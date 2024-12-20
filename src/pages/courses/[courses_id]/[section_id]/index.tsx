@@ -12,7 +12,7 @@ const Index = () => {
   const id = router.query.section_id;
   const { userId, gg, setGg } = useTgApp();
 
-  const { loading, data, error } = useGetAllPoints(id, userId, gg);
+  const { loading, data, error } = useGetAllPoints(id, userId);
 
 
   useEffect(() => {
