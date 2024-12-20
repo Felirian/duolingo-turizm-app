@@ -10,8 +10,7 @@ import { CustomBtn } from '@/components/Shared/CustomBtn';
 import { CustomInput } from '@/components/Shared/CustomInput';
 import useTgApp from '@/features/_tg_methods_';
 import { CreateUser, useGetUser } from '@/features/_queries_/_rest_api_';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { Router, useRouter } from 'next/router';
 
 const NewPerson = () => {
   const [petName, setPetName] = useState('');
@@ -37,6 +36,7 @@ const NewPerson = () => {
 
   // Обработчик отправки данных на сервер
   const handleSubmit = async () => {
+    setIsDisabled(true)
     try {
       const response = await CreateUser(petName, userId);
       if (response?.ok) {
@@ -45,6 +45,8 @@ const NewPerson = () => {
       }
     } catch (error) {
       console.error('Ошибка при создании пользователя:', error);
+    } finally {
+      setIsDisabled(false)
     }
   };
 
@@ -62,9 +64,15 @@ const NewPerson = () => {
 
           <Image src={charImg} alt='' />
           {!isUserCreated && (
-            <StyledB1>Образовательное путешествие по <br/>земному шару вместе с новым другом!</StyledB1>
+            <StyledB1>
+              Образовательное путешествие по <br />
+              земному шару вместе с новым другом!
+            </StyledB1>
           )}
-
+          <DotsContainer>
+            <StageDot active={!isUserCreated}></StageDot>
+            <StageDot active={isUserCreated}></StageDot>
+          </DotsContainer>
           {!isUserCreated && (
             <CustomInput
               placeholder='Назовите питомца'
@@ -81,9 +89,7 @@ const NewPerson = () => {
           ) : (
             <>
               <StyledH3>Осталось выбрать курс</StyledH3>
-              <Link href={'/courses'}>
-                <CustomBtn onClick={handleSubmit}>Доступные⠀курсы</CustomBtn>
-              </Link>
+              <CustomBtn onClick={() => router.push('/courses')}>Доступные⠀курсы</CustomBtn>
             </>
           )}
         </NewPersonWr>
@@ -91,6 +97,19 @@ const NewPerson = () => {
     </>
   );
 };
+
+const StageDot = styled.div<{ active: boolean }>`
+  width: ${({ active }) => (active ? '4vw' : '1.7vw')};
+  height: 1.714vw;
+  background-color: #02c77f;
+  border-radius: 8.286vw;
+  transition: width 0.3s ease-in-out;
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  gap: 2vw;
+`;
 
 const NewPersonWr = styled.div`
   display: flex;
