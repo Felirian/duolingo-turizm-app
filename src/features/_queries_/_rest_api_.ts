@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string | string[] | undefined,userId: any, gg: any) => {
+export const useGetAllPoints = (slug: string | string[] | undefined,userId: any) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | PointsData;
@@ -126,7 +126,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined,userId: any,
     data: null,
     error: null,
   });
-
+  const {setGg, gg } = useTgApp();
   // console.log(userId, 'user');
 
   useEffect(() => {
@@ -142,6 +142,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined,userId: any,
           data: response.data,
           error: null,
         });
+        setGg(!gg)
       } catch (error) {
         setResult({
           loading: false,

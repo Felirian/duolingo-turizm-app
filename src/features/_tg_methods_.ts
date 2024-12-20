@@ -15,7 +15,7 @@ const useTgApp = () => {
   const [dataUser, setDataUser] = useState<User | undefined | null>(null)
   const [userId, setUserId] = useState(0)
   const isInitData = useSignal(initData.user);
-
+  const [gg, setGg] = useState(false)
   const [safeAreas, setSafeAreas] = useState<SafeAreaInsets | null>(null);
   const isSafeArea = useSignal(viewport.contentSafeAreaInsets);
 
@@ -36,6 +36,8 @@ const useTgApp = () => {
   }, [isSafeArea]);
 
   return {
+    gg,
+    setGg,
     userId,
     dataUser,
     safeAreas
