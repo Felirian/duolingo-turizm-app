@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 //@ts-ignore
-import welcomeVid from '@/assets/video/welcome.mp4';
+// import welcomeVid from '@/assets/video/welcome.mp4';
 
 const WelcomeVideo = () => {
   const [visible, setVisible] = useState(true);
@@ -49,7 +49,7 @@ const WelcomeVideo = () => {
           transition: 'opacity 1s ease-in-out',
         }}
       >
-        <source src={welcomeVid} type='video/mp4' />
+        <source src={'/welcome.mp4'} type='video/mp4' />
       </video>
     </div>
   );

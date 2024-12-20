@@ -29,7 +29,7 @@ const Points = ({ data }: { data: PointsData }) => {
           <PointsTitle>{data.section.name}</PointsTitle>
         </div>
         <div data-aos='zoom-in' data-aos-duration='600'>
-          <B1>{`уровень ${currentPoint}`}</B1>
+          <B1>{currentPoint > 5 ? 'все уровни пройдены!' : `уровень ${currentPoint}`}</B1>
         </div>
       </PointsTitleBlock>
 
