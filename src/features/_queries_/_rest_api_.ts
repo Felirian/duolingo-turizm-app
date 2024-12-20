@@ -271,6 +271,10 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
     section_slug : section_slug,
     point: point
   };
+  const put_xp = {
+    xp : "70",
+  };
+
   //@ts-ignore
   const METHOD: string = point == '1' ? 'POST' : 'PUT'
 
@@ -283,7 +287,15 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
       body: JSON.stringify(data),
     });
 
-    if (response.ok) {
+    const response2 = await fetch(BASE_URL + 'users'+ '?tg_id='+ userId, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(put_xp),
+    });
+
+    if (response.ok && response2.ok) {
       return response
       console.log('Данные успешно отправлены');
     } else {
@@ -292,5 +304,6 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
   } catch (error) {
     console.error('Ошибка сети:', error);
   }
+
 };
 

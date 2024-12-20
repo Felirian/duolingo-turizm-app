@@ -19,7 +19,7 @@ const Index = ({data}: any) => {
 
       <img src={FrogLevel.src}/>
 
-      <ProgressBurSection percent={data.total_progress}/>
+      <ProgressBurSection percent={data.total_progress * 2.8571428571}/>
     </MainWr>
   );
 };

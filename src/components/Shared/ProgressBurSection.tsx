@@ -5,7 +5,7 @@ export const ProgressBurSection = ({percent}: any) => {
   return (
     <FrameParentRoot>
       <PercentLine $percent={percent}/>
-      <PercentBlock>{percent}%</PercentBlock>
+      <PercentBlock>{Math.round(percent)}%</PercentBlock>
     </FrameParentRoot>
   );
 };
