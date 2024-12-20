@@ -194,7 +194,7 @@ export const useGetQuestions = (
     };
 
     fetchArtistsList();
-  }, [slug, point, userId]);
+  }, [slug, point]);
 
   return result;
 };

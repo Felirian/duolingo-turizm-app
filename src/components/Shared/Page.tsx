@@ -55,9 +55,15 @@ export function Page({
 
     return backButton.onClick(() => {
       console.log('back');
-      router.back();
+      const segments = router.asPath.split('/').filter(Boolean);
+      if (segments.length > 1) {
+        const newPath = '/' + segments.slice(0, -1).join('/');
+        router.push(newPath);
+      } else {
+        console.warn('No more segments to remove');
+      }
     });
-  }, [router]);
+  }, [isVisible, router]);
 
   return (
     <PageWr

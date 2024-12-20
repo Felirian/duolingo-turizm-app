@@ -6,27 +6,29 @@ import BottomTabsSvgSelector from './BottomTabsSvgSelector';
 import { CustomBtn } from '../CustomBtn';
 import { useRouter } from 'next/router';
 
-const TAB_BUTTONS = [
-  {
-    icon: <BottomTabsSvgSelector name='play' />,
-    link: '/',
-  },
-  {
-    icon: <BottomTabsSvgSelector name='home' />,
-    link: '/',
-  },
-  {
-    icon: <BottomTabsSvgSelector name='burger' />,
-    link: '/courses',
-  },
-];
 
-const BottomTabs = () => {
+
+const BottomTabs = ({play = ''}: {play?: any}) => {
   const router = useRouter();
 
   const buttonClick = (link: string) => {
     router.push(link);
   };
+
+  const TAB_BUTTONS = [
+    {
+      icon: <BottomTabsSvgSelector name='play' />,
+      link: play || router.asPath,
+    },
+    {
+      icon: <BottomTabsSvgSelector name='home' />,
+      link: '/',
+    },
+    {
+      icon: <BottomTabsSvgSelector name='burger' />,
+      link: '/courses',
+    },
+  ];
 
   return (
     <BottomTabsWr>

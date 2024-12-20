@@ -11,7 +11,7 @@ const Index = () => {
   const section = router.query.section_id;
   const { loading, data, error } = useGetQuestions(section, point);
   return (
-    <Page>{loading ? <Loader /> : error ? <div>ошибка</div> : data && <Quiz data={data} />}</Page>
+    <Page navBar={false}>{loading ? <Loader /> : error ? <div>ошибка</div> : data && <Quiz data={data} />}</Page>
   );
 };
 

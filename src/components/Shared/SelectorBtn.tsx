@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonHTMLAttributes } from 'react';
-import { Btn1Style } from '@/styles/textTags';
+import {Btn1Style, Btn3Style} from '@/styles/textTags';
 
 interface SelectorButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isPressed?: boolean; // Свойство, указывающее, нажата ли кнопка
@@ -23,5 +23,5 @@ export const SelectorButton = styled.button<SelectorButtonProps>`
   align-items: center;
   justify-content: center;
 
-  ${Btn1Style}
+  ${Btn3Style}
 `;

@@ -10,7 +10,7 @@ import Loader from '@/components/Shared/Loader';
 export default function Home() {
   const router = useRouter();
   const { loading, data, error } = useGetUser();
-
+  console.log(data);
   useEffect(() => {
     if (error) {
       console.log(error);
@@ -37,10 +37,12 @@ export default function Home() {
             data && (
               <>
                 <Main data={data} />
+                {/*@ts-ignore*/}
+                <BottomTabs play={`/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`}/>
               </>
             )
           )}
-          <BottomTabs />
+
         </main>
       </Page>
     </>

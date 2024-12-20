@@ -11,7 +11,7 @@ const Index = () => {
   console.log('courses:', data);
 
   return (
-    <Page>
+    <Page back={false}>
       {loading ? (
         <CoursesCardCon>
           {Array(5)

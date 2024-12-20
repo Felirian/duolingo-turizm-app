@@ -13,9 +13,6 @@ const Index = ({ QuizFunc }: any) => {
   return (
     <QuestionPageWr>
       <Popup QuizFunc={QuizFunc} isCorrect={isCorrect} />
-      <H3>{QuizFunc.currentQuestion.text}</H3>
-      <B2>{QuizFunc.currentQuestion.hint}</B2>
-
       <QuestionPageCon>
         {QuizFunc.currentQuestion.answer.type === 0 ? (
           QuizFunc.currentQuestion.answer.true_type0.length === 1 ? (
@@ -28,6 +25,8 @@ const Index = ({ QuizFunc }: any) => {
         ) : QuizFunc.currentQuestion.answer.type === 2 ? (
           <H3>Расположите в правильном порядке</H3>
         ) : null}
+        <B2>{QuizFunc.currentQuestion.text}</B2>
+      </QuestionPageCon>
 
         {QuizFunc.currentQuestion.answer.type === 0 ? (
           <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} />
@@ -39,8 +38,7 @@ const Index = ({ QuizFunc }: any) => {
           )
         )}
 
-        <CustomBtn onClick={() => QuizFunc.giveAnswers(isCorrect)}>Продолжить</CustomBtn>
-      </QuestionPageCon>
+      <CustomBtn onClick={() => QuizFunc.giveAnswers(isCorrect)}>Продолжить</CustomBtn>
     </QuestionPageWr>
   );
 };
