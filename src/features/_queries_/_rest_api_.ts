@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string | string[] | undefined, gg: any) => {
+export const useGetAllPoints = (slug: string | string[] | undefined,userId: any, gg: any) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | PointsData;
@@ -126,12 +126,12 @@ export const useGetAllPoints = (slug: string | string[] | undefined, gg: any) =>
     data: null,
     error: null,
   });
-  const { userId } = useTgApp();
+
   // console.log(userId, 'user');
 
   useEffect(() => {
     const fetchArtistsList = async () => {
-      if (!slug || !userId || userId === 0) return;
+      if (!slug || !userId || userId == 0) return;
       try {
         const response = await axios.get(
           BASE_URL + 'points/front?section_slug=' + slug + '&tg_id=' + userId,

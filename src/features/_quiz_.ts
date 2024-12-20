@@ -30,7 +30,7 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   const gameOver = (section_slug: any, point: any, course_slug: any) => {
     console.log(section_slug, point, userId,course_slug);
     putPoint(section_slug, point, userId)
-    router.replace(`/courses/${course_slug}/${section_slug}`,  undefined, {scroll: false})
+    router.push(`/courses/${course_slug}/${section_slug}`)
 
   }
 
