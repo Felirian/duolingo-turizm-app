@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { InputHTMLAttributes } from 'react';
 import { Btn1Style } from '@/styles/textTags';
+import { COLORS } from '@/styles/variables';
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   capitalizeFirstLetter?: boolean; // Добавляем новый проп
@@ -38,4 +39,7 @@ const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>
   }
 
   ${Btn1Style} 
+  &:placeholder-shown {
+    border-color: ${COLORS.gray}; 
+  }
 `;
