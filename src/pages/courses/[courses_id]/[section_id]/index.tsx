@@ -13,7 +13,7 @@ const Index = () => {
   const { userId } = useTgApp();
 
   const { loading, data, error } = useGetAllPoints(id);
-  // console.log(userId,id, data);
+  console.log(userId,id, data);
   if (!router.isReady) {
     return <Loader />;
   }
