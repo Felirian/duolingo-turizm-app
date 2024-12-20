@@ -18,7 +18,7 @@ const WelcomeVideo = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     const timer = setTimeout(() => {
       setShowVideo(false);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
