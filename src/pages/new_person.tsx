@@ -62,7 +62,7 @@ const NewPerson = () => {
 
           <Image src={charImg} alt='' />
           {!isUserCreated && (
-            <StyledB1>Образовательное путешествие по земному шару вместе с новым другом!</StyledB1>
+            <StyledB1>Образовательное путешествие по <br/>земному шару вместе с новым другом!</StyledB1>
           )}
 
           {!isUserCreated && (

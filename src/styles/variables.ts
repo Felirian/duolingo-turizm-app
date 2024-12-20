@@ -14,6 +14,8 @@ export const COLORS = {
   seaGreen: '#02C77F',
   red: '#EF3349',
   textGray: '#272727',
+  gray:'#B1B1B1',
+  lightGray:'#D3D3D3',
 };
 
 const breakpoints = {
