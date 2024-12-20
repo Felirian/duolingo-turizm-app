@@ -29,7 +29,7 @@ const Type1 = ({ data, setIsCorrect, setSelected }: any) => {
         onClick={() => handleButtonClick(true)} // Обработчик клика
       >
         <StyledSvg>
-          <SvgSelector svg="check" /> {/* Иконка "check" */}
+          <SvgSelector svg='check' /> {/* Иконка "check" */}
         </StyledSvg>
       </SelectorButton>
 
@@ -39,7 +39,7 @@ const Type1 = ({ data, setIsCorrect, setSelected }: any) => {
         onClick={() => handleButtonClick(false)} // Обработчик клика
       >
         <StyledSvg>
-          <SvgSelector svg="cross" /> {/* Иконка "cross" */}
+          <SvgSelector svg='cross' /> {/* Иконка "cross" */}
         </StyledSvg>
       </SelectorButton>
     </SelectorWr>
@@ -50,13 +50,19 @@ export default Type1;
 
 const SelectorWr = styled.div`
   display: flex;
-  gap: 3vw;
+  gap: 14.29vw;
   justify-content: center;
+  padding-top: 30vw;
 `;
 
 const StyledSvg = styled.div`
-  margin-top: 2vw;
+  width: 8vw;
+  height: 8vw;
+
   svg {
-    filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));
+    width: 100%;
+    height: 100%;
+    -webkit-filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0.86vw 0.86vw 0px rgba(0, 0, 0, 0.2));
   }
 `;

@@ -37,12 +37,19 @@ export default function Home() {
             data && (
               <>
                 <Main data={data} />
-                {/*@ts-ignore*/}
-                <BottomTabs play={`/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`}/>
+
+                <BottomTabs
+                  play={
+                    // @ts-ignore
+                    data?.last_section_slug
+                      ? // @ts-ignore
+                        `/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`
+                      : '/courses/rossijskoe-gostepriimstvo'
+                  }
+                />
               </>
             )
           )}
-
         </main>
       </Page>
     </>
