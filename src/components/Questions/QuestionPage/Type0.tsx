@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {SelectorButton} from '@/components/Shared/SelectorBtn';
 // eslint-disable-next-line
-const Type0 = ({data, setIsCorrect}: any) => {
+const Type0 = ({data, setIsCorrect, setSelected}: any) => {
   // Состояние для отслеживания выбранных индексов
   const [selectedIndexes, setSelectedIndexes] = useState([]);
 
@@ -18,6 +18,7 @@ const Type0 = ({data, setIsCorrect}: any) => {
 
   // eslint-disable-next-line
   const handleButtonClick = (index: any) => {
+    setSelected(true)
     // eslint-disable-next-line
     setSelectedIndexes((prevIndexes: any[]): any => {
       if (data.true_type0.length === 1) {

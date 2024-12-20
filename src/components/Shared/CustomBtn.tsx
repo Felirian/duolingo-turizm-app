@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Btn1 } from '@/styles/textTags';
+import { COLORS } from '@/styles/variables';
 // eslint-disable-next-line
 interface CustomBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 // eslint-disable-next-line
@@ -44,6 +45,9 @@ const CustomBtnWr = styled.button.attrs<React.ButtonHTMLAttributes<HTMLButtonEle
     z-index: 0;
     transition: 0.2s ease;
     opacity: 1;
+    &:disabled{
+      opacity: 0;
+    }
   }
 
   &:active {
@@ -59,7 +63,12 @@ const CustomBtnWr = styled.button.attrs<React.ButtonHTMLAttributes<HTMLButtonEle
   &:disabled {
     opacity: 0.5; 
     cursor: not-allowed; 
-    background-color: #02c77f; 
+    background-color: ${COLORS.gray}; 
+    color:${COLORS.lightGray};
+    box-shadow: 0px -1.11vw 0px 0px ${COLORS.gray};
+    &:after {
+      background-color: ${COLORS.gray}; 
+    }
   }
 `;
 

@@ -14,7 +14,8 @@ const shuffleArray = (array: any) => {
   return shuffledArray;
 };
 // eslint-disable-next-line
-const Type2 = ({ data, setIsCorrect }: any) => {
+const Type2 = ({ data, setIsCorrect, setSelected }: any) => {
+  setSelected(true)
   const [answers, setAnswers] = useState(shuffleArray(data.true_type2));
   const [draggedIndex, setDraggedIndex] = useState(null);
   const [dragging, setDragging] = useState(false);

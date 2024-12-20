@@ -9,6 +9,12 @@ import Popup from '@/components/Questions/QuestionPage/Popup';
 // eslint-disable-next-line
 const Index = ({ QuizFunc }: any) => {
   const [isCorrect, setIsCorrect] = useState(null);
+  const [isSelected, setSelected] = useState(false)
+
+  const handleContinueClick = () => {
+    QuizFunc.giveAnswers(isCorrect); 
+    setSelected(false);
+  };
 
   return (
     <QuestionPageWr>
@@ -29,16 +35,16 @@ const Index = ({ QuizFunc }: any) => {
       </QuestionPageCon>
 
         {QuizFunc.currentQuestion.answer.type === 0 ? (
-          <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} />
+          <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
         ) : QuizFunc.currentQuestion.answer.type === 1 ? (
-          <Type1 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} />
+          <Type1 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
         ) : (
           QuizFunc.currentQuestion.answer.type === 2 && (
-            <Type2 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect}/>
+            <Type2 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
           )
         )}
 
-      <CustomBtn onClick={() => QuizFunc.giveAnswers(isCorrect)}>Продолжить</CustomBtn>
+      <CustomBtn onClick={handleContinueClick} disabled={!isSelected}>Продолжить</CustomBtn>
     </QuestionPageWr>
   );
 };

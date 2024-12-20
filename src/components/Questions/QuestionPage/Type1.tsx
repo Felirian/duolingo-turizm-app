@@ -4,7 +4,7 @@ import SvgSelector from '@/components/Shared/SvgSelector';
 import styled from 'styled-components';
 
 // eslint-disable-next-line
-const Type1 = ({ data, setIsCorrect }: any) => {
+const Type1 = ({ data, setIsCorrect, setSelected }: any) => {
   const [selectedAnswer, setSelectedAnswer] = useState<boolean | null>(null); // Состояние для отслеживания выбранного ответа
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const Type1 = ({ data, setIsCorrect }: any) => {
   }, [data]);
 
   const handleButtonClick = (answer: boolean) => {
+    setSelected(true)
     setSelectedAnswer(answer); // Устанавливаем выбранный ответ
   };
 
