@@ -31,6 +31,7 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
     console.log(section_slug, point, userId,course_slug);
     putPoint(section_slug, point, userId)
     router.push(`/courses/${course_slug}/${section_slug}`)
+
   }
 
   const currentQuestion = questions[currentIndex];
