@@ -32,7 +32,6 @@ const PointItem = ({ data, coordinates, currentPoint }: PointItemProps) => {
       <PointBtn1 $islocked={isLockedPoint}>
         <span>{isLockedPoint ? <PointsSvgSelector name='locked' /> : data.number}</span>
         <PointsSvgSelector name='point' />
-
         {currentPoint === data.number && (
           <CurrentPointCloud data-aos='fade-down' data-aos-delay='700' data-aos-duration='400'>
             <span>Начать</span>
@@ -55,10 +54,16 @@ const PointItemWr = styled.button`
     svg {
       ellipse {
         transition: 0.2s;
-        fill: ${COLORS.heavyOrange};
+        &:last-of-type {
+          fill: ${COLORS.heavyOrange} !important;
+        }
+        &:first-of-type {
+          fill: ${COLORS.darkOrange} !important;
+        }
       }
     }
   }
+
   &:disabled {
     pointer-events: none;
   }
@@ -93,25 +98,30 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
 
   & > svg {
     position: absolute;
-    width: 99%;
-    height: 99%;
+    width: 22.5vw;
+    height: 19.1vw;
     z-index: 0;
     will-change: filter;
     transform: translateZ(0);
     backdrop-filter: blur(0);
     filter: ${({ $islocked }) =>
       $islocked
-        ? `drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
-        : `drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
+        ? `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
+        : `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
     -webkit-filter: ${({ $islocked }) =>
       $islocked
-        ? `drop-shadow(0px 1.7vw 0px ${COLORS.darkOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
-        : `drop-shadow(0px 1.7vw 0px ${COLORS.mediumOrange}) drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
+        ? `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`
+        : `drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25))`};
     path {
       fill: ${({ $islocked }) => ($islocked ? COLORS.lightOrange : COLORS.softOrange)};
     }
     ellipse {
-      fill: ${({ $islocked }) => ($islocked ? COLORS.mediumOrange : COLORS.orange)};
+      &:last-of-type {
+        fill: ${({ $islocked }) => ($islocked ? COLORS.mediumOrange : COLORS.orange)};
+      }
+      &:first-of-type {
+        fill: ${({ $islocked }) => ($islocked ? COLORS.darkOrange : COLORS.mediumOrange)};
+      }
     }
   }
 `;

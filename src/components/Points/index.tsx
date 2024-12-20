@@ -20,7 +20,8 @@ const IMG_COORSDS = [
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
-  console.log(data.progress);
+  const currentPoint = data.progress?.point + 1 || 1;
+
   return (
     <PointsWr>
       <PointsTitleBlock>
@@ -28,7 +29,7 @@ const Points = ({ data }: { data: PointsData }) => {
           <PointsTitle>{data.section.name}</PointsTitle>
         </div>
         <div data-aos='zoom-in' data-aos-duration='600'>
-          <B1>{`уровень ${(data.progress?.point + 1) | 1}`}</B1>
+          <B1>{`уровень ${currentPoint}`}</B1>
         </div>
       </PointsTitleBlock>
 
@@ -40,7 +41,7 @@ const Points = ({ data }: { data: PointsData }) => {
             <React.Fragment key={`${index}-point-item`}>
               <PointItem
                 data={point}
-                currentPoint={data.progress?.point + 1 || 1}
+                currentPoint={currentPoint}
                 coordinates={PONTS_COORDS[index]}
               />
             </React.Fragment>
