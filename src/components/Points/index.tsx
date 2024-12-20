@@ -6,11 +6,11 @@ import PointItem from './PointItem';
 import React from 'react';
 
 const PONTS_COORDS = [
-  { top: '48vw', left: '22vw' },
-  { top: '73vw', left: '44.5vw' },
-  { top: '102vw', left: '32vw' },
-  { top: '134vw', left: '23vw' },
-  { top: '162vw', left: '44.8vw' },
+  { top: '43vw', left: '22vw' },
+  { top: '68vw', left: '44.5vw' },
+  { top: '97vw', left: '32vw' },
+  { top: '129vw', left: '23vw' },
+  { top: '157vw', left: '44.8vw' },
 ];
 
 const IMG_COORSDS = [
@@ -66,7 +66,7 @@ const Points = ({ data }: { data: PointsData }) => {
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
-  height: 208vw;
+  height: 200vw;
 
   text-align: center;
 
@@ -77,7 +77,7 @@ const PointsTitleBlock = styled.div`
   position: fixed;
   z-index: 5;
 
-  top: 7.5vw;
+  top: 12vw;
   left: 50%;
   transform: translateX(-50%);
 

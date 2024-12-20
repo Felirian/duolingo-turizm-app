@@ -1,9 +1,9 @@
-import {PropsWithChildren, useEffect} from 'react';
-import {useRouter} from 'next/router';
-import {backButton, useSignal} from '@telegram-apps/sdk-react';
+import { PropsWithChildren, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { backButton, useSignal } from '@telegram-apps/sdk-react';
 import useTgApp from '@/features/_tg_methods_';
 import styled from 'styled-components';
-import {SafeAreaInsets} from '@telegram-apps/bridge';
+import { SafeAreaInsets } from '@telegram-apps/bridge';
 
 /**
  * #### Кастомный компонент
@@ -25,21 +25,20 @@ import {SafeAreaInsets} from '@telegram-apps/bridge';
  */
 
 export function Page({
-                       children,
-                       back = true,
-                       background = true,
-                       navBar = true
-                     }:
-                       PropsWithChildren<{
-                         back?: boolean,
-                         background?: boolean,
-                         navBar?: boolean
-                       }>) {
+  children,
+  back = true,
+  background = true,
+  navBar = true,
+}: PropsWithChildren<{
+  back?: boolean;
+  background?: boolean;
+  navBar?: boolean;
+}>) {
   const router = useRouter();
   const isVisible = useSignal(backButton.isSupported);
   //const isBtnClick = useSignal(backButton.onClick);
 
-  const {safeAreas} = useTgApp();
+  const { safeAreas } = useTgApp();
 
   useEffect(() => {
     if (!isVisible) return;
@@ -66,35 +65,31 @@ export function Page({
   }, [isVisible, router]);
 
   return (
-    <PageWr
-      $safeAreas={safeAreas}
-      $background={background }
-      $navBar={navBar}
-    >
+    <PageWr $safeAreas={safeAreas} $background={background} $navBar={navBar}>
       {children}
     </PageWr>
   );
 }
 
 const PageWr = styled.div<{
-  $safeAreas: SafeAreaInsets | null,
-  $background: boolean | undefined,
-  $navBar: boolean | undefined,
-
+  $safeAreas: SafeAreaInsets | null;
+  $background: boolean | undefined;
+  $navBar: boolean | undefined;
 }>`
-  // eslint-disable-next-line 
-  padding-top: ${({$safeAreas}: any) => 20 + $safeAreas?.top}px; // eslint-disable-line no-explicit-any
-  padding-left: ${({$safeAreas}: any) => 20 + $safeAreas?.left}px;
-  padding-right: ${({$safeAreas}: any) => 20 + $safeAreas?.right}px;
-  padding-bottom: ${({$safeAreas, $navBar}: any) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
-  
+  // eslint-disable-next-line
+  padding-top: ${({ $safeAreas }: any) =>
+    50 + $safeAreas?.top}px; // eslint-disable-line no-explicit-any
+  padding-left: ${({ $safeAreas }: any) => 20 + $safeAreas?.left}px;
+  padding-right: ${({ $safeAreas }: any) => 20 + $safeAreas?.right}px;
+  padding-bottom: ${({ $safeAreas, $navBar }: any) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
+
   width: 100vw;
   height: 100vh;
 
-  background: ${({$background}) => $background
-    ? 'linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%)'
-    : '#F1F4EA'
-  };
+  background: ${({ $background }) =>
+    $background
+      ? 'linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%)'
+      : '#F1F4EA'};
   overflow-y: scroll;
   scroll-behavior: smooth;
 
