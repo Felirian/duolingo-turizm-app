@@ -4,10 +4,11 @@ import { Btn1Style } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  capitalizeFirstLetter?: boolean; // Добавляем новый проп
+  capitalizeFirstLetter?: boolean;
+  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send'; 
 }
 
-export const CustomInput = ({ capitalizeFirstLetter = false, value, onChange, ...props }: CustomInputProps) => {
+export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value, onChange, ...props }: CustomInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (capitalizeFirstLetter) {
@@ -18,7 +19,7 @@ export const CustomInput = ({ capitalizeFirstLetter = false, value, onChange, ..
     onChange?.(e); 
   };
 
-  return <CustomInputnWr value={value} onChange={handleInputChange} {...props} />;
+  return <CustomInputnWr value={value} onChange={handleInputChange} enterKeyHint={enterKeyHint} {...props} />;
 };
 
 const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>((props) => ({

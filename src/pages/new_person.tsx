@@ -79,6 +79,7 @@ const NewPerson = () => {
               value={petName}
               onChange={handleInputChange}
               capitalizeFirstLetter={true}
+              enterKeyHint="done"
             />
           )}
 
