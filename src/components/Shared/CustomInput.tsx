@@ -8,7 +8,7 @@ interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send'; 
 }
 
-export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value, onChange, ...props }: CustomInputProps) => {
+export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value, onKeyDown, onChange, ...props }: CustomInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (capitalizeFirstLetter) {
@@ -19,7 +19,15 @@ export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value
     onChange?.(e); 
   };
 
-  return <CustomInputnWr value={value} onChange={handleInputChange} enterKeyHint={enterKeyHint} {...props} />;
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); 
+      e.currentTarget.blur();
+      onKeyDown?.(e);
+    }
+  };
+
+  return <CustomInputnWr value={value} onChange={handleInputChange} onKeyDown={handleKeyDown} enterKeyHint={enterKeyHint} {...props} />;
 };
 
 const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>((props) => ({

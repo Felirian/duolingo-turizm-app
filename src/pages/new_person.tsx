@@ -79,6 +79,11 @@ const NewPerson = () => {
               value={petName}
               onChange={handleInputChange}
               capitalizeFirstLetter={true}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit();
+                }
+              }}
               enterKeyHint="done"
             />
           )}
