@@ -27,7 +27,11 @@ export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value
     }
   };
 
-  return <CustomInputnWr value={value} onChange={handleInputChange} onKeyDown={handleKeyDown} enterKeyHint={enterKeyHint} {...props} />;
+  const inputScrollFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  return <CustomInputnWr value={value} onChange={handleInputChange} onKeyDown={handleKeyDown} onFocus={inputScrollFocus} enterKeyHint={enterKeyHint} {...props} />;
 };
 
 const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>((props) => ({
