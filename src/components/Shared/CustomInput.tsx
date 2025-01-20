@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { InputHTMLAttributes } from 'react';
 import { Btn1Style } from '@/styles/textTags';
@@ -5,33 +6,53 @@ import { COLORS } from '@/styles/variables';
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   capitalizeFirstLetter?: boolean;
-  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send'; 
+  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 }
 
 export const CustomInput = ({ capitalizeFirstLetter = false, enterKeyHint, value, onKeyDown, onChange, ...props }: CustomInputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (capitalizeFirstLetter) {
-      // Капитализация первой буквы
       const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-      e.target.value = capitalizedValue; 
+      e.target.value = capitalizedValue;
     }
-    onChange?.(e); 
+    onChange?.(e);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); 
+      e.preventDefault();
       e.currentTarget.blur();
       onKeyDown?.(e);
     }
   };
 
-  const inputScrollFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const inputMoveFocus = () => {
+    if (inputRef.current) {
+      const inputRect = inputRef.current.getBoundingClientRect();
+      const offset = window.innerHeight - inputRect.bottom - 50; // 50 — отступ снизу
+      if (offset < 0) {
+        window.scrollTo({
+          top: window.scrollY - offset,
+          behavior: 'smooth',
+        });
+      }
+    }
   };
 
-  return <CustomInputnWr value={value} onChange={handleInputChange} onKeyDown={handleKeyDown} onFocus={inputScrollFocus} enterKeyHint={enterKeyHint} {...props} />;
+  return (
+    <CustomInputnWr
+      ref={inputRef}
+      value={value}
+      onChange={handleInputChange}
+      onKeyDown={handleKeyDown}
+      onFocus={inputMoveFocus}
+      enterKeyHint={enterKeyHint}
+      {...props}
+    />
+  );
 };
 
 const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>((props) => ({
@@ -51,8 +72,8 @@ const CustomInputnWr = styled.input.attrs<InputHTMLAttributes<HTMLInputElement>>
     color: #888;
   }
 
-  ${Btn1Style} 
+  ${Btn1Style}
   &:placeholder-shown {
-    border-color: ${COLORS.gray}; 
+    border-color: ${COLORS.gray};
   }
 `;
