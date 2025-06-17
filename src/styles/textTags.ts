@@ -49,7 +49,7 @@ export const Btn3Style = css`
 `;
 
 export const Body1Style = css`
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', Montserrat, sans-serif;
   font-size: 3.89vw;
   font-style: normal;
   font-weight: 700;
@@ -57,7 +57,7 @@ export const Body1Style = css`
 `;
 
 export const Body2Style = css`
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', Montserrat, sans-serif;
   font-size: 4.44vw;
   font-style: normal;
   font-weight: 500;
