@@ -6,14 +6,19 @@ import SvgSelector from '../Shared/SvgSelector';
 // eslint-disable-next-line
 const CoursesCard = ({ data }: any) => {
   return (
-    <CoursesCardWr href={`/courses/${data.slug}`}>
+    <CoursesCardWr
+      href={`/courses/${data.slug}`}
+      style={{
+        backgroundImage: `url(${data.bgimage})`,
+      }}
+    >
       <CardText>
         <H1>{data.name}</H1>
         <B2>{data.descr}</B2>
       </CardText>
-      <SvgSelectorWr>
-        <SvgSelector svg={'courseCardBg'} />
-      </SvgSelectorWr>
+      {/*<SvgSelectorWr>*/}
+      {/*  <SvgSelector svg={'courseCardBg'} />*/}
+      {/*</SvgSelectorWr>*/}
     </CoursesCardWr>
   );
 };
@@ -25,6 +30,8 @@ const CoursesCardWr = styled(Link)`
   position: relative;
   display: block;
   box-sizing: border-box;
+
+  background-size: cover;
 `;
 
 const SvgSelectorWr = styled.div`

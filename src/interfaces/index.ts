@@ -29,6 +29,7 @@ export interface Course {
   id?: string;
   name: string;
   slug?: string;
+  bgimage? : string
 }
 
 export interface OptionType {
