@@ -91,6 +91,7 @@ const PageWr = styled.div<{
       ? 'linear-gradient(353.92deg, #ffd9b2 5.82%, #daf8b2 50.17%, #92eecb 91.94%)'
       : '#F1F4EA'};
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar {

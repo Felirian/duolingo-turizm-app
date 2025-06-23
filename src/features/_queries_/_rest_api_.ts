@@ -53,7 +53,7 @@ export const useGetAllCourses = () => {
   useEffect(() => {
     const fetchArtistsList = async () => {
       try {
-        const response = await axios.get(BASE_URL + 'courses', CONFIG);
+        const response = await axios.get(BASE_URL + 'courses/front', CONFIG);
         setResult({
           loading: false,
           data: response.data,
