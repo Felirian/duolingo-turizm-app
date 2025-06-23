@@ -57,6 +57,9 @@ const CardText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.08vw;
+   p {
+     max-width: 70%;
+   }
 `;
 
 export default SectionsCard;
