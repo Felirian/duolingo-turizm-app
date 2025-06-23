@@ -24,14 +24,14 @@ const Points = ({ data }: { data: PointsData }) => {
 
   return (
     <PointsWr>
-      <PointsTitleBlock>
+      {/*<PointsTitleBlock>*/}
         <div data-aos='zoom-in'>
           <PointsTitle>{data.section.name}</PointsTitle>
         </div>
         <div data-aos='zoom-in' data-aos-duration='600'>
           <B1>{currentPoint > 5 ? 'все уровни пройдены!' : `уровень ${currentPoint}`}</B1>
         </div>
-      </PointsTitleBlock>
+      {/*</PointsTitleBlock>*/}
 
       {data?.points
         .sort((a, b) => a.number - b.number)
@@ -71,6 +71,8 @@ const PointsWr = styled.div`
   text-align: center;
 
   overflow-y: none;
+  
+  color: ${COLORS.textGreen};
 `;
 
 const PointsTitleBlock = styled.div`

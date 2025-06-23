@@ -7,6 +7,18 @@ import sadImg from '@/assets/img/popup/sad.png';
 import smilingImg from '@/assets/img/popup/smiling.png';
 import Image from 'next/image';
 
+const correctHint: string[] = [
+  "Правильно! Отличная работа!",
+  "Правильно! Отличная работа!",
+  "Точно! Ты на верном пути!",
+  "Точно! Ты на верном пути!",
+  "Точно! Ты на верном пути!",
+  "Идеально! Ты справился!",
+  "Идеально! Ты справился!",
+  "Да! Именно так!",
+  "Верно! Так держать!",
+  "Идеально! Ты справился!",
+]
 // eslint-disable-next-line
 const Popup = ({ QuizFunc, isCorrect }: any) => {
   return (
@@ -14,7 +26,7 @@ const Popup = ({ QuizFunc, isCorrect }: any) => {
       <ClewImg src={isCorrect ? smilingImg : sadImg} width={205} height={152} alt='Клубок' />
 
       <PopupTitle $isCorrect={isCorrect}>{isCorrect ? 'Верно!' : 'Неверно!'}</PopupTitle>
-      <Hint>{QuizFunc.currentQuestion.hint}</Hint>
+      <Hint>{isCorrect ? correctHint[Math.round(Math.random() * 10)] : QuizFunc.currentQuestion.hint}</Hint>
       <CustomBtn onClick={() => QuizFunc.nextQuestion()}>Продолжить</CustomBtn>
     </PopupWr>
   );
