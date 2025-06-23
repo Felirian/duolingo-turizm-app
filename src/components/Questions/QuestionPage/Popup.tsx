@@ -21,12 +21,13 @@ const correctHint: string[] = [
 ]
 // eslint-disable-next-line
 const Popup = ({ QuizFunc, isCorrect }: any) => {
+  console.log(correctHint[Math.round(Math.random() * 10)]);
   return (
     <PopupWr $isOpen={QuizFunc.isHintOpen}>
       <ClewImg src={isCorrect ? smilingImg : sadImg} width={205} height={152} alt='Клубок' />
 
       <PopupTitle $isCorrect={isCorrect}>{isCorrect ? 'Верно!' : 'Неверно!'}</PopupTitle>
-      <Hint>{isCorrect ? correctHint[Math.round(Math.random() * 10)] : QuizFunc.currentQuestion.hint}</Hint>
+      <Hint>{isCorrect ? correctHint[Math.trunc(Math.random() * 10)] : QuizFunc.currentQuestion.hint}</Hint>
       <CustomBtn onClick={() => QuizFunc.nextQuestion()}>Продолжить</CustomBtn>
     </PopupWr>
   );
