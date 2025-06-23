@@ -18,7 +18,7 @@ const Index = ({data}: any) => {
       <ProgressBurLevel percent={data.xp % 100} level={Math.round(data.xp / 100)}/>
 
       <img src={FrogLevel.src}/>
-      <H3>Российское гостеприимство</H3>
+      <H3>Прогресс</H3>
       <ProgressBurSection percent={data.total_progress * 2.8571428571}/>
     </MainWr>
   );
