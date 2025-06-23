@@ -27,7 +27,7 @@ const SectionsCard = ({ data }: any) => {
         ) : (
           <Btn2>{data.name}</Btn2>
         )}
-        <B2>{data.descr}</B2>
+        {data.descr != '' && <B2>{data.descr}</B2>}
       </CardText>
 
     </SectionsCardWr>
