@@ -9,7 +9,8 @@ interface SelectorButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const SelectorButton = styled.button<SelectorButtonProps>`
   width: ${({ round }) => (round ? '16vw' : '100%')}; // Круглая кнопка или обычная
-  height: 16vw;
+  min-height: 16vw;
+  height: auto;
   padding: 1.5vw 2vw;
   border: ${({ round, isPressed }) =>
     round ? `0.571vw solid ${isPressed ? '#02c77f' : '#fff'}` : `0.571vw solid ${isPressed ? '#02c77f' : '#fff'}`};

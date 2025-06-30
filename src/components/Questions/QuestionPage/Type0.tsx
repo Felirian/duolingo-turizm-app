@@ -44,6 +44,7 @@ const Type0 = ({data, setIsCorrect, setSelected}: any) => {
         data.cont_type0.map((answer: any, i: never): any => (
           <SelectorButton
             key={i}
+
             isPressed={selectedIndexes.includes(i)} // Проверяем, выбрана ли кнопка
             onClick={() => handleButtonClick(i)} // Обработчик клика
           >
