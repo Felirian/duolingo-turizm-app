@@ -10,10 +10,9 @@ import Loader from '@/components/Shared/Loader';
 export default function Home() {
   const router = useRouter();
   const { loading, data, error } = useGetUser();
-  console.log(data);
+
   useEffect(() => {
     if (error) {
-      console.log(error);
       router.push('/new_person');
     }
   }, [error]);
