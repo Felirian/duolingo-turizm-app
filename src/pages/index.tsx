@@ -6,44 +6,10 @@ import { useRouter } from 'next/router';
 import Main from '@/components/Main';
 import BottomTabs from '@/components/Shared/BottomTabs';
 import Loader from '@/components/Shared/Loader';
-import { Warning } from '@/components/Shared/Warning';
-
 
 export default function Home() {
   const router = useRouter();
   const { loading, data, error } = useGetUser();
-  const [deviceState, setDeviceState] = useState({isMobile: false, isLandscape: false, isTelegram: false});
-
-  useEffect(() => {
-    if (error) {
-      router.push('/new_person');
-    }
-  }, [error]);
-
-  useEffect(() => {
-    const updateDeviceState = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const checkMobile = /Mobi|Android/i.test(navigator.userAgent);
-  
-      setDeviceState({
-        isMobile: checkMobile,
-        isLandscape: width > height,
-        isTelegram: !!window.Telegram,
-      });
-    }
-
-    updateDeviceState();
-
-    window.addEventListener('orientationchange', updateDeviceState);
-
-    return () => {
-      window.removeEventListener('orientationchange', updateDeviceState);
-    };
-  }, []);
-
-
-  const {isMobile, isLandscape, isTelegram} = deviceState;
 
   return (
     <>
@@ -56,9 +22,7 @@ export default function Home() {
 
       <Page back={false}>
       <main>
-
-      {isMobile && !isLandscape && isTelegram ? (
-        loading ? (
+         {loading ? (
           <Loader />
         ) : error ? (
           <>Error</>
@@ -75,10 +39,7 @@ export default function Home() {
               }
             />
           </>
-        ) : null
-      ) : (
-        <Warning isMobile={isMobile} isLandscape={isLandscape} isTelegram={isTelegram} />
-      )}
+        ) : null}
 </main>
       </Page>
     </>

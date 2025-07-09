@@ -123,7 +123,7 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
 const CurrentPointCloud = styled.div`
   position: absolute;
 
-  top: -65%;
+  top: -53%;
   left: 5%;
 
   width: 20.86vw;

@@ -8,6 +8,7 @@ import store from '@/features/redux';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Warning } from '@/components/Shared/Warning';
 
 //@ts-ignore
 // import welcomeVid from '@/assets/video/welcome.mp4';
@@ -59,6 +60,7 @@ const WelcomeVideo = () => {
 export default function App({ Component, pageProps }: AppProps) {
   const didMount = useDidMount();
   const [showVideo, setShowVideo] = useState(true);
+  const [deviceState, setDeviceState] = useState({isMobile: false, isLandscape: false, isTelegram: false});
 
   useSukaOdinRaz(() => {
     tgInit(true);
@@ -80,11 +82,47 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const updateDeviceState = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const checkMobile = /Mobi|Android/i.test(navigator.userAgent);
+  
+      setDeviceState({
+        isMobile: checkMobile,
+        isLandscape: width > height,
+        isTelegram: !!window.Telegram,
+      });
+    }
+
+    updateDeviceState();
+
+    window.addEventListener('orientationchange', updateDeviceState);
+    window.addEventListener('resize', updateDeviceState);
+
+    return () => {
+      window.removeEventListener('orientationchange', updateDeviceState);
+      window.addEventListener('resize', updateDeviceState);
+    };
+  }, []);
+
   return (
     <Provider store={store}>
       <GlobalStyles />
       {showVideo && <WelcomeVideo />}
-      {didMount && <Component {...pageProps} />}
+      {didMount && (
+    deviceState.isMobile && 
+    !deviceState.isLandscape && 
+    deviceState.isTelegram ? (
+      <Component {...pageProps} />
+    ) : (
+      <Warning
+        isMobile={deviceState.isMobile}
+        isLandscape={deviceState.isLandscape}
+        isTelegram={deviceState.isTelegram}
+      />
+    )
+  )}  
     </Provider>
   );
 }
