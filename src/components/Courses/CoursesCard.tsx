@@ -5,9 +5,6 @@ import Link from 'next/link';
 import SvgSelector from '../Shared/SvgSelector';
 // eslint-disable-next-line
 const CoursesCard = ({ data }: any) => {
-
-  console.log(data);
-
   return (
     <CoursesCardWr
       href={`/courses/${data.slug}`}

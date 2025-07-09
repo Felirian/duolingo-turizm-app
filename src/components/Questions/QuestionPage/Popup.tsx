@@ -21,7 +21,6 @@ const correctHint: string[] = [
 ]
 // eslint-disable-next-line
 const Popup = ({ QuizFunc, isCorrect }: any) => {
-  console.log(correctHint[Math.round(Math.random() * 10)]);
   return (
     <>
       <Overlay $isOpen={QuizFunc.isHintOpen} />

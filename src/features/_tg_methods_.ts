@@ -21,12 +21,10 @@ const useTgApp = () => {
 
   useEffect(() => {
     const initDataG = initData.user();
-    console.log('isInitData')
     if (initDataG) {
       setDataUser(initDataG)
       setUserId(initDataG.id)
     } else {
-      console.log('initData error');
       setDataUser(null)
     }
   }, [isInitData]);
@@ -64,13 +62,11 @@ export function tgInit (debug: boolean): void  {
     // eslint-disable-next-line
   const setFullscreen = async () => {
     if (viewport.requestFullscreen.isAvailable()) {
-      console.log('---set fullscreen---')
       await viewport.requestFullscreen()
     }
   }
   try {
     $debug.set(debug);
-    console.log('---Init Tg---');
     init();
 
     // eslint-disable-next-line
@@ -83,7 +79,7 @@ export function tgInit (debug: boolean): void  {
       .mount()
       .then(() => {
         viewport.expand();
-        !debug && setFullscreen();
+        setFullscreen();
       })
       .catch(e => console.error('Ошибка viewport', e));
     //@ts-ignore

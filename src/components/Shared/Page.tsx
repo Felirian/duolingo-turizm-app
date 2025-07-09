@@ -53,7 +53,6 @@ export function Page({
     if (!isVisible) return;
 
     return backButton.onClick(() => {
-      console.log('back');
       const segments = router.asPath.split('/').filter(Boolean);
       if (segments.length > 1) {
         const newPath = '/' + segments.slice(0, -1).join('/');

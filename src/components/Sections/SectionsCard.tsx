@@ -10,7 +10,6 @@ const SectionsCard = ({ data }: any) => {
     router.push(router.asPath +'/'+ data.slug);
   };
 
-  console.log(data);
   return (
     <SectionsCardWr
       onClick={handlePointClick}

@@ -127,7 +127,6 @@ export const useGetAllPoints = (slug: string | string[] | undefined,userId: any)
     error: null,
   });
   const {setGg, gg } = useTgApp();
-  // console.log(userId, 'user');
 
   useEffect(() => {
     const fetchArtistsList = async () => {
@@ -256,7 +255,6 @@ export const CreateUser = async (petName: string, userId: number) => {
 
     if (response.ok) {
       return response
-      console.log('Данные успешно отправлены');
     } else {
       console.error('Ошибка при отправке данных');
     }
@@ -298,7 +296,6 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
 
     if (response.ok && response2.ok) {
       return response
-      console.log('Данные успешно отправлены');
     } else {
       console.error('Ошибка при отправке данных');
     }

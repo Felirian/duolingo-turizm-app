@@ -22,7 +22,6 @@ const NewPerson = () => {
   const { data } = useGetUser();
   useEffect(() => {
     if (data) {
-      console.log('Already exists');
       router.push('/');
     }
   }, [data, router]);
@@ -41,7 +40,6 @@ const NewPerson = () => {
       const response = await CreateUser(petName, userId);
       if (response?.ok) {
         setIsUserCreated(true);
-        console.log(response);
       }
     } catch (error) {
       console.error('Ошибка при создании пользователя:', error);

@@ -19,7 +19,6 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   };
 
   const giveAnswers = (isCorrect: any) => {
-    console.log(isCorrect);
     setIsHintOpen(true);
     if (!isCorrect) {
       addQuestionToEnd(questions[currentIndex]);
@@ -28,14 +27,12 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   const { userId } = useTgApp();
 
   const gameOver = (section_slug: any, point: any, course_slug: any) => {
-    console.log(section_slug, point, userId,course_slug);
     putPoint(section_slug, point, userId)
     router.push(`/courses/${course_slug}/${section_slug}`)
 
   }
 
   const currentQuestion = questions[currentIndex];
-  console.log(currentQuestion);
   const isFinished = currentIndex >= questions.length;
   // const isFinished = true;
 

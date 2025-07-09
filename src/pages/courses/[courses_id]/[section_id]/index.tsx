@@ -16,13 +16,8 @@ const Index = () => {
 
 
   useEffect(() => {
-    console.log('log');
     setGg(!gg)
   }, [router]);
-
-  console.log(userId);
-
-  console.log(userId,id, data);
 
   if (!router.isReady) {
     return <Loader />;

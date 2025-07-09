@@ -8,7 +8,6 @@ import SkeletonCard from '@/components/Shared/SkeletonCard';
 
 const Index = () => {
   const { data, loading, error } = useGetAllCourses();
-  console.log('courses:', data);
 
   return (
     <Page back={false}>
