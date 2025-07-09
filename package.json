@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "ngrok": "ngrok http http://localhost:3000",
-    "dev-https": "next dev --experimental-https"
+    "dev-https": "next dev --experimental-https",
+    "cloudflared": "cloudflared tunnel --url https://localhost:3000"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",

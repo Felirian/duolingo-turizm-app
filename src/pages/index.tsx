@@ -1,21 +1,49 @@
 import Head from 'next/head';
 import { Page } from '@/components/Shared/Page';
 import { useGetUser } from '@/features/_queries_/_rest_api_';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Main from '@/components/Main';
 import BottomTabs from '@/components/Shared/BottomTabs';
 import Loader from '@/components/Shared/Loader';
+import { Warning } from '@/components/Shared/Warning';
+
 
 export default function Home() {
   const router = useRouter();
   const { loading, data, error } = useGetUser();
+  const [deviceState, setDeviceState] = useState({isMobile: false, isLandscape: false, isTelegram: false});
 
   useEffect(() => {
     if (error) {
       router.push('/new_person');
     }
   }, [error]);
+
+  useEffect(() => {
+    const updateDeviceState = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const checkMobile = /Mobi|Android/i.test(navigator.userAgent);
+  
+      setDeviceState({
+        isMobile: checkMobile,
+        isLandscape: width > height,
+        isTelegram: !!window.Telegram,
+      });
+    }
+
+    updateDeviceState();
+
+    window.addEventListener('orientationchange', updateDeviceState);
+
+    return () => {
+      window.removeEventListener('orientationchange', updateDeviceState);
+    };
+  }, []);
+
+
+  const {isMobile, isLandscape, isTelegram} = deviceState;
 
   return (
     <>
@@ -27,29 +55,31 @@ export default function Home() {
       </Head>
 
       <Page back={false}>
-        <main>
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <>error</>
-          ) : (
-            data && (
-              <>
-                <Main data={data} />
+      <main>
 
-                <BottomTabs
-                  play={
-                    // @ts-ignore
-                    data?.last_section_slug
-                      ? // @ts-ignore
-                        `/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`
-                      : '/courses/rossijskoe-gostepriimstvo'
-                  }
-                />
-              </>
-            )
-          )}
-        </main>
+      {isMobile && !isLandscape && isTelegram ? (
+        loading ? (
+          <Loader />
+        ) : error ? (
+          <>Error</>
+        ) : data ? (
+          <>
+            <Main data={data} />
+            <BottomTabs
+              play={
+                // @ts-ignore
+                data?.last_section_slug
+                  ? // @ts-ignore
+                    `/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`
+                  : '/courses/rossijskoe-gostepriimstvo'
+              }
+            />
+          </>
+        ) : null
+      ) : (
+        <Warning isMobile={isMobile} isLandscape={isLandscape} isTelegram={isTelegram} />
+      )}
+</main>
       </Page>
     </>
   );
