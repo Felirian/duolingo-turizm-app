@@ -23,13 +23,16 @@ const correctHint: string[] = [
 const Popup = ({ QuizFunc, isCorrect }: any) => {
   console.log(correctHint[Math.round(Math.random() * 10)]);
   return (
-    <PopupWr $isOpen={QuizFunc.isHintOpen}>
+    <>
+      <Overlay $isOpen={QuizFunc.isHintOpen} />
+      <PopupWr $isOpen={QuizFunc.isHintOpen}>
       <ClewImg src={isCorrect ? smilingImg : sadImg} width={205} height={152} alt='Клубок' />
 
       <PopupTitle $isCorrect={isCorrect}>{isCorrect ? 'Верно!' : 'Неверно!'}</PopupTitle>
       <Hint>{isCorrect ? correctHint[Math.trunc(Math.random() * 10)] : QuizFunc.currentQuestion.hint}</Hint>
       <CustomBtn onClick={() => QuizFunc.nextQuestion()}>Продолжить</CustomBtn>
     </PopupWr>
+    </>
   );
 };
 
@@ -75,6 +78,20 @@ const ClewImg = styled(Image)`
   pointer-events: none;
   width: 58.57vw;
   height: 43.43vw;
+`;
+
+const Overlay = styled.div<{ $isOpen: boolean }>`
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(120%)')};
+    transition: opacity 0.5s ease;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: ${COLORS.black};
+    opacity:${({ $isOpen }) => ($isOpen ? '0.5' : '0')};
+    pointer-events: auto;
 `;
 
 export default Popup;
