@@ -11,9 +11,9 @@ interface WarningProps {
 export const Warning = ({isMobile, isLandscape, isTelegram}: WarningProps) => {
     return (
         <WarningWr>
-            {/* {!isMobile && <H3>Откройте приложение с мобильного телефона</H3>}
+            {!isMobile && <H3>Откройте приложение с мобильного телефона</H3>}
             {isMobile && isLandscape && <H3>Переверните устройство в вертикальное положение</H3>}
-            {isMobile && !isTelegram && <H3>Зайдите в приложение через Телеграм</H3>} */}
+            {isMobile && !isTelegram && <H3>Зайдите в приложение через Телеграм</H3>}
         </WarningWr>
     )
 

@@ -14,7 +14,7 @@ const PONTS_COORDS = [
 ];
 
 const IMG_COORSDS = [
-  { top: '58vw', left: '-5vw' },
+  { top: '65vw', left: '-5vw' },
   { top: '98vw', left: '57vw' },
   { top: '148vw', left: '-5vw' },
 ];
