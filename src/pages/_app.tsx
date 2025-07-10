@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [deviceState, setDeviceState] = useState({isMobile: false, isLandscape: false, isTelegram: false});
 
   useSukaOdinRaz(() => {
-    tgInit(true);
+    tgInit(false);
   }, []);
 
   useEffect(() => {
