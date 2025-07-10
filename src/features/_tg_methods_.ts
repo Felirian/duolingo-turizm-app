@@ -66,7 +66,7 @@ export function tgInit (debug: boolean): void  {
     }
   }
   try {
-    $debug.set(debug);
+    //$debug.set(debug);
     init();
 
     // eslint-disable-next-line
