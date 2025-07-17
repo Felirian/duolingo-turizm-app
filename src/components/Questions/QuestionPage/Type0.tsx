@@ -61,4 +61,5 @@ const SelectorWr = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3vw;
+  padding-bottom: 25.7vw;
 `;

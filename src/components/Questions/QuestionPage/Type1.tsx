@@ -53,6 +53,7 @@ const SelectorWr = styled.div`
   gap: 14.29vw;
   justify-content: center;
   padding-top: 30vw;
+  padding-bottom: 25.7vw;
 `;
 
 const StyledSvg = styled.div`

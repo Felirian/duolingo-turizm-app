@@ -8,6 +8,8 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHintOpen, setIsHintOpen] = useState(false);
+  const [ProgressCounter, setProgressCounter] = useState(1);
+  const [progress, setProgress] = useState(0);
   const router = useRouter()
   const addQuestionToEnd = (question: Question) => {
     setQuestions((prev) => [...prev, question]);
@@ -18,7 +20,7 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
     setCurrentIndex((prev) => prev + 1);
   };
 
-  const giveAnswers = (isCorrect: any) => {
+  const giveAnswers = (isCorrect: any ) => {
     setIsHintOpen(true);
     if (!isCorrect) {
       addQuestionToEnd(questions[currentIndex]);
@@ -32,6 +34,17 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
 
   }
 
+  const countProgress = (isCorrect: any) => {
+    if (isCorrect) {
+      setProgressCounter((prev) => prev + 1);
+      setProgress(Math.round((ProgressCounter / initialQuestions.length)*100))
+    } 
+  };
+
+  const leaveLevel = (section_slug: any, course_slug: any) => {
+    router.push(`/courses/${course_slug}/${section_slug}`)
+  }
+
   const currentQuestion = questions[currentIndex];
   const isFinished = currentIndex >= questions.length;
   // const isFinished = true;
@@ -43,6 +56,9 @@ export const useQuizFunctions = ({ initialQuestions }: any) => {
     isFinished,
     currentIndex,
     nextQuestion,
-    gameOver
+    gameOver,
+    countProgress,
+    progress,
+    leaveLevel
   };
 };

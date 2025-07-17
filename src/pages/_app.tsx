@@ -111,17 +111,17 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       {showVideo && <WelcomeVideo />}
       {didMount && (
-    deviceState.isMobile && 
+     deviceState.isMobile && 
     !deviceState.isLandscape && 
     deviceState.isTelegram ? (
-      <Component {...pageProps} />
+    <Component {...pageProps} />
     ) : (
       <Warning
-        isMobile={deviceState.isMobile}
-        isLandscape={deviceState.isLandscape}
-        isTelegram={deviceState.isTelegram}
+      isMobile={deviceState.isMobile}
+      isLandscape={deviceState.isLandscape}
+      isTelegram={deviceState.isTelegram}
       />
-    )
+   )
   )}  
     </Provider>
   );

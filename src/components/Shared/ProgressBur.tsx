@@ -24,8 +24,7 @@ const FrameParentRoot = styled.div`
   
   display: flex;
   align-items: center;
-  justify-content: center;
-    
+  justify-content: center; 
 `;
 
 const PercentLine = styled.div<{ $percent: any }>`
@@ -34,6 +33,7 @@ const PercentLine = styled.div<{ $percent: any }>`
   position: absolute;
   left: 0;
   top: 0;
+  transition: width 0.5s ease;
   
   border-radius: 1.714vw;
   background-color: #4EE1AB;
