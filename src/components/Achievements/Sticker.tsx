@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@/styles/variables';
-import { useGetAllPoints } from '@/features/_queries_/_rest_api_';
-import useTgApp from '@/features/_tg_methods_';
+import AchievementPopupPortal from './AchievementPopupPortal';
 
  interface StickerProps {
-    image: string,
+    image: string
     alt: string,
-    achieved: boolean
  }
 
-const Sticker = ({ image, alt, achieved }: StickerProps) => {
-    console.log(`achieved ${alt}`, achieved);
+const Sticker = ({ image, alt }: StickerProps) => {
+    const [open, setOpen] = useState<boolean>(false)
     return (
-        <StickerWr>
-            <StickeItem src={image} width={70} height={70} alt={alt}/>
-            <Dot $new={achieved} />
+        <>
+        <StickerWr onClick={() => setOpen(true)} >
+            <StickerItem src={image} width={70} height={70} alt={alt} $new={false}/>
+            <Dot $new={true} />
         </StickerWr>
+        {open && (
+        <AchievementPopupPortal
+            name={alt}
+            image={image}
+            course="ndjsfk"
+            open={open}
+            setPopupOpen={setOpen}
+        />
+        )}
+        </>
     )
 };
 
@@ -28,14 +37,29 @@ const StickerWr = styled.button`
     justify-content: center;
     align-items: center;
     position: relative;
+
 `;
 
-const StickeItem = styled.img`
-width: 100%;
-height: 100%;
+const StickerItem = styled.img<{$new: boolean}>`
+    width: 100%;
+    height: 100%;
+
+    animation: ${({ $new }) => ($new ? 'newSticker 0.8s infinite' : 'none')};
+
+    @keyframes newSticker {
+        0% {
+        transform: Scale(1);
+        }
+        50% {
+        transform: Scale(0.95);
+        }
+        100% {
+        transform: Scale(1);
+        }
+  }
 `;
 
-const Dot = styled.div  <{$new: boolean}>`
+const Dot = styled.div<{$new: boolean}>`
     display:${({ $new }) => ($new ? 'flex' : 'none')};
     width: 2vw;
     height: 2vw;
