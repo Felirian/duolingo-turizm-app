@@ -242,7 +242,7 @@ const BottomTabsSvgSelector: React.FC<SvgSelectorProps> = ({ name }) => {
           </g>
           <defs>
           <filter id="filter0_d_6002_762" x="0.6875" y="0" width="19.625" height="29.5879" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
           <feOffset dx="1" dy="1"/>
           <feComposite in2="hardAlpha" operator="out"/>

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuizFunctions } from '@/features/_quiz_';
 import EndPage from '@/components/Questions/EndPage';
 import QuestionPage from '@/components/Questions/QuestionPage';
 // eslint-disable-next-line
-const Quiz = ({ data }: any) => {
+const Quiz = ({ data, onFinished }: any) => {
   const QuizFunc = useQuizFunctions({ initialQuestions: data });
+
+    useEffect(() => {
+    if (QuizFunc.isFinished) {
+      onFinished?.(true);
+    } else {
+      onFinished?.(false);
+    }
+  }, [QuizFunc.isFinished, onFinished]);
+
   return (
     <>
       {QuizFunc.isFinished ? (
