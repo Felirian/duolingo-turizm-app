@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import suitcase from '../../assets/img/suitcase.svg' ;
 import Sticker from './Sticker';
-import { BASE_URL } from '@/features/_queries_/config';
-import { ICourses, Course } from '@/interfaces';
-import { SwiperSlide } from 'swiper/react';
+import { IAchievement, IAchievements } from '@/interfaces';
 
 
 const WheelSvg = () => {
@@ -24,15 +22,18 @@ const WheelSvg = () => {
     )
 }
 
-const Suitcase = ({ data }: ICourses) => {
+const Suitcase = ({ data }: IAchievements) => {
     
     return (
         <SuitcaseWr>
-            {data?.map((sticker:Course)=> 
+            {data?.map((sticker:IAchievement)=> 
             <Sticker 
-                key={'sticker-' + sticker.count}
-                image={sticker.achievement}
-                alt={sticker.descr}
+                key={'sticker-' + sticker.course_name}
+                achievement_image={sticker.achievement_image}
+                course_name={sticker.course_name}
+                is_completed={sticker.is_completed}
+                achievement_name={sticker.achievement_name}
+                course_id={sticker.course_id}
                 />
             )}
             <Wheel>

@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { H1 } from '@/styles/textTags';
 import styled from 'styled-components';
 import Suitcase from '@/components/Achievements/Suitcase';
 import bg from '../../assets/img/background.png' ;
 import { COLORS } from '@/styles/variables';
-import { ICourses } from '@/interfaces';
-import AchievementPopup from './AchievementPopup';
+import { IAchievements } from '@/interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useSwiper } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 
-const Achievements = (data: ICourses) => {
+const Achievements = ({data}: IAchievements) => {
+
       const slides = [
     { id: 1, text: "Слайд 1" },
     { id: 2, text: "Слайд 2" },
@@ -37,7 +36,7 @@ const Achievements = (data: ICourses) => {
                     >
                     {slides.map((slide) => (
                         <SwiperSlide style={{width: '100%', margin:"0"}}>
-                            <Suitcase data={data?.data} />
+                            <Suitcase data={data} />
                         </SwiperSlide>
                     ))}
                 </Swiper>

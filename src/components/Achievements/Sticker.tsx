@@ -2,25 +2,23 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@/styles/variables';
 import AchievementPopupPortal from './AchievementPopupPortal';
+import { IAchievement } from '@/interfaces';
 
- interface StickerProps {
-    image: string
-    alt: string,
- }
 
-const Sticker = ({ image, alt }: StickerProps) => {
+const Sticker = ({ achievement_image, course_id, course_name, is_completed, achievement_name='achievement_name'}: IAchievement) => {
     const [open, setOpen] = useState<boolean>(false)
+
     return (
         <>
-        <StickerWr onClick={() => setOpen(true)} >
-            <StickerItem src={image} width={70} height={70} alt={alt} $new={false}/>
-            <Dot $new={true} />
+        <StickerWr onClick={() => setOpen(true)} disabled={!is_completed}>
+            <StickerItem src={achievement_image} width={70} height={70} alt={course_name} $new={is_completed}/>
+            <Dot $new={is_completed} />
         </StickerWr>
         {open && (
         <AchievementPopupPortal
-            name={alt}
-            image={image}
-            course="ndjsfk"
+            name={achievement_name}
+            image={achievement_image}
+            course={course_name}
             open={open}
             setPopupOpen={setOpen}
         />

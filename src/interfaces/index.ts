@@ -90,3 +90,15 @@ export interface Answer {
 export interface ICourses {
   data: Course[];
 }
+
+export interface IAchievement {
+  achievement_image: string;
+  course_id: string;
+  course_name: string;
+  is_completed: boolean;
+  achievement_name?: string;
+}
+
+export interface IAchievements {
+  data: IAchievement[];
+}
