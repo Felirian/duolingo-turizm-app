@@ -9,8 +9,10 @@ import Popup from '@/components/Questions/QuestionPage/Popup';
 import {ProgressBur} from "@/components/Shared/ProgressBur";
 import SvgSelector from '@/components/Shared/SvgSelector';
 import { useRouter } from 'next/router';
+import ClosePage from './ClosePage';
 // eslint-disable-next-line
 const Index = ({ QuizFunc }: any) => {
+  const [closePage, setClosePage] = useState<boolean>()
   const router = useRouter();
   const point_id = router.query.point_id;
   const section_slug = router.query.section_id;
@@ -29,11 +31,15 @@ const Index = ({ QuizFunc }: any) => {
   }
 
   return (
+    <>
+    {closePage ? 
+    <ClosePage QuizFunc={QuizFunc} section_slug={section_slug} course_slug={course_slug} setClosePage={setClosePage} /> 
+    :
     <QuestionPageWr>
       <Popup QuizFunc={QuizFunc} isCorrect={isCorrect} />
       <QuestionPageCon>
         <ProgressCon>
-            <button onClick={() => QuizFunc.leaveLevel(section_slug, course_slug)}>
+            <button onClick={() => setClosePage(true)}>
               <SvgSelector svg="close-btn" />
             </button>
             <ProgressBur percent={QuizFunc.progress} />
@@ -65,6 +71,8 @@ const Index = ({ QuizFunc }: any) => {
           <CustomBtn onClick={handleContinueClick} disabled={!isSelected}>Продолжить</CustomBtn>
       </ContinueBtnWrapper>
     </QuestionPageWr>
+    }
+    </>
   );
 };
 

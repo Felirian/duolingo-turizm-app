@@ -8,6 +8,7 @@ import Image from 'next/image';
 import crownImg from '@/assets/img/crown.png';
 import frogImg from '@/assets/img/frog.png';
 import { useRouter } from 'next/router';
+import SvgSelector from '../Shared/SvgSelector';
 
 interface EndPageProps {
   // eslint-disable-next-line
@@ -19,9 +20,13 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
   const point_id = router.query.point_id;
   const section_slug = router.query.section_id;
   const course_slug = router.query.courses_id;
+  const achievement = true;
 
   return (
     <EndPageWr>
+      <button  onClick={() => QuizFunc.gameOver(section_slug, point_id, course_slug)}>
+          <SvgSelector svg="close-btn" />
+      </button>
       <EndPageContentBlock>
         <CrownBlock>
           <Title>Поздравляем!</Title>
@@ -31,21 +36,32 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
         <ExpBlock>
           <Btn2>Награда</Btn2>
           <PointRollBlock>
-            <QuestionsSvgSelector name='exp' />
-            <span>+70</span>
+            <QuestionsSvgSelector name={achievement ? 'stciker' : 'exp'} />
+            <span>{achievement ? '+1' : '+70'}</span>
           </PointRollBlock>
         </ExpBlock>
         <CustomBtn onClick={() => QuizFunc.gameOver(section_slug, point_id, course_slug)}>Продолжить</CustomBtn>
+        {achievement && <CustomBtn orange onClick={()=>router.push('/achievements')}>Мой{'\u00A0'}чемодан</CustomBtn>}
       </EndPageContentBlock>
-      <MascotImg src={frogImg.src} alt='Квакс' width={310} height={289} />
+      {!achievement && <MascotImg src={frogImg.src} alt='Квакс' width={310} height={289} />}
     </EndPageWr>
   );
 };
 
 const EndPageWr = styled.div`
-  padding-top: 56vw;
+  //padding-top: 56vw;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40vw;
+  
+  >button {
+    align-self: flex-end;
+    justify-self: flex-start;
+  }
 `;
 
 const CrownBlock = styled.div`
@@ -88,7 +104,8 @@ const EndPageContentBlock = styled.div`
   z-index: 2;
   margin: 0 auto;
   width: 80vw;
-  height: 74.29vw;
+  max-height: 139vw;
+  min-height: 74.29vw;
   background-color: ${COLORS.white};
 
   padding: 24.57vw 5.71vw 7.14vw;
@@ -123,7 +140,7 @@ const PointRollBlock = styled.div`
   }
 
   svg {
-    width: 13vw;
+    width: 12vw;
     height: 12vw;
   }
 `;

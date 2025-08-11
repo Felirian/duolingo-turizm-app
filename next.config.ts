@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['185.178.47.249'],
+    domains: ['185.178.47.249', 'kvaks-backend.pushkeen.ru']
   },
   reactStrictMode: true,
 };

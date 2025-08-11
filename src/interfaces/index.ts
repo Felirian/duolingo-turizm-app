@@ -26,10 +26,14 @@ export interface Question {
 }
 
 export interface Course {
-  id?: string;
+  id: string;
   name: string;
-  slug?: string;
-  bgimage? : string
+  descr: string;
+  slug: string;
+  count: number;
+  achievement: string;
+  unachievement: string;    
+  bgimage: string; 
 }
 
 export interface OptionType {
@@ -81,4 +85,20 @@ export interface Answer {
   true_type1: boolean;
   //@ts-ignore
   true_type2: string[];
+}
+
+export interface ICourses {
+  data: Course[];
+}
+
+export interface IAchievement {
+  achievement_image: string;
+  course_id: string;
+  course_name: string;
+  is_completed: boolean;
+  achievement_name?: string;
+}
+
+export interface IAchievements {
+  data: IAchievement[];
 }

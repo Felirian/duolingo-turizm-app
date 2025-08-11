@@ -17,16 +17,19 @@ const BottomTabs = ({play = ''}: {play?: any}) => {
 
   const TAB_BUTTONS = [
     {
-      icon: <BottomTabsSvgSelector name='play' />,
-      link: play || router.asPath,
+      icon: <BottomTabsSvgSelector name='achievements' />,
+      link: '/achievements',
+      new: true,
     },
     {
       icon: <BottomTabsSvgSelector name='home' />,
       link: '/',
+      new: false,
     },
     {
       icon: <BottomTabsSvgSelector name='burger' />,
       link: '/courses',
+      new: false,
     },
   ];
 
@@ -41,6 +44,7 @@ const BottomTabs = ({play = ''}: {play?: any}) => {
             }}
           >
             {button.icon}
+            <Dot $new={button.new}></Dot>
           </CustomBtn>
         );
       })}
@@ -54,17 +58,18 @@ const BottomTabsWr = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 26vw;
-  padding: 2.29vw 4.29vw 5vw;
+  height: 20vw;
+  padding: 2.28vw 3.42vw 4.28vw;
 
   background-color: ${COLORS.lightGreen};
   border-radius: 5.71vw 5.71vw 0px 0px;
 
   display: flex;
   flex-wrap: nowrap;
-  gap: 2.86vw;
+  gap: 2.85vw;
 
   button {
+    height: 14.28vw;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -91,8 +96,8 @@ const BottomTabsWr = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 9.14vw;
-      height: 10.29vw;
+      width: 7.42vw;
+      height: 8vw;
       transition: transform 0.2s;
       svg {
         width: 100%;
@@ -113,5 +118,18 @@ const BottomTabsWr = styled.div`
     }
   }
 `;
+
+const Dot = styled.div  <{$new: boolean}>`
+    display:${({ $new }) => ($new ? 'flex' : 'none')};
+    width: 1.8vw;
+    height: 1.8vw;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -8%;
+    background-color: ${COLORS.orange};
+`
 
 export default BottomTabs;

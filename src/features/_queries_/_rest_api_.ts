@@ -302,3 +302,41 @@ export const putPoint = async (section_slug: string, point: number, userId: any)
     console.error('Ошибка сети:', error);
   }
 };
+
+export const useGetAchievements = () => {
+  const [result, setResult] = useState<{
+    loading: boolean;
+    data: null | Point[];
+    error: Error | null;
+  }>({
+    loading: true,
+    data: null,
+    error: null,
+  });
+
+  const { userId } = useTgApp();
+
+  useEffect(() => {
+    const fetchUserPoints = async () => {
+      if (!userId) return;
+      try {
+        const response = await axios.get(BASE_URL + `users/achievements?user_id=${userId}`, CONFIG);
+        setResult({
+          loading: false,
+          data: response.data,
+          error: null,
+        });
+      } catch (error) {
+        setResult({
+          loading: false,
+          data: null,
+          error: error as Error,
+        });
+      }
+    };
+
+    fetchUserPoints();
+  }, [userId]);
+
+  return result;
+};

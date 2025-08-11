@@ -4,6 +4,32 @@ interface QuestionsSvgSelectorProps {
 
 const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => {
   switch (name) {
+    case 'stciker': 
+    return (
+      <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.499 0C31.8006 0 40.9657 9.14551 40.998 20.4395L21.6592 40.9658C21.2753 40.9872 20.8882 40.999 20.499 40.999C9.17769 40.9988 0 31.8204 0 20.499C0.000229864 9.17783 9.17783 0.000229878 20.499 0Z" fill="#FF8340"/>
+        <g filter="url(#filter0_d_4633_3555)">
+        <path d="M18.8031 10.7204C19.5861 9.46507 21.4139 9.46507 22.1969 10.7204L24.2667 14.0385C24.5416 14.4792 24.9772 14.7957 25.4813 14.921L29.2766 15.8641C30.7124 16.2209 31.2772 17.9592 30.3253 19.0918L27.8092 22.0856C27.475 22.4833 27.3087 22.9953 27.3453 23.5135L27.6212 27.4144C27.7255 28.8903 26.2468 29.9646 24.8755 29.4093L21.2507 27.9415C20.7692 27.7465 20.2308 27.7465 19.7493 27.9415L16.1245 29.4093C14.7532 29.9646 13.2745 28.8903 13.3788 27.4144L13.6547 23.5135C13.6913 22.9953 13.525 22.4833 13.1908 22.0856L10.6747 19.0918C9.72276 17.9592 10.2876 16.2209 11.7234 15.8641L15.5187 14.921C16.0228 14.7957 16.4584 14.4792 16.7333 14.0385L18.8031 10.7204Z" fill="url(#paint0_linear_4633_3555)"/>
+        </g>
+        <path d="M32.7344 4.05078C37.7352 7.77673 40.9781 13.7292 40.9971 20.4404L21.6592 40.9658C21.2752 40.9872 20.8884 40.999 20.499 40.999C14.13 40.999 8.43957 38.0939 4.67969 33.5371C13.64 32.2346 30.1337 24.8526 32.7344 4.05078Z" fill="#DF3400" fillOpacity="0.32"/>
+        <path d="M38 20C39.0216 20 40.0222 20.09 40.9941 20.2627C40.9948 20.3219 40.9962 20.3811 40.9971 20.4404L21.6611 40.9639C21.597 40.9674 21.533 40.9726 21.4688 40.9756C21.1631 39.7001 21 38.3691 21 37C21 27.6112 28.6112 20 38 20Z" fill="#FFB993"/>
+        <defs>
+        <filter id="filter0_d_4633_3555" x="10.2051" y="9.77881" width="20.5898" height="19.7791" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.521569 0 0 0 0 0 0 0 0 1 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4633_3555"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4633_3555" result="shape"/>
+        </filter>
+        <linearGradient id="paint0_linear_4633_3555" x1="20.5" y1="33" x2="20.5" y2="8" gradientUnits="userSpaceOnUse">
+        <stop offset="0.303289" stopColor="#FFC400"/>
+        <stop offset="0.862752" stopColor="#FFF184"/>
+        </linearGradient>
+        </defs>
+      </svg>
+    );
     case 'exp':
       return (
         <svg
@@ -134,7 +160,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -168,7 +194,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -202,7 +228,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -236,7 +262,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -270,7 +296,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'
@@ -304,7 +330,7 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 filterUnits='userSpaceOnUse'
                 color-interpolation-filters='sRGB'
               >
-                <feFlood flood-opacity='0' result='BackgroundImageFix' />
+                <feFlood floodOpacity='0' result='BackgroundImageFix' />
                 <feColorMatrix
                   in='SourceAlpha'
                   type='matrix'

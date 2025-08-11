@@ -45,6 +45,7 @@ class MyDocument extends Document {
         <body>
         {/*<Script src={"https://telegram.org/js/telegram-web-app.js"}></Script>*/}
         <Main/>
+        <div id="popup-root" />
         <NextScript/>
         </body>
       </Html>
