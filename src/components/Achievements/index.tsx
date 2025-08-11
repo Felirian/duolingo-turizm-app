@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Suitcase from '@/components/Achievements/Suitcase';
 import bg from '../../assets/img/background.png' ;
 import { COLORS } from '@/styles/variables';
-import { IAchievements } from '@/interfaces';
+import { IAchievement, IAchievements } from '@/interfaces';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
@@ -14,12 +14,13 @@ import { Pagination } from "swiper/modules";
 
 const Achievements = ({data}: IAchievements) => {
 
-      const slides = [
-    { id: 1, text: "Слайд 1" },
-    { id: 2, text: "Слайд 2" },
-    { id: 3, text: "Слайд 3" },
-    { id: 4, text: "Слайд 4" },
-  ];
+  const chunked = data.reduce<IAchievement[][]>(
+  (acc, _, i) => i % 12 ? acc : [...acc, data.slice(i, i + 12)],
+  []
+);
+
+  console.log('chunked', chunked);
+
 
 
     return (
@@ -34,9 +35,9 @@ const Achievements = ({data}: IAchievements) => {
                     style={{ width: '100%'}}
                     loop={true}
                     >
-                    {slides.map((slide) => (
+                    {chunked.map((chunk) => (
                         <SwiperSlide style={{width: '100%', margin:"0"}}>
-                            <Suitcase data={data} />
+                            <Suitcase data={chunk} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
