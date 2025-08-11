@@ -269,6 +269,7 @@ export const putPoint = async (section_slug: string, point: number, userId: any)
     section_slug: section_slug,
     point: point,
   };
+
   const put_xp = {
     xp: '70',
   };
@@ -294,9 +295,16 @@ export const putPoint = async (section_slug: string, point: number, userId: any)
     });
 
     if (response.ok && response2.ok) {
-      return response;
+      const jsonData = await response.json();
+      return jsonData;
     } else {
-      console.error('Ошибка при отправке данных');
+      const errorText = await response.text();
+      console.error('Ошибка при отправке данных:', errorText);
+
+      if (!response2.ok) {
+        const errorText2 = await response2.text();
+        console.error('Ошибка при отправке данных (users):', errorText2);
+      }
     }
   } catch (error) {
     console.error('Ошибка сети:', error);
