@@ -32,8 +32,8 @@ export interface Course {
   slug: string;
   count: number;
   achievement: string;
-  unachievement: string;    
-  bgimage: string; 
+  unachievement: string;
+  bgimage: string;
 }
 
 export interface OptionType {
@@ -93,7 +93,7 @@ export interface ICourses {
 
 export interface IAchievement {
   achievement_image: string;
-  course_id: string;
+  course_slug: string;
   course_name: string;
   is_completed: boolean;
   achievement_name?: string;

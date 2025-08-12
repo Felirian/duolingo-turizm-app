@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL, CONFIG } from './config';
-import { Course, Point, PointsData, Section } from '@/interfaces';
+import { Course, IAchievement, IAchievements, Point, PointsData, Section } from '@/interfaces';
 import useTgApp from '@/features/_tg_methods_';
 
 export const useGetQuery = (endPoint: string) => {
@@ -316,7 +316,7 @@ export const putPoint = async (section_slug: string, point: number, userId: any)
 export const useGetAchievements = () => {
   const [result, setResult] = useState<{
     loading: boolean;
-    data: null | Point[];
+    data: null | IAchievement[];
     error: Error | null;
   }>({
     loading: true,

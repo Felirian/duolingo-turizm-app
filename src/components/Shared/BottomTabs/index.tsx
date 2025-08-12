@@ -1,15 +1,33 @@
 import { COLORS } from '@/styles/variables';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import BottomTabsSvgSelector from './BottomTabsSvgSelector';
 import { CustomBtn } from '../CustomBtn';
 import { useRouter } from 'next/router';
 
-
-
-const BottomTabs = ({play = ''}: {play?: any}) => {
+const BottomTabs = ({ play = '' }: { play?: any }) => {
   const router = useRouter();
+
+  const [hasNewAchievements, setHasNewAchievements] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('completed_course_slugs');
+    if (stored) {
+      try {
+        const slugs = JSON.parse(stored);
+        if (Array.isArray(slugs) && slugs.length > 0) {
+          setHasNewAchievements(true);
+        } else {
+          setHasNewAchievements(false);
+        }
+      } catch {
+        setHasNewAchievements(false);
+      }
+    } else {
+      setHasNewAchievements(false);
+    }
+  }, []);
 
   const buttonClick = (link: string) => {
     router.push(link);
@@ -19,7 +37,7 @@ const BottomTabs = ({play = ''}: {play?: any}) => {
     {
       icon: <BottomTabsSvgSelector name='achievements' />,
       link: '/achievements',
-      new: true,
+      new: hasNewAchievements,
     },
     {
       icon: <BottomTabsSvgSelector name='home' />,
@@ -119,17 +137,17 @@ const BottomTabsWr = styled.div`
   }
 `;
 
-const Dot = styled.div  <{$new: boolean}>`
-    display:${({ $new }) => ($new ? 'flex' : 'none')};
-    width: 1.8vw;
-    height: 1.8vw;
-    flex-shrink: 0;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    right: -8%;
-    background-color: ${COLORS.orange};
-`
+const Dot = styled.div<{ $new: boolean }>`
+  display: ${({ $new }) => ($new ? 'flex' : 'none')};
+  width: 1.8vw;
+  height: 1.8vw;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -8%;
+  background-color: ${COLORS.orange};
+`;
 
 export default BottomTabs;

@@ -10,6 +10,7 @@ import frogImg from '@/assets/img/frog.png';
 import { useRouter } from 'next/router';
 import SvgSelector from '../Shared/SvgSelector';
 import Loader from '../Shared/Loader';
+import { addCompletedCourseSlug } from '@/features/localStorage';
 
 interface EndPageProps {
   // eslint-disable-next-line
@@ -32,6 +33,7 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
 
       if (data?.is_completed_course) {
         setAchievement(true);
+        addCompletedCourseSlug(String(course_slug));
       } else {
         setAchievement(false);
       }

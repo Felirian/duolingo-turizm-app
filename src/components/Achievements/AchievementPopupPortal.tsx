@@ -6,7 +6,7 @@ interface Props {
   image: string;
   course: string;
   open: boolean;
-  setPopupOpen: (val: boolean) => void;
+  setPopupOpen: () => void;
 }
 
 const AchievementPopupPortal = (props: Props) => {

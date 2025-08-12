@@ -1,73 +1,98 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '@/styles/variables';
 import AchievementPopupPortal from './AchievementPopupPortal';
 import { IAchievement } from '@/interfaces';
+import { isCourseSlugCompleted, removeCompletedCourseSlug } from '@/features/localStorage';
 
+const Sticker = ({
+  achievement_image,
+  course_slug,
+  course_name,
+  is_completed,
+  achievement_name = 'achievement_name',
+}: IAchievement) => {
+  const [open, setOpen] = useState<boolean>(false);
 
-const Sticker = ({ achievement_image, course_id, course_name, is_completed, achievement_name='achievement_name'}: IAchievement) => {
-    const [open, setOpen] = useState<boolean>(false)
+  const [isNew, setIsNew] = useState(false);
 
-    return (
-        <>
-        <StickerWr onClick={() => setOpen(true)} disabled={!is_completed}>
-            <StickerItem src={achievement_image} width={70} height={70} alt={course_name} $new={is_completed}/>
-            <Dot $new={is_completed} />
-        </StickerWr>
-        {open && (
-        <AchievementPopupPortal
-            name={achievement_name}
-            image={achievement_image}
-            course={course_name}
-            open={open}
-            setPopupOpen={setOpen}
+  useEffect(() => {
+    if (is_completed && isCourseSlugCompleted(course_slug)) {
+      setIsNew(true);
+    }
+  }, [course_slug, is_completed]);
+
+  const handleClose = () => {
+    setOpen(false);
+    removeCompletedCourseSlug(course_slug);
+    setIsNew(false);
+  };
+
+  return (
+    <>
+      <StickerWr onClick={() => setOpen(true)} disabled={!is_completed}>
+        <StickerItem
+          src={achievement_image}
+          width={70}
+          height={70}
+          alt={course_name}
+          $new={isNew}
         />
-        )}
-        </>
-    )
+        <Dot $new={isNew} />
+      </StickerWr>
+      {open && (
+        <AchievementPopupPortal
+          name={achievement_name}
+          image={achievement_image}
+          course={course_name}
+          open={open}
+          setPopupOpen={handleClose}
+        />
+      )}
+    </>
+  );
 };
 
 const StickerWr = styled.button`
-    width: 22vw;
-    height: 22vw;
-    //padding: 0.85vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
+  width: 22vw;
+  height: 22vw;
+  //padding: 0.85vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
-const StickerItem = styled.img<{$new: boolean}>`
-    width: 100%;
-    height: 100%;
+const StickerItem = styled.img<{ $new: boolean }>`
+  width: 100%;
+  height: 100%;
 
-    animation: ${({ $new }) => ($new ? 'newSticker 0.8s infinite' : 'none')};
+  animation: ${({ $new }) => ($new ? 'newSticker 0.8s infinite' : 'none')};
 
-    @keyframes newSticker {
-        0% {
-        transform: Scale(1);
-        }
-        50% {
-        transform: Scale(0.95);
-        }
-        100% {
-        transform: Scale(1);
-        }
+  @keyframes newSticker {
+    0% {
+      transform: Scale(1);
+    }
+    50% {
+      transform: Scale(0.95);
+    }
+    100% {
+      transform: Scale(1);
+    }
   }
 `;
 
-const Dot = styled.div<{$new: boolean}>`
-    display:${({ $new }) => ($new ? 'flex' : 'none')};
-    width: 2vw;
-    height: 2vw;
-    flex-shrink: 0;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    position: absolute;
-    top: 2%;
-    right: 2%;
-    background-color: ${COLORS.orange};
-`
+const Dot = styled.div<{ $new: boolean }>`
+  display: ${({ $new }) => ($new ? 'flex' : 'none')};
+  width: 2vw;
+  height: 2vw;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  background-color: ${COLORS.orange};
+`;
 
 export default Sticker;

@@ -6,20 +6,14 @@ import { useGetAchievements } from '@/features/_queries_/_rest_api_';
 import Loader from '@/components/Shared/Loader';
 
 const Index = () => {
-    const { data, loading, error } = useGetAchievements();
+  const { data, loading, error } = useGetAchievements();
 
-      return (
+  return (
     <Page back={false}>
-      {loading ? (
-       <Loader />
-      ) : error ? (
-        <>error</>
-      ) : (
-        <Achievements data={data} />
-      )}
+      {loading ? <Loader /> : error || !data ? <>Ошибка</> : <Achievements data={data} />}
       <BottomTabs />
     </Page>
   );
-}
+};
 
 export default Index;
