@@ -17,7 +17,7 @@ const SectionsCard = ({ data }: any) => {
         backgroundImage: `url(${data.bgimage})`,
       }}
     >
-      {data.progress && <ProgressBur percent={Math.round((data.progress/5)*100)}/>}
+      {data.progress && <ProgressBur percent={Math.round((data.progress/data.total_points)*100)}/>}
 
 
       <CardText>
