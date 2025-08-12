@@ -1,0 +1,7 @@
+services:
+  axentra:
+    image: pushkeen/duolingo-app:latest
+    container_name: duolingo-app
+    restart: unless-stopped
+    ports:
+      - 1928:3000

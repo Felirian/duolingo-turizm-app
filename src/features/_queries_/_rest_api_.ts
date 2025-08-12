@@ -116,7 +116,7 @@ export const useGetSectionsByCourseSlug = (slug: string | string[] | undefined) 
   return result;
 };
 
-export const useGetAllPoints = (slug: string | string[] | undefined,userId: any) => {
+export const useGetAllPoints = (slug: string | string[] | undefined, userId: any) => {
   const [result, setResult] = useState<{
     loading: boolean;
     data: null | PointsData;
@@ -126,7 +126,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined,userId: any)
     data: null,
     error: null,
   });
-  const {setGg, gg } = useTgApp();
+  const { setGg, gg } = useTgApp();
 
   useEffect(() => {
     const fetchArtistsList = async () => {
@@ -141,7 +141,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined,userId: any)
           data: response.data,
           error: null,
         });
-        setGg(!gg)
+        setGg(!gg);
       } catch (error) {
         setResult({
           loading: false,
@@ -210,7 +210,7 @@ export const useGetUser = () => {
     error: null,
   });
 
-  const {userId} = useTgApp();
+  const { userId } = useTgApp();
 
   useEffect(() => {
     const fetchArtistsList = async () => {
@@ -237,15 +237,15 @@ export const useGetUser = () => {
   return result;
 };
 
-export const CreateUser = async (petName: string, userId: number) => {
-
+export const CreateUser = async (petName: string, userId: number, tgName: string) => {
   const data = {
     id: userId.toString(),
+    tg_name: tgName,
     character: petName,
   };
 
   try {
-    const response = await fetch('https://kvaks-backend.pushkeen.ru/users', {
+    const response = await fetch(BASE_URL + 'users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -254,7 +254,7 @@ export const CreateUser = async (petName: string, userId: number) => {
     });
 
     if (response.ok) {
-      return response
+      return response;
     } else {
       console.error('Ошибка при отправке данных');
     }
@@ -263,19 +263,19 @@ export const CreateUser = async (petName: string, userId: number) => {
   }
 };
 
-export const putPoint = async (section_slug: string, point: number,  userId: any) => {
-
+export const putPoint = async (section_slug: string, point: number, userId: any) => {
   const data = {
-    user_id : userId,
-    section_slug : section_slug,
-    point: point
+    user_id: userId,
+    section_slug: section_slug,
+    point: point,
   };
+
   const put_xp = {
-    xp : "70",
+    xp: '70',
   };
 
   //@ts-ignore
-  const METHOD: string = point == '1' ? 'POST' : 'PUT'
+  const METHOD: string = point == '1' ? 'POST' : 'PUT';
 
   try {
     const response = await fetch(BASE_URL + 'progress', {
@@ -286,7 +286,7 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
       body: JSON.stringify(data),
     });
 
-    const response2 = await fetch(BASE_URL + 'users'+ '?tg_id='+ userId, {
+    const response2 = await fetch(BASE_URL + 'users' + '?tg_id=' + userId, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -295,14 +295,20 @@ export const putPoint = async (section_slug: string, point: number,  userId: any
     });
 
     if (response.ok && response2.ok) {
-      return response
+      const jsonData = await response.json();
+      return jsonData;
     } else {
-      console.error('Ошибка при отправке данных');
+      const errorText = await response.text();
+      console.error('Ошибка при отправке данных:', errorText);
+
+      if (!response2.ok) {
+        const errorText2 = await response2.text();
+        console.error('Ошибка при отправке данных (users):', errorText2);
+      }
     }
   } catch (error) {
     console.error('Ошибка сети:', error);
   }
-
 };
 
 export const useGetAchievements = () => {
@@ -342,4 +348,3 @@ export const useGetAchievements = () => {
 
   return result;
 };
-

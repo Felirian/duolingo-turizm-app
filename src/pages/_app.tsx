@@ -60,7 +60,11 @@ const WelcomeVideo = () => {
 export default function App({ Component, pageProps }: AppProps) {
   const didMount = useDidMount();
   const [showVideo, setShowVideo] = useState(true);
-  const [deviceState, setDeviceState] = useState({isMobile: false, isLandscape: false, isTelegram: false});
+  const [deviceState, setDeviceState] = useState({
+    isMobile: false,
+    isLandscape: false,
+    isTelegram: false,
+  });
 
   useSukaOdinRaz(() => {
     tgInit(false);
@@ -87,13 +91,14 @@ export default function App({ Component, pageProps }: AppProps) {
       const width = window.innerWidth;
       const height = window.innerHeight;
       const checkMobile = /Mobi|Android/i.test(navigator.userAgent);
-  
+
       setDeviceState({
         isMobile: checkMobile,
+        // isMobile: true,
         isLandscape: width > height,
         isTelegram: !!window.Telegram,
       });
-    }
+    };
 
     updateDeviceState();
 
@@ -110,19 +115,16 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <GlobalStyles />
       {showVideo && <WelcomeVideo />}
-      {didMount && (
-     deviceState.isMobile && 
-    !deviceState.isLandscape && 
-    deviceState.isTelegram ? (
-    <Component {...pageProps} />
-    ) : (
-      <Warning
-      isMobile={deviceState.isMobile}
-      isLandscape={deviceState.isLandscape}
-      isTelegram={deviceState.isTelegram}
-      />
-   )
-  )}  
+      {didMount &&
+        (deviceState.isMobile && !deviceState.isLandscape && deviceState.isTelegram ? (
+          <Component {...pageProps} />
+        ) : (
+          <Warning
+            isMobile={deviceState.isMobile}
+            isLandscape={deviceState.isLandscape}
+            isTelegram={deviceState.isTelegram}
+          />
+        ))}
     </Provider>
   );
 }

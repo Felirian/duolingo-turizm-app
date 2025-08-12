@@ -11,6 +11,12 @@ export default function Home() {
   const router = useRouter();
   const { loading, data, error } = useGetUser();
 
+  useEffect(() => {
+    if (error) {
+      router.push('/new_person');
+    }
+  }, [error]);
+
   return (
     <>
       <Head>
@@ -21,26 +27,26 @@ export default function Home() {
       </Head>
 
       <Page back={false}>
-      <main>
-         {loading ? (
-          <Loader />
-        ) : error ? (
-          <>Error</>
-        ) : data ? (
-          <>
-            <Main data={data} />
-            <BottomTabs
-              play={
-                // @ts-ignore
-                data?.last_section_slug
-                  ? // @ts-ignore
-                    `/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`
-                  : '/courses/rossijskoe-gostepriimstvo'
-              }
-            />
-          </>
-        ) : null}
-</main>
+        <main>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <>Error</>
+          ) : data ? (
+            <>
+              <Main data={data} />
+              <BottomTabs
+                play={
+                  // @ts-ignore
+                  data?.last_section_slug
+                    ? // @ts-ignore
+                      `/courses/rossijskoe-gostepriimstvo/${data?.last_section_slug}`
+                    : '/courses/rossijskoe-gostepriimstvo'
+                }
+              />
+            </>
+          ) : null}
+        </main>
       </Page>
     </>
   );

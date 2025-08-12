@@ -16,7 +16,7 @@ const NewPerson = () => {
   const [petName, setPetName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [isUserCreated, setIsUserCreated] = useState(false);
-  const { userId } = useTgApp();
+  const { userId, dataUser } = useTgApp();
   const router = useRouter();
 
   const { data } = useGetUser();
@@ -35,16 +35,16 @@ const NewPerson = () => {
 
   // Обработчик отправки данных на сервер
   const handleSubmit = async () => {
-    setIsDisabled(true)
+    setIsDisabled(true);
     try {
-      const response = await CreateUser(petName, userId);
+      const response = await CreateUser(petName, userId, dataUser?.username || '');
       if (response?.ok) {
         setIsUserCreated(true);
       }
     } catch (error) {
       console.error('Ошибка при создании пользователя:', error);
     } finally {
-      setIsDisabled(false)
+      setIsDisabled(false);
     }
   };
 
@@ -82,7 +82,7 @@ const NewPerson = () => {
                   handleSubmit();
                 }
               }}
-              enterKeyHint="done"
+              enterKeyHint='done'
             />
           )}
 
