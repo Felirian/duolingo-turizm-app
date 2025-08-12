@@ -12,6 +12,7 @@ export const COLORS = {
   orange: '#FF8F04',
   bubbleGreen: '#A6D881',
   seaGreen: '#02C77F',
+  shadowGreen: '#03B071',
   red: '#EF3349',
   textGray: '#272727',
   gray:'#B1B1B1',

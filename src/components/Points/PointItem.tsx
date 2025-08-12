@@ -5,61 +5,127 @@ import styled from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
 import { useRouter } from 'next/router';
 
+type PointStatus = 'locked' | 'open' | 'completed';
+
 interface PointItemProps {
   data: Point;
-  coordinates: { top: string; left: string };
   currentPoint: number;
+  progress: number;
+  side: string; 
+  isLast: boolean;
 }
 
-const PointItem = ({ data, coordinates, currentPoint }: PointItemProps) => {
+const PointItem = ({ data, currentPoint, progress, side, isLast }: PointItemProps) => {
   const router = useRouter();
 
   const handlePointClick = () => {
     router.push(router.asPath + '/' + data.number);
   };
 
-  const isLockedPoint = data.number > currentPoint;
+  let status: PointStatus;
+    if (data.number > currentPoint) {
+      status = 'locked';
+    } else if (data.number <= progress) {
+      status = 'completed';
+    } else {
+      status = 'open';
+    }
 
-  return (
-    <PointItemWr
-      style={coordinates}
-      onClick={handlePointClick}
-      data-aos='flip-right'
-      data-aos-delay={data.number * 100}
-      data-aos-duration='700'
-      disabled={isLockedPoint}
-    >
-      <PointBtn1 $islocked={isLockedPoint}>
-        <span>{isLockedPoint ? <PointsSvgSelector name='locked' /> : data.number}</span>
-        <PointsSvgSelector name='point' />
-        {currentPoint === data.number && (
-          <CurrentPointCloud data-aos='fade-down' data-aos-delay='700' data-aos-duration='400'>
-            <span>Начать</span>
-            <PointsSvgSelector name='cloud' />
-          </CurrentPointCloud>
-        )}
-      </PointBtn1>
-    </PointItemWr>
-  );
+      return (
+        <PointItemWr
+          onClick={handlePointClick}
+          // data-aos="flip-right"
+          // data-aos-delay={data.number * 100}
+          // data-aos-duration="700"
+          disabled={status === 'locked'}
+          $status={status}
+        >
+          <PointBtn1 $status={status}>
+            <span>
+              {status === 'locked' ? '' : data.number}
+            </span>
+            {status === 'completed' && 
+            <span className='hand'>
+              <PointsSvgSelector name='hand' />
+            </span>}
+            <PointsSvgSelector name={'point-' + status} />
+            {currentPoint === data.number && (
+              <CurrentPointCloud
+                // data-aos="fade-down"
+                // data-aos-delay="700"
+                // data-aos-duration="400"
+              >
+                <span>Начать</span>
+                <PointsSvgSelector name="cloud" />
+              </CurrentPointCloud>
+            )} 
+          </PointBtn1>
+          <RoadCon $left={side === 'left'} $right={side === 'right'} $isLast={isLast}>
+            <PointsSvgSelector name='road' />
+          </RoadCon>
+        </PointItemWr>
+      );
 };
 
-const PointItemWr = styled.button`
-  position: absolute;
-  width: 23vw;
-  height: 20vw;
+const RoadCon  = styled.div<{$left: boolean, $right: boolean, $isLast:boolean}>`
+  ${({ $isLast }) => $isLast && `
+  display: none;
+  `}
+    position: absolute;
+    width: 10vw;
+    height: 22vw;
 
-  z-index: 2;
+    ${({ $left }) => $left && `
+      top: 10%;
+      right: -110%;
+      transform: rotate(-10deg);
+    `}
 
-  &:active {
+    ${({ $right }) => $right && `
+      top: 10%;
+      right: 130%;
+      transform: rotate(-111deg);
+    `}
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+`;
+
+const PointItemWr = styled.button<{$status: PointStatus}>`
+  width: 14vw;
+  height: 14vw;
+  position: relative;
+
+&:active {
+  transition: 0.2s;
     svg {
       ellipse {
-        transition: 0.2s;
-        &:last-of-type {
-          fill: ${COLORS.heavyOrange} !important;
-        }
-        &:first-of-type {
-          fill: ${COLORS.darkOrange} !important;
-        }
+        ${({ $status }) => {
+          switch ($status) {
+            case 'completed': 
+              return `
+                &:last-of-type {
+                  fill: ${COLORS.shadowGreen} !important;
+                }
+                &:first-of-type {
+                  fill: ${COLORS.shadowGreen} !important;
+                }
+              `;
+            case 'open': 
+            default: 
+              return `
+                &:last-of-type {
+                  fill: ${COLORS.mediumOrange} !important;
+                }
+                &:first-of-type {
+                  fill: ${COLORS.mediumOrange} !important;
+                }
+              `;
+          }
+        }}
       }
     }
   }
@@ -69,7 +135,7 @@ const PointItemWr = styled.button`
   }
 `;
 
-const PointBtn1 = styled.div<{ $islocked: boolean }>`
+const PointBtn1 = styled.div<{ $status: PointStatus }>`
   ${Btn1Style}
   position: relative;
   width: 100%;
@@ -79,6 +145,19 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1.4vw;
+
+  .hand {
+    height: 8.2vw;
+    width: 8.2vw;
+    position: absolute;
+    right: -25%;
+    bottom: -25%;
+    > svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
 
   & > span {
     display: flex;
@@ -91,43 +170,29 @@ const PointBtn1 = styled.div<{ $islocked: boolean }>`
     font-family: inherit;
 
     svg {
-      width: 7.43vw;
-      height: 9.43vw;
+      width: 6.2vw;
+      height: 7.7vw;
     }
   }
 
   & > svg {
     position: absolute;
-    width: 22.5vw;
-    height: 19.1vw;
+    width: 19.14vw;
+    height: 19.14vw;
     z-index: 0;
-    will-change: filter;
-
-    -webkit-filter: drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
-    filter: drop-shadow(0 0.8vw 0.8vw rgb(0, 0, 0, 0.25));
-
-    path {
-      fill: ${({ $islocked }) => ($islocked ? COLORS.lightOrange : COLORS.softOrange)};
-    }
-    ellipse {
-      &:last-of-type {
-        fill: ${({ $islocked }) => ($islocked ? COLORS.mediumOrange : COLORS.orange)};
-      }
-      &:first-of-type {
-        fill: ${({ $islocked }) => ($islocked ? COLORS.darkOrange : COLORS.mediumOrange)};
-      }
-    }
   }
 `;
 
 const CurrentPointCloud = styled.div`
   position: absolute;
 
-  top: -53%;
-  left: 5%;
+  top: -80%;
+  left: -20%;
 
-  width: 20.86vw;
-  height: 10.29vw;
+  width: 20.57vw;
+  height: 9.77vw;
+
+  display: flex;
 
   svg {
     position: absolute;
@@ -138,20 +203,23 @@ const CurrentPointCloud = styled.div`
   }
 
   span {
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    top: 0;
+    top: 0; */
     width: 100%;
     height: 100%;
 
     display: flex;
     justify-content: center;
-    margin-top: 1vw;
+    margin-top: 1.7vw;
 
     ${Btn1Style};
-    font-size: 4.57vw;
-    color: ${COLORS.textGreen};
+    font-size: 3.47vw;
+    color: ${COLORS.textGray};
     z-index: 2;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%;
   }
 `;
 

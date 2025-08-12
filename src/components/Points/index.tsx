@@ -4,61 +4,56 @@ import { COLORS } from '@/styles/variables';
 import styled from 'styled-components';
 import PointItem from './PointItem';
 import React from 'react';
+import useTgApp from '@/features/_tg_methods_';
+import { SafeAreaInsets } from '@telegram-apps/bridge';
 
-const PONTS_COORDS = [
-  { top: '43vw', left: '22vw' },
-  { top: '68vw', left: '44.5vw' },
-  { top: '97vw', left: '32vw' },
-  { top: '129vw', left: '23vw' },
-  { top: '157vw', left: '44.8vw' },
-];
 
 const IMG_COORSDS = [
-  { top: '65vw', left: '-5vw' },
-  { top: '98vw', left: '57vw' },
-  { top: '148vw', left: '-5vw' },
+  { top: '60vw', left: '-5vw' },
+  { top: '90vw', left: '57vw' },
+  { top: '130vw', left: '-5vw' },
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
+  const { safeAreas } = useTgApp();
   const currentPoint = data.progress?.point + 1 || 1;
 
   return (
     <PointsWr>
-      {/*<PointsTitleBlock>*/}
-        <div data-aos='zoom-in'>
+      <PointsTitleBlock  $safeAreas={safeAreas}>
           <PointsTitle>{data.section.name}</PointsTitle>
-        </div>
-        <div data-aos='zoom-in' data-aos-duration='600'>
-          <B1>{currentPoint > 5 ? 'все уровни пройдены!' : `уровень ${currentPoint}`}</B1>
-        </div>
-      {/*</PointsTitleBlock>*/}
+      </PointsTitleBlock>
 
+      <PointsCon> 
       {data?.points
         .sort((a, b) => a.number - b.number)
-        .slice(0, 5)
         .map((point, index) => {
           return (
-            <React.Fragment key={`${index}-point-item`}>
+            <div className={index%2 === 0 ? 'left' : 'right'} 
+                key={`${index}-point-item`}>
               <PointItem
+              side={index%2 === 0 ? 'left' : 'right'}
                 data={point}
                 currentPoint={currentPoint}
-                coordinates={PONTS_COORDS[index]}
+                progress={data.progress.point}
+                isLast={index === data.points.length - 1}
               />
-            </React.Fragment>
+            </div>
           );
         })}
+      </PointsCon>
 
       {data.section.images.slice(0, 3).map((img, index) => {
         return (
-          <div
+          <MascotsCon
             key={`${index}-point-img`}
-            data-aos={index % 2 ? 'fade-left' : 'fade-right'}
-            style={{ position: 'absolute', ...IMG_COORSDS[index] }}
+            // data-aos={index % 2 ? 'fade-left' : 'fade-right'}
+            style={{  ...IMG_COORSDS[index] }}
           >
-            <MascotImg src={img} />
-          </div>
+            <img src={img} />
+          </MascotsCon>
         );
-      })}
+      })} 
     </PointsWr>
   );
 };
@@ -66,41 +61,80 @@ const Points = ({ data }: { data: PointsData }) => {
 const PointsWr = styled.div`
   position: relative;
   width: 100%;
-  height: 200vw;
+  min-height: 100vh;
+  text-align: left;
+  padding-top: 40vw;
 
-  text-align: center;
-
-  overflow-y: none;
-  
-  color: ${COLORS.textGreen};
-`;
-
-const PointsTitleBlock = styled.div`
-  position: fixed;
-  z-index: 5;
-
-  top: 12vw;
-  left: 50%;
-  transform: translateX(-50%);
+  overflow-y: hidden;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
+
+
+  justify-content: center;
+  
+  color: ${COLORS.textGray};
+`;
+
+const PointsTitleBlock = styled.div<{$safeAreas: SafeAreaInsets | null;}>`
+
+  padding: 5.7vw;
+  border: 2px solid ${COLORS.shadowGreen};
+  background-color: ${COLORS.white};
+  border-radius: 4.8vw;
+  width: auto;
+
+  position: fixed;
+  z-index: 5;
+  top: ${({ $safeAreas }: any) => 50 +  $safeAreas?.top}px;
+  left: 2.85vw;
+  right: 2.85vw;
+
+
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1vw;
-
-  color: ${COLORS.textGreen};
 `;
 
 const PointsTitle = styled(Btn1)`
-  line-height: 105%;
+  line-height: 125%;
+  font-size: 5.14vw;
+  font-style: bold;
 `;
 
-const MascotImg = styled.img`
-  width: 38.29vw;
-  height: 38.29vw;
+const MascotsCon = styled.div`
 
-  object-fit: contain;
+  position: absolute;
+  z-index: 0;
+
+  >img {
+    width: 38.29vw;
+    height: 38.29vw;
+
+    object-fit: contain;
+  }
+
 `;
+
+const PointsCon = styled.div`
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10vw;
+  justify-content: center;
+  justify-content: center;
+  width: 40vw;
+  z-index: 4;
+
+  .right {
+    align-self: flex-end;
+  }
+
+  .left {
+    align-self: flex-start;
+  }
+
+`;
+
 
 export default Points;

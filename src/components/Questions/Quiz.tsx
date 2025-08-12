@@ -5,6 +5,7 @@ import QuestionPage from '@/components/Questions/QuestionPage';
 // eslint-disable-next-line
 const Quiz = ({ data, onFinished }: any) => {
   const QuizFunc = useQuizFunctions({ initialQuestions: data });
+  console.log('quiz data', data);
 
     useEffect(() => {
     if (QuizFunc.isFinished) {
