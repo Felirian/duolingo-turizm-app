@@ -145,8 +145,14 @@ const Type2 = ({ data, setIsCorrect, setSelected }: any) => {
             transition: 'transform 0.2s ease',
           }}
         >
-          <SelectorNum><Btn2>{index + 1}</Btn2></SelectorNum>
-          <SelectorButton>{answer}</SelectorButton>
+          <SelectorNum 
+          data-aos="fade-up"
+          data-aos-duration="200"
+          data-aos-delay={`${index * 100}`}><Btn2>{index + 1}</Btn2></SelectorNum>
+          <SelectorButton
+              data-aos="fade-up"
+          data-aos-duration="200"
+          data-aos-delay={`${index * 100}`}>{answer}</SelectorButton>
         </SelectorCon>
       ))}
     </SelectorWr>

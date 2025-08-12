@@ -31,7 +31,7 @@ const Index = () => {
         <SectionsCardCon>
           {data?.map((section, index) => (
             <React.Fragment key={index}>
-              <SectionsCard data={section} />
+              <SectionsCard data={section} index={index} />
             </React.Fragment>
           ))}
         </SectionsCardCon>

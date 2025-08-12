@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Type0 from '@/components/Questions/QuestionPage/Type0';
 import Type1 from '@/components/Questions/QuestionPage/Type1';
 import Type2 from '@/components/Questions/QuestionPage/Type2';
@@ -42,20 +42,42 @@ const Index = ({ QuizFunc }: any) => {
             <button onClick={() => setClosePage(true)}>
               <SvgSelector svg="close-btn" />
             </button>
-            <ProgressBur percent={QuizFunc.progress} />
+            <ProgressBur
+            data-aos="fade-up"
+            data-aos-duration="200"
+            percent={QuizFunc.progress} />
         </ProgressCon>
         {QuizFunc.currentQuestion.answer.type === 0 ? (
           QuizFunc.currentQuestion.answer.true_type0.length === 1 ? (
-            <H3>Один вариант ответа</H3>
+            <H3 
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="200"
+            >Один вариант ответа</H3>
           ) : (
-            <H3>Несколько вариантов ответа</H3>
+            <H3
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="200"
+            >Несколько вариантов ответа</H3>
           )
         ) : QuizFunc.currentQuestion.answer.type === 1 ? (
-          <H3>Правда или ложь?</H3>
+          <H3
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="200"
+          >Правда или ложь?</H3>
         ) : QuizFunc.currentQuestion.answer.type === 2 ? (
-          <H3>Расположите в правильном порядке</H3>
+          <H3 
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="200">Расположите в правильном порядке</H3>
         ) : null}
-        <B2>{QuizFunc.currentQuestion.text}</B2>
+        <B2
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="400"
+        >{QuizFunc.currentQuestion.text}</B2>
       </QuestionPageCon>
 
         {QuizFunc.currentQuestion.answer.type === 0 ? (
@@ -68,7 +90,11 @@ const Index = ({ QuizFunc }: any) => {
           )
         )}
       <ContinueBtnWrapper $disabled={!isSelected}>
-          <CustomBtn onClick={handleContinueClick} disabled={!isSelected}>Продолжить</CustomBtn>
+          <CustomBtn 
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay="600"
+          onClick={handleContinueClick} disabled={!isSelected}>Продолжить</CustomBtn>
       </ContinueBtnWrapper>
     </QuestionPageWr>
     }

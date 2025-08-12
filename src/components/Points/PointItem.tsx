@@ -1,7 +1,7 @@
 import { Point } from '@/interfaces';
 import { Btn1Style } from '@/styles/textTags';
 import { COLORS } from '@/styles/variables';
-import styled from 'styled-components';
+import {styled, keyframes} from 'styled-components';
 import PointsSvgSelector from './PointsSvgSelector';
 import { useRouter } from 'next/router';
 
@@ -34,25 +34,29 @@ const PointItem = ({ data, currentPoint, progress, side, isLast }: PointItemProp
       return (
         <PointItemWr
           onClick={handlePointClick}
-          data-aos="flip-right"
-          data-aos-delay={data.number * 100}
-          data-aos-duration="700"
           disabled={status === 'locked'}
           $status={status}
         >
-          <PointBtn1 $status={status}>
+          <PointBtn1 
+          data-aos="zoom-in"
+          data-aos-duration="800"
+          $status={status}>
             <span>
               {status === 'locked' ? '' : data.number}
             </span>
             {status === 'completed' && 
-            <span className='hand'>
+            <span 
+            data-aos="zoom-in"
+            data-aos-duration="600"
+            data-aos-delay="800"
+            className='hand'>
               <PointsSvgSelector name='hand' />
             </span>}
             <PointsSvgSelector name={'point-' + status} />
             {currentPoint === data.number && (
               <CurrentPointCloud
-                data-aos="fade-down"
-                data-aos-delay="700"
+                data-aos="zoom-in"
+                data-aos-delay="1200"
                 data-aos-duration="400"
               >
                 <span>Начать</span>
@@ -60,12 +64,20 @@ const PointItem = ({ data, currentPoint, progress, side, isLast }: PointItemProp
               </CurrentPointCloud>
             )} 
           </PointBtn1>
-          <RoadCon $left={side === 'left'} $right={side === 'right'} $isLast={isLast}>
+          <RoadCon 
+          $left={side === 'left'}
+          $right={side === 'right'}
+          $isLast={isLast}>
             <PointsSvgSelector name='road' />
           </RoadCon>
         </PointItemWr>
       );
 };
+
+const Road = keyframes`
+    from { opacity: 0; }
+    to { opacity: 1; }
+`
 
 const PointItemWr = styled.button<{$status: PointStatus}>`
   width: 14vw;
@@ -204,6 +216,17 @@ const RoadCon  = styled.div<{$left: boolean, $right: boolean, $isLast:boolean}>`
     position: absolute;
     width: 11vw;
     height: 28vw;
+
+    >svg {
+      circle {
+        opacity: 0;
+          animation: ${Road} 0.4s ease forwards;
+        }
+        circle:nth-child(1) { animation-delay: 0.1s; }
+        circle:nth-child(2) { animation-delay: 0.2s; }
+        circle:nth-child(3) { animation-delay: 0.3s; }
+        circle:nth-child(4) { animation-delay: 0.4s; }
+    }
 
     ${({ $left }) => $left && `
       top: 10%;

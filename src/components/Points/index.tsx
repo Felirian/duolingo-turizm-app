@@ -20,7 +20,10 @@ const Points = ({ data }: { data: PointsData }) => {
 
   return (
     <PointsWr $safeAreas={safeAreas}>
-      <PointsTitleBlock  $safeAreas={safeAreas}>
+      <PointsTitleBlock
+      data-aos="fade-down"
+      data-aos-duration="800"
+      $safeAreas={safeAreas}>
           <PointsTitle>{data.section.name}</PointsTitle>
       </PointsTitleBlock>
 
@@ -46,6 +49,7 @@ const Points = ({ data }: { data: PointsData }) => {
           <MascotsCon
             key={`${index}-point-img`}
             data-aos={index % 2 ? 'fade-left' : 'fade-right'}
+            data-aos-duration="800"
             style={{  ...IMG_COORSDS[index] }}
           >
             <img src={img} />
@@ -58,7 +62,7 @@ const Points = ({ data }: { data: PointsData }) => {
   );
 };
 
-const PointsWr = styled.div <{$safeAreas: SafeAreaInsets | null}>`
+const PointsWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
   width: 100%;
   text-align: left;
   padding-top: ${({ $safeAreas }: any) => 125 +  $safeAreas?.top}px;
@@ -83,7 +87,8 @@ const PointsTitleBlock = styled.div<{$safeAreas: SafeAreaInsets | null}>`
 
   position: fixed;
   z-index: 5;
-  top: ${({ $safeAreas }: any) => 50 +  $safeAreas?.top}px;
+  top: 10vw;
+  //top: ${({ $safeAreas }: any) => 50 +  $safeAreas?.top}px;
   left: 2.85vw;
   right: 2.85vw;
 

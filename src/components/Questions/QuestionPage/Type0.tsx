@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {SelectorButton} from '@/components/Shared/SelectorBtn';
+import Aos from 'aos';
 // eslint-disable-next-line
 const Type0 = ({data, setIsCorrect, setSelected}: any) => {
   // Состояние для отслеживания выбранных индексов
@@ -10,6 +11,7 @@ const Type0 = ({data, setIsCorrect, setSelected}: any) => {
     // Сортируем выбранные индексы по возрастанию
     const sortedSelectedIndexes = [...selectedIndexes].sort((a, b) => a - b);
     setIsCorrect(JSON.stringify(data.true_type0) === JSON.stringify(sortedSelectedIndexes));
+    Aos.refresh();
   }, [selectedIndexes, data.true_type0, setIsCorrect]);
 
   useEffect(() => {
@@ -43,8 +45,10 @@ const Type0 = ({data, setIsCorrect, setSelected}: any) => {
         // eslint-disable-next-line
         data.cont_type0.map((answer: any, i: never): any => (
           <SelectorButton
+            data-aos="fade-up"
+            data-aos-duration="200"
+            data-aos-delay={`${i * 100}`}
             key={i}
-
             isPressed={selectedIndexes.includes(i)} // Проверяем, выбрана ли кнопка
             onClick={() => handleButtonClick(i)} // Обработчик клика
           >

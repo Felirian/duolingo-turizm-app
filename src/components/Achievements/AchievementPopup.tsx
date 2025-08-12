@@ -32,12 +32,31 @@ const AchievementPopup = ({ name, image, course, open, setPopupOpen }: Achieveme
       <CloseBtn onClick={handleClose}>
         <SvgSelector svg="close-btn" />
       </CloseBtn>
-      <div className="image-wrapper">
-        <Image src={image} width={220} height={220} alt={`Достижение: ${name}`} />
+      <div 
+        data-aos="fade-up"
+        data-aos-duration="300"
+      className="image-wrapper">
+        <Image 
+        data-aos="fade-up"
+        data-aos-duration="300"
+        data-aos-delay="300"
+        src={image} width={220} height={220} alt={`Достижение: ${name}`} />
       </div>
-      <H2>{name}</H2>
-      <B2>Получено за прохождение курса {course}</B2>
-      <CustomBtn orange onClick={handleClose}>ОК</CustomBtn>
+      <H2
+      data-aos="fade-up"
+        data-aos-duration="300"
+        data-aos-delay="600"
+      >{name}</H2>
+      <B2
+        data-aos="fade-up"
+        data-aos-duration="300"
+        data-aos-delay="900"
+      >Получено за прохождение курса {course}</B2>
+      <CustomBtn
+        data-aos="fade-up"
+        data-aos-duration="300"
+        data-aos-delay="1200"
+      orange onClick={handleClose}>ОК</CustomBtn>
     </AchievementPopupWr>
   );
 };

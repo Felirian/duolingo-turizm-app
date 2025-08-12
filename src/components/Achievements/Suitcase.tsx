@@ -25,7 +25,10 @@ const WheelSvg = () => {
 const Suitcase = ({ data }: IAchievements) => {
     
     return (
-        <SuitcaseWr>
+        <SuitcaseWr
+            data-aos="fade-right"
+            data-aos-duration="300"
+        >
             {data?.map((sticker:IAchievement)=> 
             <Sticker 
                 key={'sticker-' + sticker.course_name}
@@ -66,9 +69,23 @@ const SuitcaseWr = styled.div`
     position: relative;
     padding: 13.62vw 8.85vw 14.85vw 7.22vw;
     z-index: 1;
-    background-image: url(${suitcase.src});
-	background-size: cover;
-	background-repeat: no-repeat;
+
+
+    &::before {
+        pointer-events: none;
+		content: '';
+		display: block;
+		position: absolute;
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: url(${suitcase.src});
+        background-size: 81.7vw 115.5vw;
+        background-repeat: no-repeat;
+    }
 `
 
 const Wheel = styled.div`

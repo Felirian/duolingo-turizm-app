@@ -13,13 +13,32 @@ const ClosePage = ({QuizFunc, section_slug, course_slug, setClosePage}: any) => 
               <SvgSelector svg="close-btn" />
             </button>
             <div>
-                <H2>Хотите покинуть уровень?</H2>
-                <B2>Ваш прогресс на этом уровне будет утерян</B2>
+                <H2
+                data-aos="zoom-in-up"
+                data-aos-duration="300"
+                >Хотите покинуть уровень?</H2>
+                <B2
+                data-aos="zoom-in-up"
+                data-aos-duration="300"
+                data-aos-delay="300"
+                >Ваш прогресс на этом уровне будет утерян</B2>
             </div>
-            <Image src={sadImg} width={163} height={163} alt='Клубок' />
+            <Image 
+            data-aos="zoom-in-up"
+            data-aos-duration="300"
+            data-aos-delay="600"
+            src={sadImg} width={163} height={163} alt='Клубок' />
             <div> 
-                <CustomBtn orange onClick={()=> { QuizFunc.leaveLevel(section_slug, course_slug)}}>Да</CustomBtn>
-                <CustomBtn onClick={() => setClosePage(false)}>Отмена</CustomBtn>
+                <CustomBtn 
+                data-aos="zoom-in-up"
+                data-aos-duration="300"
+                data-aos-delay="900"
+                orange onClick={()=> { QuizFunc.leaveLevel(section_slug, course_slug)}}>Да</CustomBtn>
+                <CustomBtn 
+                data-aos="zoom-in-up"
+                data-aos-duration="300"
+                data-aos-delay="1200"
+                onClick={() => setClosePage(false)}>Отмена</CustomBtn>
             </div>
         </ClosePageWr>
     )

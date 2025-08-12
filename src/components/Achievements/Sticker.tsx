@@ -10,7 +10,11 @@ const Sticker = ({ achievement_image, course_id, course_name, is_completed, achi
 
     return (
         <>
-        <StickerWr onClick={() => setOpen(true)} disabled={!is_completed}>
+        <StickerWr 
+        data-aos="zoom-in"
+        data-aos-duration="500"
+        data-aos-delay="500"
+        onClick={() => setOpen(true)} disabled={!is_completed}>
             <StickerItem src={achievement_image} width={70} height={70} alt={course_name} $new={is_completed}/>
             <Dot $new={is_completed} />
         </StickerWr>

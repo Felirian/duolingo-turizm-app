@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {useRouter} from "next/router";
 import {ProgressBur} from "@/components/Shared/ProgressBur";
 // eslint-disable-next-line
-const SectionsCard = ({ data }: any) => {
+const SectionsCard = ({ data, index }: any) => {
   const router = useRouter();
   const handlePointClick = () => {
     router.push(router.asPath +'/'+ data.slug);
@@ -12,6 +12,9 @@ const SectionsCard = ({ data }: any) => {
 
   return (
     <SectionsCardWr
+      data-aos="fade-up"
+      data-aos-delay={`${(index +1) * 200}`}
+      data-aos-duration="700"
       onClick={handlePointClick}
       style={{
         backgroundImage: `url(${data.bgimage})`,
