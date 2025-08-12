@@ -126,7 +126,9 @@ export const useGetAllPoints = (slug: string | string[] | undefined, userId: any
     data: null,
     error: null,
   });
-  const { setGg, gg } = useTgApp();
+  // const { setGg, gg } = useTgApp();
+
+  // console.log(gg, 'gg');
 
   useEffect(() => {
     const fetchArtistsList = async () => {
@@ -141,7 +143,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined, userId: any
           data: response.data,
           error: null,
         });
-        setGg(!gg);
+        // setGg(!gg);
       } catch (error) {
         setResult({
           loading: false,
@@ -152,7 +154,7 @@ export const useGetAllPoints = (slug: string | string[] | undefined, userId: any
     };
 
     fetchArtistsList();
-  }, [slug, userId, gg]);
+  }, [slug, userId]);
 
   return result;
 };

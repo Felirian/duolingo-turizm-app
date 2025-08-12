@@ -1,5 +1,5 @@
 import { COLORS } from '@/styles/variables';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { CustomBtn } from '../Shared/CustomBtn';
 import { Btn1, Btn2, Btn2Style, Btn3 } from '@/styles/textTags';
@@ -9,6 +9,7 @@ import crownImg from '@/assets/img/crown.png';
 import frogImg from '@/assets/img/frog.png';
 import { useRouter } from 'next/router';
 import SvgSelector from '../Shared/SvgSelector';
+import Loader from '../Shared/Loader';
 
 interface EndPageProps {
   // eslint-disable-next-line
@@ -20,12 +21,33 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
   const point_id = router.query.point_id;
   const section_slug = router.query.section_id;
   const course_slug = router.query.courses_id;
-  const achievement = true;
+
+  const [achievement, setAchievement] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    if (!point_id || !section_slug || !course_slug) return;
+
+    const fetchData = async () => {
+      const data = await QuizFunc.gameOver(section_slug, Number(point_id));
+
+      if (data?.is_completed_course) {
+        setAchievement(true);
+      } else {
+        setAchievement(false);
+      }
+    };
+
+    fetchData();
+  }, [point_id, section_slug, course_slug]);
+
+  if (achievement === null) {
+    return <Loader />;
+  }
 
   return (
     <EndPageWr>
-      <button  onClick={() => QuizFunc.gameOver(section_slug, point_id, course_slug)}>
-          <SvgSelector svg="close-btn" />
+      <button onClick={() => router.push(`/courses/${course_slug}/${section_slug}`)}>
+        <SvgSelector svg='close-btn' />
       </button>
       <EndPageContentBlock>
         <CrownBlock>
@@ -40,8 +62,14 @@ const EndPage = ({ QuizFunc }: EndPageProps) => {
             <span>{achievement ? '+1' : '+70'}</span>
           </PointRollBlock>
         </ExpBlock>
-        <CustomBtn onClick={() => QuizFunc.gameOver(section_slug, point_id, course_slug)}>Продолжить</CustomBtn>
-        {achievement && <CustomBtn orange onClick={()=>router.push('/achievements')}>Мой{'\u00A0'}чемодан</CustomBtn>}
+        <CustomBtn onClick={() => router.push(`/courses/${course_slug}/${section_slug}`)}>
+          Продолжить
+        </CustomBtn>
+        {achievement && (
+          <CustomBtn orange onClick={() => router.push('/achievements')}>
+            Мой{'\u00A0'}чемодан
+          </CustomBtn>
+        )}
       </EndPageContentBlock>
       {!achievement && <MascotImg src={frogImg.src} alt='Квакс' width={310} height={289} />}
     </EndPageWr>
@@ -57,8 +85,8 @@ const EndPageWr = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 40vw;
-  
-  >button {
+
+  > button {
     align-self: flex-end;
     justify-self: flex-start;
   }

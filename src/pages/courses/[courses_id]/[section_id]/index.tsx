@@ -10,15 +10,15 @@ import useTgApp from '@/features/_tg_methods_';
 const Index = () => {
   const router = useRouter();
   const id = router.query.section_id;
-  const { userId, gg, setGg } = useTgApp();
+  const { userId } = useTgApp();
 
   const { loading, data, error } = useGetAllPoints(id, userId);
 
   // console.log(data, 'useGetAllPoints');
 
-  useEffect(() => {
-    setGg(!gg);
-  }, [router]);
+  // useEffect(() => {
+  //   setGg(!gg);
+  // }, [router]);
 
   if (!router.isReady) {
     return <Loader />;

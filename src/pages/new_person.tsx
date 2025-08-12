@@ -20,6 +20,7 @@ const NewPerson = () => {
   const router = useRouter();
 
   const { data } = useGetUser();
+
   useEffect(() => {
     if (data) {
       router.push('/');

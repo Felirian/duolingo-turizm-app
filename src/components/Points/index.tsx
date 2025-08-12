@@ -7,7 +7,6 @@ import React from 'react';
 import useTgApp from '@/features/_tg_methods_';
 import { SafeAreaInsets } from '@telegram-apps/bridge';
 
-
 const IMG_COORSDS = [
   { top: '60vw', left: '-5vw' },
   { top: '90vw', left: '57vw' },
@@ -20,27 +19,26 @@ const Points = ({ data }: { data: PointsData }) => {
 
   return (
     <PointsWr>
-      <PointsTitleBlock  $safeAreas={safeAreas}>
-          <PointsTitle>{data.section.name}</PointsTitle>
+      <PointsTitleBlock $safeAreas={safeAreas}>
+        <PointsTitle>{data.section.name}</PointsTitle>
       </PointsTitleBlock>
 
-      <PointsCon> 
-      {data?.points
-        .sort((a, b) => a.number - b.number)
-        .map((point, index) => {
-          return (
-            <div className={index%2 === 0 ? 'left' : 'right'} 
-                key={`${index}-point-item`}>
-              <PointItem
-              side={index%2 === 0 ? 'left' : 'right'}
-                data={point}
-                currentPoint={currentPoint}
-                progress={data.progress.point}
-                isLast={index === data.points.length - 1}
-              />
-            </div>
-          );
-        })}
+      <PointsCon>
+        {data?.points
+          .sort((a, b) => a.number - b.number)
+          .map((point, index) => {
+            return (
+              <div className={index % 2 === 0 ? 'left' : 'right'} key={`${index}-point-item`}>
+                <PointItem
+                  side={index % 2 === 0 ? 'left' : 'right'}
+                  data={point}
+                  currentPoint={currentPoint}
+                  progress={data.progress?.point}
+                  isLast={index === data.points.length - 1}
+                />
+              </div>
+            );
+          })}
       </PointsCon>
 
       {data.section.images.slice(0, 3).map((img, index) => {
@@ -48,12 +46,12 @@ const Points = ({ data }: { data: PointsData }) => {
           <MascotsCon
             key={`${index}-point-img`}
             // data-aos={index % 2 ? 'fade-left' : 'fade-right'}
-            style={{  ...IMG_COORSDS[index] }}
+            style={{ ...IMG_COORSDS[index] }}
           >
             <img src={img} />
           </MascotsCon>
         );
-      })} 
+      })}
     </PointsWr>
   );
 };
@@ -70,14 +68,12 @@ const PointsWr = styled.div`
   display: flex;
   align-items: center;
 
-
   justify-content: center;
-  
+
   color: ${COLORS.textGray};
 `;
 
-const PointsTitleBlock = styled.div<{$safeAreas: SafeAreaInsets | null;}>`
-
+const PointsTitleBlock = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
   padding: 5.7vw;
   border: 2px solid ${COLORS.shadowGreen};
   background-color: ${COLORS.white};
@@ -86,10 +82,9 @@ const PointsTitleBlock = styled.div<{$safeAreas: SafeAreaInsets | null;}>`
 
   position: fixed;
   z-index: 5;
-  top: ${({ $safeAreas }: any) => 50 +  $safeAreas?.top}px;
+  top: ${({ $safeAreas }: any) => 50 + $safeAreas?.top}px;
   left: 2.85vw;
   right: 2.85vw;
-
 
   display: flex;
   justify-content: center;
@@ -103,17 +98,15 @@ const PointsTitle = styled(Btn1)`
 `;
 
 const MascotsCon = styled.div`
-
   position: absolute;
   z-index: 0;
 
-  >img {
+  > img {
     width: 38.29vw;
     height: 38.29vw;
 
     object-fit: contain;
   }
-
 `;
 
 const PointsCon = styled.div`
@@ -133,8 +126,6 @@ const PointsCon = styled.div`
   .left {
     align-self: flex-start;
   }
-
 `;
-
 
 export default Points;
