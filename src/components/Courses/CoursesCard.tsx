@@ -5,8 +5,12 @@ import Link from 'next/link';
 import SvgSelector from '../Shared/SvgSelector';
 // eslint-disable-next-line
 const CoursesCard = ({ data }: any) => {
+  console.log('course', data);
   return (
     <CoursesCardWr
+      data-aos="fade-up"
+      data-aos-delay={`${data.count * 200}`}
+      data-aos-duration="700"
       href={`/courses/${data.slug}`}
       style={{
         backgroundImage: `url(${data.bgimage})`,

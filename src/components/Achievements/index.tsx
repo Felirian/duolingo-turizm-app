@@ -10,22 +10,23 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import useTgApp from '@/features/_tg_methods_';
+import { SafeAreaInsets } from '@telegram-apps/bridge';
 
 
 const Achievements = ({data}: IAchievements) => {
-
+  const { safeAreas } = useTgApp(); 
   const chunked = data.reduce<IAchievement[][]>(
   (acc, _, i) => i % 12 ? acc : [...acc, data.slice(i, i + 12)],
   []
 );
 
-  console.log('chunked', chunked);
-
-
-
     return (
-        <AchievementsWr>
-            <H1>Мои наклейки</H1>
+        <AchievementsWr $safeAreas={safeAreas}>
+            <H1
+              data-aos="fade-up"
+              data-aos-duration="500"
+            >Мои наклейки</H1>
             <CustomPaginationWrapper>
                 <Swiper
                     modules={[ Pagination]}
@@ -36,7 +37,8 @@ const Achievements = ({data}: IAchievements) => {
                     loop={true}
                     >
                     {chunked.map((chunk) => (
-                        <SwiperSlide style={{width: '100%', margin:"0"}}>
+                        <SwiperSlide 
+                        style={{width: '100%', margin:'0'}}>
                             <Suitcase data={chunk} />
                         </SwiperSlide>
                     ))}
@@ -46,30 +48,31 @@ const Achievements = ({data}: IAchievements) => {
     )
 }
 
-const AchievementsWr = styled.div`
+const AchievementsWr = styled.div<{$safeAreas: SafeAreaInsets | null}>`
     height: 100%;
     width: 100%;
-    max-width: 100vw;
+    width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 11.42vw;
+    gap: 10vw;
 
     &::after {
         pointer-events: none;
-		content: '';
-		display: block;
-		position: absolute;
+        content: '';
+        display: block;
+        position: absolute;
         z-index: 0;
-        height: 50vw;
-        width: 100vw;
-        top: -8%;
+        height: 100%;
+        width: 100%;
+        top: 0;
         left: 0;
-		background-image: url(${bg.src});
-		background-size: cover;
-		background-repeat: no-repeat;
+        right: 0;
+        background-image: url(${bg.src});
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 
     h1 {

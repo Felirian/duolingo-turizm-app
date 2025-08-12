@@ -30,7 +30,13 @@ const Sticker = ({
 
   return (
     <>
-      <StickerWr onClick={() => setOpen(true)} disabled={!is_completed}>
+      <StickerWr
+        data-aos='zoom-in'
+        data-aos-duration='500'
+        data-aos-delay='500'
+        onClick={() => setOpen(true)}
+        disabled={!is_completed}
+      >
         <StickerItem
           src={achievement_image}
           width={70}

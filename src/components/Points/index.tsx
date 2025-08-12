@@ -8,9 +8,9 @@ import useTgApp from '@/features/_tg_methods_';
 import { SafeAreaInsets } from '@telegram-apps/bridge';
 
 const IMG_COORSDS = [
-  { top: '60vw', left: '-5vw' },
-  { top: '90vw', left: '57vw' },
-  { top: '130vw', left: '-5vw' },
+  { top: '10vw', left: '-30vw' },
+  { top: '35vw', left: '35vw' },
+  { top: '60vw', left: '-30vw' },
 ];
 
 const Points = ({ data }: { data: PointsData }) => {
@@ -18,8 +18,8 @@ const Points = ({ data }: { data: PointsData }) => {
   const currentPoint = data.progress?.point + 1 || 1;
 
   return (
-    <PointsWr>
-      <PointsTitleBlock $safeAreas={safeAreas}>
+    <PointsWr $safeAreas={safeAreas}>
+      <PointsTitleBlock data-aos='fade-down' data-aos-duration='800' $safeAreas={safeAreas}>
         <PointsTitle>{data.section.name}</PointsTitle>
       </PointsTitleBlock>
 
@@ -39,31 +39,29 @@ const Points = ({ data }: { data: PointsData }) => {
               </div>
             );
           })}
+        {data.section.images.slice(0, 3).map((img, index) => {
+          return (
+            <MascotsCon
+              key={`${index}-point-img`}
+              data-aos={index % 2 ? 'fade-left' : 'fade-right'}
+              data-aos-duration='800'
+              style={{ ...IMG_COORSDS[index] }}
+            >
+              <img src={img} />
+            </MascotsCon>
+          );
+        })}
       </PointsCon>
-
-      {data.section.images.slice(0, 3).map((img, index) => {
-        return (
-          <MascotsCon
-            key={`${index}-point-img`}
-            // data-aos={index % 2 ? 'fade-left' : 'fade-right'}
-            style={{ ...IMG_COORSDS[index] }}
-          >
-            <img src={img} />
-          </MascotsCon>
-        );
-      })}
     </PointsWr>
   );
 };
 
-const PointsWr = styled.div`
-  position: relative;
+const PointsWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
   width: 100%;
-  min-height: 100vh;
   text-align: left;
-  padding-top: 40vw;
+  padding-top: ${({ $safeAreas }: any) => 125 + $safeAreas?.top}px;
 
-  overflow-y: hidden;
+  overflow-y: none;
 
   display: flex;
   align-items: center;
@@ -82,7 +80,8 @@ const PointsTitleBlock = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
 
   position: fixed;
   z-index: 5;
-  top: ${({ $safeAreas }: any) => 50 + $safeAreas?.top}px;
+  top: 10vw;
+  //top: ${({ $safeAreas }: any) => 50 + $safeAreas?.top}px;
   left: 2.85vw;
   right: 2.85vw;
 
@@ -99,24 +98,25 @@ const PointsTitle = styled(Btn1)`
 
 const MascotsCon = styled.div`
   position: absolute;
-  z-index: 0;
+  z-index: -1;
 
   > img {
-    width: 38.29vw;
-    height: 38.29vw;
+    width: 33vw;
+    height: 33vw;
 
     object-fit: contain;
   }
 `;
 
 const PointsCon = styled.div`
+  position: relative;
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 10vw;
+  gap: 13vw;
   justify-content: center;
   justify-content: center;
-  width: 40vw;
+  width: 36vw;
   z-index: 4;
 
   .right {

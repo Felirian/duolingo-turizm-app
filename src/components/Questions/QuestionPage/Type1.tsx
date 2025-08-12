@@ -22,7 +22,11 @@ const Type1 = ({ data, setIsCorrect, setSelected }: any) => {
   };
 
   return (
-    <SelectorWr>
+    <SelectorWr
+      data-aos="fade-up"
+      data-aos-duration="200"
+      data-aos-delay="200"
+    >
       <SelectorButton
         round // Делаем кнопку круглой
         isPressed={selectedAnswer === true} // Проверяем, выбрана ли кнопка

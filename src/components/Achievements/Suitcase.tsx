@@ -52,28 +52,31 @@ const WheelSvg = () => {
 };
 
 const Suitcase = ({ data }: IAchievements) => {
-  console.log(data, 'data');
-  return (
-    <SuitcaseWr>
-      {data?.map((sticker: IAchievement) => (
-        <Sticker
-          key={'sticker-' + sticker.course_name}
-          achievement_image={sticker.achievement_image}
-          course_name={sticker.course_name}
-          is_completed={sticker.is_completed}
-          achievement_name={sticker.achievement_name}
-          course_slug={sticker.course_slug}
-        />
-      ))}
-      <Wheel>
-        <WheelSvg />
-      </Wheel>
-      <Wheel>
-        <WheelSvg />
-      </Wheel>
-    </SuitcaseWr>
-  );
-};
+    
+    return (
+        <SuitcaseWr
+            data-aos="fade-right"
+            data-aos-duration="300"
+        >
+            {data?.map((sticker:IAchievement)=> 
+            <Sticker 
+                key={'sticker-' + sticker.course_name}
+                achievement_image={sticker.achievement_image}
+                course_name={sticker.course_name}
+                is_completed={sticker.is_completed}
+                achievement_name={sticker.achievement_name}
+                course_slug={sticker.course_slug}
+                />
+            )}
+            <Wheel>
+                <WheelSvg />
+            </Wheel>
+            <Wheel>
+                <WheelSvg />
+            </Wheel>
+        </SuitcaseWr>
+    )
+}
 
 const rotate = keyframes`
   from {
@@ -99,6 +102,33 @@ const SuitcaseWr = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 `;
+    width: 81.7vw;
+    height: 115.5vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0.5vw 1vw ;
+    position: relative;
+    padding: 13.62vw 8.85vw 14.85vw 7.22vw;
+    z-index: 1;
+
+
+    &::before {
+        pointer-events: none;
+		content: '';
+		display: block;
+		position: absolute;
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: url(${suitcase.src});
+        background-size: 81.7vw 115.5vw;
+        background-repeat: no-repeat;
+    }
+`
 
 const Wheel = styled.div`
   width: 10vw;
