@@ -265,7 +265,13 @@ export const CreateUser = async (petName: string, userId: number, tgName: string
   }
 };
 
+let isPostingProgress = false;
+
 export const putPoint = async (section_slug: string, point: number, userId: any) => {
+  if (point === 1 && isPostingProgress) return; // блокируем повторный POST
+
+  if (point === 1) isPostingProgress = true;
+
   const data = {
     user_id: userId,
     section_slug: section_slug,
