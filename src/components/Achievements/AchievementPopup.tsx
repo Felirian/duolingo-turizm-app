@@ -11,10 +11,10 @@ interface AchievementPopupProps {
   image: string;
   course: string;
   open: boolean;
-  setPopupOpen: () => void;
+  handleClose: () => void;
 }
 
-const AchievementPopup = ({ name, image, course, open, setPopupOpen }: AchievementPopupProps) => {
+const AchievementPopup = ({ name, image, course, open, handleClose }: AchievementPopupProps) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -22,48 +22,47 @@ const AchievementPopup = ({ name, image, course, open, setPopupOpen }: Achieveme
     return () => clearTimeout(timeout);
   }, []);
 
-  const handleClose = () => {
+  const handleClosePopup = () => {
     setVisible(false);
-    setTimeout(() => setPopupOpen(), 300);
+    setTimeout(() => handleClose(), 300);
   };
 
   return (
     <AchievementPopupWr $open={visible}>
-      <CloseBtn onClick={handleClose}>
+      <CloseBtn onClick={handleClosePopup}>
         <SvgSelector svg='close-btn' />
       </CloseBtn>
-      <div className='image-wrapper'>
-        <Image src={image} width={220} height={220} alt={`Достижение: ${name}`} />
-      <div 
-        data-aos="fade-up"
-        data-aos-duration="300"
-      className="image-wrapper">
-        <Image 
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-delay="300"
-        src={image} width={220} height={220} alt={`Достижение: ${name}`} />
+      <div className='image-wrapper' data-aos='fade-up' data-aos-duration='300'>
+        <Image
+          data-aos='fade-up'
+          data-aos-duration='300'
+          data-aos-delay='300'
+          src={image}
+          width={220}
+          height={220}
+          alt={`Достижение: ${name}`}
+        />
       </div>
       <H2>{name}</H2>
       <B2>Получено за прохождение курса {course}</B2>
-      <CustomBtn orange onClick={handleClose}>
+      <CustomBtn orange onClick={handleClosePopup}>
         ОК
       </CustomBtn>
-      <H2
-      data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-delay="600"
-      >{name}</H2>
-      <B2
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-delay="900"
-      >Получено за прохождение курса {course}</B2>
+      <H2 data-aos='fade-up' data-aos-duration='300' data-aos-delay='600'>
+        {name}
+      </H2>
+      <B2 data-aos='fade-up' data-aos-duration='300' data-aos-delay='900'>
+        Получено за прохождение курса {course}
+      </B2>
       <CustomBtn
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-delay="1200"
-      orange onClick={handleClose}>ОК</CustomBtn>
+        data-aos='fade-up'
+        data-aos-duration='300'
+        data-aos-delay='1200'
+        orange
+        onClick={handleClose}
+      >
+        ОК
+      </CustomBtn>
     </AchievementPopupWr>
   );
 };

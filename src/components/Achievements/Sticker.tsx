@@ -52,7 +52,7 @@ const Sticker = ({
           image={achievement_image}
           course={course_name}
           open={open}
-          setPopupOpen={handleClose}
+          handleClose={handleClose}
         />
       )}
     </>

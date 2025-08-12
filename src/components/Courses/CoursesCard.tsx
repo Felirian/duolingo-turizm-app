@@ -8,9 +8,9 @@ const CoursesCard = ({ data }: any) => {
   console.log('course', data);
   return (
     <CoursesCardWr
-      data-aos="fade-up"
-      data-aos-delay={`${data.count * 200}`}
-      data-aos-duration="700"
+      data-aos='fade-up'
+      data-aos-delay={`${data.count * 150}`}
+      data-aos-duration='400'
       href={`/courses/${data.slug}`}
       style={{
         backgroundImage: `url(${data.bgimage})`,
