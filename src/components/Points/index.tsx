@@ -19,7 +19,7 @@ const Points = ({ data }: { data: PointsData }) => {
 
   return (
     <PointsWr $safeAreas={safeAreas}>
-      <PointsTitleBlock data-aos='fade-down' data-aos-duration='800' $safeAreas={safeAreas}>
+      <PointsTitleBlock $safeAreas={safeAreas}>
         <PointsTitle>{data.section.name}</PointsTitle>
       </PointsTitleBlock>
 
@@ -80,8 +80,7 @@ const PointsTitleBlock = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
 
   position: fixed;
   z-index: 5;
-  top: 10vw;
-  //top: ${({ $safeAreas }: any) => 50 + $safeAreas?.top}px;
+  top: ${({ $safeAreas }: any) => 50 + $safeAreas?.top}px;
   left: 2.85vw;
   right: 2.85vw;
 
