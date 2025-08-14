@@ -80,7 +80,7 @@ const PageWr = styled.div<{
     50 + $safeAreas?.top}px; // eslint-disable-line no-explicit-any
   padding-left: ${({ $safeAreas }: any) => 20 + $safeAreas?.left}px;
   padding-right: ${({ $safeAreas }: any) => 20 + $safeAreas?.right}px;
-  padding-bottom: ${({ $safeAreas, $navBar }: any) => ($navBar ? 120 : 20) + $safeAreas?.bottom}px;
+  padding-bottom: ${({ $safeAreas, $navBar }: any) => ($navBar ? 89 : 20) + $safeAreas?.bottom}px;
 
   width: 100vw;
   height: 100vh;

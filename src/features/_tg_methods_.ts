@@ -91,7 +91,8 @@ export function tgInit(debug: boolean): void {
     console.log('Ошибка инициализации tg:', error);
   }
   // eslint-disable-next-line
-  debug && import('eruda').then((lib) => lib.default.init()).catch(console.error);
+  // debug && import('eruda').then((lib) => lib.default.init()).catch(console.error);
+  import('eruda').then((lib) => lib.default.init()).catch(console.error);
 }
 
 export default useTgApp;
