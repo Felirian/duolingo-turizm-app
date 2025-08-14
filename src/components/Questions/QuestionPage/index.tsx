@@ -19,6 +19,7 @@ const Index = ({ QuizFunc }: any) => {
   const course_slug = router.query.courses_id;
   const [isCorrect, setIsCorrect] = useState(null);
   const [isSelected, setSelected] = useState(false)
+  const [aosKey, setAosKey] = useState(0);
 
   const handleContinueClick = () => {
     setSelected(false);
@@ -26,69 +27,68 @@ const Index = ({ QuizFunc }: any) => {
     QuizFunc.countProgress(isCorrect);
   };
 
-  const handleCloseClick = () => {
-
-  }
 
   return (
     <>
     {closePage ? 
     <ClosePage QuizFunc={QuizFunc} section_slug={section_slug} course_slug={course_slug} setClosePage={setClosePage} /> 
     :
-    <QuestionPageWr>
-      <Popup QuizFunc={QuizFunc} isCorrect={isCorrect} />
-      <QuestionPageCon>
+    <QuestionPageWr key={aosKey}>
+      <Popup QuizFunc={QuizFunc} isCorrect={isCorrect} setAosKey={setAosKey} />
+      <QuestionPageCon  >
         <ProgressCon>
             <button onClick={() => setClosePage(true)}>
               <SvgSelector svg="close-btn" />
             </button>
             <ProgressBur
             data-aos="fade-up"
-            data-aos-duration="200"
+            data-aos-duration="300"
             percent={QuizFunc.progress} />
         </ProgressCon>
         {QuizFunc.currentQuestion.answer.type === 0 ? (
           QuizFunc.currentQuestion.answer.true_type0.length === 1 ? (
             <H3 
             data-aos="fade-up"
-            data-aos-duration="200"
-            data-aos-delay="200"
+            data-aos-duration="300"
+            data-aos-delay="300"
             >Один вариант ответа</H3>
           ) : (
             <H3
             data-aos="fade-up"
-            data-aos-duration="200"
-            data-aos-delay="200"
+            data-aos-duration="300"
+            data-aos-delay="300"
             >Несколько вариантов ответа</H3>
           )
         ) : QuizFunc.currentQuestion.answer.type === 1 ? (
           <H3
             data-aos="fade-up"
-            data-aos-duration="200"
-            data-aos-delay="200"
+            data-aos-duration="300"
+            data-aos-delay="300"
           >Правда или ложь?</H3>
         ) : QuizFunc.currentQuestion.answer.type === 2 ? (
           <H3 
             data-aos="fade-up"
-            data-aos-duration="200"
-            data-aos-delay="200">Расположите в правильном порядке</H3>
+            data-aos-duration="300"
+            data-aos-delay="300">Расположите в правильном порядке</H3>
         ) : null}
         <B2
             data-aos="fade-up"
-            data-aos-duration="200"
+            data-aos-duration="300"
             data-aos-delay="400"
         >{QuizFunc.currentQuestion.text}</B2>
       </QuestionPageCon>
 
+
         {QuizFunc.currentQuestion.answer.type === 0 ? (
-          <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
+          <Type0 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected} />
         ) : QuizFunc.currentQuestion.answer.type === 1 ? (
-          <Type1 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
+          <Type1 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected} />
         ) : (
           QuizFunc.currentQuestion.answer.type === 2 && (
-            <Type2 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected}/>
+            <Type2 data={QuizFunc.currentQuestion.answer} setIsCorrect={setIsCorrect} setSelected={setSelected} />
           )
         )}
+
       <ContinueBtnWrapper $disabled={!isSelected}>
           <CustomBtn 
             data-aos="fade-up"

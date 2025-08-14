@@ -46,7 +46,7 @@ const Type0 = ({data, setIsCorrect, setSelected}: any) => {
         data.cont_type0.map((answer: any, i: never): any => (
           <SelectorButton
             data-aos="fade-up"
-            data-aos-duration="200"
+            data-aos-duration="300"
             data-aos-delay={`${i * 100}`}
             key={i}
             isPressed={selectedIndexes.includes(i)} // Проверяем, выбрана ли кнопка

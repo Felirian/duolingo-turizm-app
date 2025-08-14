@@ -14,8 +14,6 @@ const Index = () => {
 
   const { loading, data, error } = useGetAllPoints(id, userId);
 
-  // console.log(data, 'useGetAllPoints');
-
   // useEffect(() => {
   //   setGg(!gg);
   // }, [router]);

@@ -147,11 +147,11 @@ const Type2 = ({ data, setIsCorrect, setSelected }: any) => {
         >
           <SelectorNum 
           data-aos="fade-up"
-          data-aos-duration="200"
+          data-aos-duration="300"
           data-aos-delay={`${index * 100}`}><Btn2>{index + 1}</Btn2></SelectorNum>
           <SelectorButton
               data-aos="fade-up"
-          data-aos-duration="200"
+          data-aos-duration="300"
           data-aos-delay={`${index * 100}`}>{answer}</SelectorButton>
         </SelectorCon>
       ))}
