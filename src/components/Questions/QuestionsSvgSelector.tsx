@@ -122,8 +122,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
               <path
                 d='M176.743 34.761L189.78 57.8894C190.35 58.9021 191.334 59.6164 192.473 59.8463L218.498 65.0973C220.025 65.4055 220.629 67.2644 219.575 68.4114L201.607 87.9565C200.82 88.8123 200.444 89.9681 200.578 91.1229L203.626 117.497C203.805 119.044 202.223 120.193 200.807 119.545L176.666 108.496C175.609 108.012 174.394 108.012 173.337 108.496L149.196 119.545C147.779 120.193 146.198 119.044 146.376 117.497L149.425 91.1229C149.558 89.9681 149.182 88.8123 148.396 87.9565L130.428 68.4114C129.373 67.2644 129.977 65.4055 131.505 65.0973L157.529 59.8463C158.669 59.6164 159.652 58.9021 160.223 57.8894L173.259 34.761C174.024 33.4038 175.978 33.4037 176.743 34.761Z'
                 stroke='url(#paint10_linear_160_1541)'
-                stroke-width='2'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinejoin='round'
               />
             </g>
             <g filter='url(#filter4_d_160_1541)'>
@@ -134,8 +134,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
               <path
                 d='M251.297 67.3249L256.173 81.1671C256.56 82.2635 257.404 83.1377 258.486 83.562L272.15 88.9187C273.6 89.4874 273.872 91.4229 272.635 92.3694L260.977 101.285C260.053 101.991 259.483 103.064 259.414 104.224L258.542 118.875C258.449 120.43 256.692 121.287 255.41 120.402L243.328 112.07C242.371 111.41 241.174 111.199 240.049 111.492L225.847 115.189C224.339 115.582 222.981 114.176 223.426 112.683L227.617 98.6178C227.949 97.5037 227.78 96.3003 227.154 95.3209L219.248 82.956C218.409 81.6433 219.327 79.9175 220.884 79.8792L235.556 79.5188C236.718 79.4902 237.81 78.9575 238.548 78.0593L247.865 66.7198C248.854 65.516 250.779 65.8554 251.297 67.3249Z'
                 stroke='url(#paint12_linear_160_1541)'
-                stroke-width='2'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinejoin='round'
               />
             </g>
             <g filter='url(#filter5_d_160_1541)'>
@@ -146,8 +146,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
               <path
                 d='M98.7072 67.3249L93.8306 81.1671C93.4443 82.2635 92.6002 83.1377 91.5179 83.562L77.8543 88.9187C76.4038 89.4874 76.1317 91.4229 77.3694 92.3694L89.0271 101.285C89.9505 101.991 90.521 103.064 90.5901 104.224L91.4624 118.875C91.555 120.43 93.3117 121.287 94.5943 120.402L106.676 112.07C107.633 111.41 108.83 111.199 109.955 111.492L124.157 115.189C125.665 115.582 127.023 114.176 126.578 112.683L122.387 98.6178C122.055 97.5037 122.224 96.3003 122.85 95.3209L130.756 82.956C131.595 81.6433 130.677 79.9175 129.12 79.8792L114.448 79.5188C113.286 79.4902 112.194 78.9575 111.456 78.0593L102.139 66.7198C101.15 65.516 99.2249 65.8554 98.7072 67.3249Z'
                 stroke='url(#paint14_linear_160_1541)'
-                stroke-width='2'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinejoin='round'
               />
             </g>
             <defs>
@@ -363,8 +363,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='140.845'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint1_linear_160_1541'
@@ -374,8 +374,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='139.816'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint2_linear_160_1541'
@@ -385,8 +385,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='150.771'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint3_linear_160_1541'
@@ -396,8 +396,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='149.176'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint4_linear_160_1541'
@@ -407,8 +407,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='165.493'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint5_linear_160_1541'
@@ -418,8 +418,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='163.474'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='white' stop-opacity='0' />
-                <stop offset='0.645' stop-color='#FFE201' />
+                <stop stopColor='white' stopOpacity='0' />
+                <stop offset='0.645' stopColor='#FFE201' />
               </linearGradient>
               <linearGradient
                 id='paint6_linear_160_1541'
@@ -429,8 +429,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='216.791'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#44CF70' />
-                <stop offset='1' stop-color='#A9F09F' />
+                <stop stopColor='#44CF70' />
+                <stop offset='1' stopColor='#A9F09F' />
               </linearGradient>
               <linearGradient
                 id='paint7_linear_160_1541'
@@ -440,8 +440,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='216.791'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#44CF70' />
-                <stop offset='1' stop-color='#A9F09F' />
+                <stop stopColor='#44CF70' />
+                <stop offset='1' stopColor='#A9F09F' />
               </linearGradient>
               <linearGradient
                 id='paint8_linear_160_1541'
@@ -451,8 +451,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='210.027'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#44CF70' />
-                <stop offset='1' stop-color='#A9F09F' />
+                <stop stopColor='#44CF70' />
+                <stop offset='1' stopColor='#A9F09F' />
               </linearGradient>
               <linearGradient
                 id='paint9_linear_160_1541'
@@ -462,9 +462,9 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='29.6333'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF8D00' />
-                <stop offset='0.43' stop-color='#FFB900' />
-                <stop offset='0.82' stop-color='#FFE100' />
+                <stop stopColor='#FF8D00' />
+                <stop offset='0.43' stopColor='#FFB900' />
+                <stop offset='0.82' stopColor='#FFE100' />
               </linearGradient>
               <linearGradient
                 id='paint10_linear_160_1541'
@@ -474,8 +474,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='132.491'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF9E01' />
-                <stop offset='0.465' stop-color='#FFB900' />
+                <stop stopColor='#FF9E01' />
+                <stop offset='0.465' stopColor='#FFB900' />
               </linearGradient>
               <linearGradient
                 id='paint11_linear_160_1541'
@@ -485,9 +485,9 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='61.9725'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF8D00' />
-                <stop offset='0.43' stop-color='#FFB900' />
-                <stop offset='0.82' stop-color='#FFE100' />
+                <stop stopColor='#FF8D00' />
+                <stop offset='0.43' stopColor='#FFB900' />
+                <stop offset='0.82' stopColor='#FFE100' />
               </linearGradient>
               <linearGradient
                 id='paint12_linear_160_1541'
@@ -497,8 +497,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='127.091'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF9E01' />
-                <stop offset='0.465' stop-color='#FFB900' />
+                <stop stopColor='#FF9E01' />
+                <stop offset='0.465' stopColor='#FFB900' />
               </linearGradient>
               <linearGradient
                 id='paint13_linear_160_1541'
@@ -508,9 +508,9 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='61.9725'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF8D00' />
-                <stop offset='0.43' stop-color='#FFB900' />
-                <stop offset='0.82' stop-color='#FFE100' />
+                <stop stopColor='#FF8D00' />
+                <stop offset='0.43' stopColor='#FFB900' />
+                <stop offset='0.82' stopColor='#FFE100' />
               </linearGradient>
               <linearGradient
                 id='paint14_linear_160_1541'
@@ -520,8 +520,8 @@ const QuestionsSvgSelector: React.FC<QuestionsSvgSelectorProps> = ({ name }) => 
                 y2='127.091'
                 gradientUnits='userSpaceOnUse'
               >
-                <stop stop-color='#FF9E01' />
-                <stop offset='0.465' stop-color='#FFB900' />
+                <stop stopColor='#FF9E01' />
+                <stop offset='0.465' stopColor='#FFB900' />
               </linearGradient>
             </defs>
           </svg>

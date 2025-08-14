@@ -43,9 +43,21 @@ const AchievementPopup = ({ name, image, course, open, handleClose }: Achievemen
           alt={`Достижение: ${name}`}
         />
       </div>
-      <H2>{name}</H2>
-      <B2>Получено за прохождение курса {course}</B2>
-      <CustomBtn orange onClick={handleClosePopup}>
+      <H2
+          data-aos='fade-up'
+          data-aos-duration='300'
+          data-aos-delay='400'
+      >{name}</H2>
+      <B2
+          data-aos='fade-up'
+          data-aos-duration='300'
+          data-aos-delay='500'
+      >Получено за прохождение курса {course}</B2>
+      <CustomBtn
+          data-aos='fade-up'
+          data-aos-duration='300'
+          data-aos-delay='600'
+      orange onClick={handleClosePopup}>
         ОК
       </CustomBtn>
     </AchievementPopupWr>

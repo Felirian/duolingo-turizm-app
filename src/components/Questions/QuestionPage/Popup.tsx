@@ -6,6 +6,7 @@ import { COLORS } from '@/styles/variables';
 import sadImg from '@/assets/img/popup/sad.png';
 import smilingImg from '@/assets/img/popup/smiling.png';
 import Image from 'next/image';
+import Aos from 'aos';
 
 const correctHint: string[] = [
   "Правильно! Отличная работа!",
@@ -19,8 +20,14 @@ const correctHint: string[] = [
   "Верно! Так держать!",
   "Идеально! Ты справился!",
 ]
+
+const handleNextQuestion = ({QuizFunc, setAosKey}: any) => {
+  QuizFunc.nextQuestion();
+  setAosKey((prev: number) => prev + 1);
+  Aos.refresh();
+}
 // eslint-disable-next-line
-const Popup = ({ QuizFunc, isCorrect }: any) => {
+const Popup = ({ QuizFunc, isCorrect, setAosKey }: any) => {
   return (
     <>
       <Overlay $isOpen={QuizFunc.isHintOpen} />
@@ -29,7 +36,7 @@ const Popup = ({ QuizFunc, isCorrect }: any) => {
 
       <PopupTitle $isCorrect={isCorrect}>{isCorrect ? 'Верно!' : 'Неверно!'}</PopupTitle>
       <Hint>{isCorrect ? correctHint[Math.trunc(Math.random() * 10)] : QuizFunc.currentQuestion.hint}</Hint>
-      <CustomBtn onClick={() => QuizFunc.nextQuestion()}>Продолжить</CustomBtn>
+      <CustomBtn onClick={() => handleNextQuestion({ QuizFunc, setAosKey })}>Продолжить</CustomBtn>
     </PopupWr>
     </>
   );

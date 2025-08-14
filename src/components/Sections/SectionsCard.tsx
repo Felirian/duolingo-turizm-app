@@ -34,7 +34,7 @@ const SectionsCard = ({ data, index }: any) => {
 
 const SectionsCardWr = styled.div`
   width: 100%;
-  height: 42.857vw;
+  height: 48.5vw;
   border-radius: 3.429vw;
   padding: 4.571vw;
   position: relative;

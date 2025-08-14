@@ -24,8 +24,8 @@ const Type1 = ({ data, setIsCorrect, setSelected }: any) => {
   return (
     <SelectorWr
       data-aos="fade-up"
-      data-aos-duration="200"
-      data-aos-delay="200"
+      data-aos-duration="300"
+      data-aos-delay="600"
     >
       <SelectorButton
         round // Делаем кнопку круглой

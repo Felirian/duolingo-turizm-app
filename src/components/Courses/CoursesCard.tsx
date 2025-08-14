@@ -5,7 +5,6 @@ import Link from 'next/link';
 import SvgSelector from '../Shared/SvgSelector';
 // eslint-disable-next-line
 const CoursesCard = ({ data }: any) => {
-  console.log('course', data);
   return (
     <CoursesCardWr
       data-aos='fade-up'
@@ -20,9 +19,6 @@ const CoursesCard = ({ data }: any) => {
         <H1>{data.name}</H1>
         {data.descr != '' && <B2>{data.descr}</B2>}
       </CardText>
-      {/*<SvgSelectorWr>*/}
-      {/*  <SvgSelector svg={'courseCardBg'} />*/}
-      {/*</SvgSelectorWr>*/}
     </CoursesCardWr>
   );
 };

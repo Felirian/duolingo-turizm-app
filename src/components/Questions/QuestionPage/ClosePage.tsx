@@ -15,29 +15,29 @@ const ClosePage = ({QuizFunc, section_slug, course_slug, setClosePage}: any) => 
             <div>
                 <H2
                 data-aos="zoom-in-up"
-                data-aos-duration="300"
+                data-aos-duration="200"
                 >Хотите покинуть уровень?</H2>
                 <B2
                 data-aos="zoom-in-up"
-                data-aos-duration="300"
+                data-aos-duration="200"
                 data-aos-delay="300"
                 >Ваш прогресс на этом уровне будет утерян</B2>
             </div>
             <Image 
             data-aos="zoom-in-up"
-            data-aos-duration="300"
-            data-aos-delay="600"
+            data-aos-duration="200"
+            data-aos-delay="400"
             src={sadImg} width={163} height={163} alt='Клубок' />
             <div> 
                 <CustomBtn 
                 data-aos="zoom-in-up"
-                data-aos-duration="300"
-                data-aos-delay="900"
+                data-aos-duration="200"
+                data-aos-delay="500"
                 orange onClick={()=> { QuizFunc.leaveLevel(section_slug, course_slug)}}>Да</CustomBtn>
                 <CustomBtn 
                 data-aos="zoom-in-up"
-                data-aos-duration="300"
-                data-aos-delay="1200"
+                data-aos-duration="200"
+                data-aos-delay="600"
                 onClick={() => setClosePage(false)}>Отмена</CustomBtn>
             </div>
         </ClosePageWr>
