@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BottomTabsSvgSelector from './BottomTabsSvgSelector';
 import { CustomBtn } from '../CustomBtn';
 import { useRouter } from 'next/router';
+import { hasCompletedCourseSlugs } from '@/features/localStorage';
 
 const BottomTabs = ({ play = '' }: { play?: any }) => {
   const router = useRouter();
@@ -12,21 +13,8 @@ const BottomTabs = ({ play = '' }: { play?: any }) => {
   const [hasNewAchievements, setHasNewAchievements] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('completed_course_slugs');
-    if (stored) {
-      try {
-        const slugs = JSON.parse(stored);
-        if (Array.isArray(slugs) && slugs.length > 0) {
-          setHasNewAchievements(true);
-        } else {
-          setHasNewAchievements(false);
-        }
-      } catch {
-        setHasNewAchievements(false);
-      }
-    } else {
-      setHasNewAchievements(false);
-    }
+    const hasSlugs = hasCompletedCourseSlugs();
+    setHasNewAchievements(hasSlugs);
   }, []);
 
   const buttonClick = (link: string) => {
