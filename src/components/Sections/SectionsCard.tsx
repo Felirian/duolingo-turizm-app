@@ -47,6 +47,7 @@ const SectionsCardWr = styled.div`
   //box-sizing: border-box;
   overflow: hidden;
   background-size: cover;
+  background-position: center;
 `;
 
 const CardText = styled.div`
