@@ -34,7 +34,7 @@ const Achievements = ({ data }: IAchievements) => {
           style={{ width: '100%' }}
           loop={true}
         >
-          {[...chunked, ...chunked].map((chunk) => (
+          {chunked.map((chunk) => (
             <SwiperSlide style={{ width: '100%', margin: '0' }}>
               <Suitcase data={chunk} />
             </SwiperSlide>

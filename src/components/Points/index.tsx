@@ -69,6 +69,7 @@ const PointsWr = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
   justify-content: center;
 
   color: ${COLORS.textGray};
+  padding-bottom: 4vw;
 `;
 
 const PointsTitleBlock = styled.div<{ $safeAreas: SafeAreaInsets | null }>`
