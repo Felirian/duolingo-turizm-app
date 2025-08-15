@@ -32,6 +32,7 @@ const CoursesCardWr = styled(Link)`
   box-sizing: border-box;
 
   background-size: cover;
+  background-position: center;
 `;
 
 const SvgSelectorWr = styled.div`
